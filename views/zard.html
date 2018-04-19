@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100" rel="stylesheet">
+  <script type="text/javascript" src="include/js/zard/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="include/js/zard/scroll.js"></script>
+  <script type="text/javascript" src="include/js/zard/scroll_fix.js"></script>
+  <script type="text/javascript" src="include/js/zard/zardnavclick.js"></script>
+  <style type="text/css">
+  /*//body*/
+  body {
+    display: flex;
+/*    grid-template-columns:25% 75%;*/
+    flex-direction: row;
+    overflow-x: hidden;
+  }
+  /*오른쪽 그리드*/
+
+/*    .right_grid_toggle {
+      float: right;
+      margin-left:350px;
+    }  */
+      .margin_left_100 {
+        transition: 0.3s;
+        margin-left:100px;
+      }
+      .margin_left_350 {
+        transition: 0.3s;
+        margin-left:350px;
+      }
+    #right_grid {
+      float: right;
+      height: 100vh;
+      /*margin-left:100px;*/
+      width:93%;
+      position: relative;
+      /*margin:0 auto;*/
+    }
+          .header {
+         /*background-color: #0f1b35;*/
+         /*width: 350px;*/
+         height: 100vh;
+         background: url(img/space-ship-bg.svg) no-repeat center center;
+         background-size: cover;
+         position: fixed;
+      }
+      .header_grid {
+
+      }
+      .navigation {
+         background-color: #0f1b35;
+         width: 7%;
+         height: 100%;
+         display: block;
+         padding: 0 20px;
+         position: fixed;
+         top: 0;
+         left: 0;
+         -webkit-perspective: 800;
+         perspective: 800;
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .logo {
+         width: 70px;
+         height: 70px;
+         display: block;
+         position: absolute;
+         top: 4%;
+         left: 15%;
+         background: url(include/img/chapter1/zard_naaav.png) no-repeat center center;
+         cursor: pointer;
+         -webkit-transform-style: preserve-3d;
+         transform-style: preserve-3d;
+         -webkit-transform: rotateY(-360deg);
+                 transform: rotateY(-360deg);
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .navigation__icon {
+         width: 55px;
+         height: 44px;
+         display: block;
+         position: relative;
+         z-index: 99;
+         /*top: 22%;*/
+         /*left: 25%;*/
+         background: hsla(312, 51%, 41%, 0.0);
+         cursor: pointer;
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .navigation__icon .topBar {
+         width: 55px;
+         height: 2px;
+         display: block;
+         background: #1CDDFF;
+         position: absolute;
+         top: 10px;
+         -webkit-transform: rotate(0);
+                 transform: rotate(0);
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .navigation__icon .middleBar {
+         width: 55px;
+         height: 2px;
+         display: block;
+         background: #1CDDFF;
+         position: absolute;
+         top: 20px;
+         -webkit-transform: rotate(0);
+                 transform: rotate(0);
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .navigation__icon .bottomBar {
+         width: 35px;
+         height: 2px;
+         display: block;
+         background: #1CDDFF;
+         position: absolute;
+         top: 30px;
+         -webkit-transform: rotate(0);
+                 transform: rotate(0);
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+
+      .navigation .navigation__ul {
+         font-family: 'Josefin Sans', sans-serif;
+         margin-top:30%;
+         float: left;
+         opacity: 0;
+         visibility: hidden;
+         -webkit-transform: rotateY(-90deg) translateX(-300px);
+                 transform: rotateY(-90deg) translateX(-300px);
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .navigation .navigation__ul li {
+          display: block;
+          font-size: 1.3rem;
+          font-weight: 800;
+          text-decoration: none;
+          color: white;
+          margin-bottom: 15px;
+          list-style: none;
+          text-align: left;
+          cursor: pointer;
+      }
+      .navigation .navigation__ul li div:nth-child(n):hover::before, .navigation .navigation__ul li div:nth-child(n):hover::after {
+         height: 100%;
+      }
+      .navigation .navigation__ul li div:nth-child(n)::before { 
+       content: '';
+       display: inline;
+       width:3px;
+       height: 5px;
+       background-color: white;
+       position: absolute;
+       top: 0;
+       left:0;
+       height: 0%;
+       -webkit-transition: all ease-in-out 250ms;
+       transition: all ease-in-out 250ms;
+       }
+      .navigation .navigation__ul li div:nth-child(n)::after { 
+       content: '';
+       display: inline;
+       width:3px;
+       height: 5px;
+       background-color: white;
+       position: absolute;
+       top: 0;
+       right:0;
+       height: 0%;
+       -webkit-transition: all ease-in-out 250ms;
+       transition: all ease-in-out 250ms;
+       }
+      .navigation .navigation__ul div {
+        text-indent: 10px;
+         left:5% !important;
+         position: absolute;
+         display: block;
+         opacity: 0;
+         font-size: 1rem;
+         font-weight: 600;
+         text-decoration: none;
+         cursor: pointer;
+         color: white;
+         margin-bottom: 15px;
+      }
+
+      .navigation .navigation__ul div:hover {color: #008acb;}
+
+      .navigation .navigation__social {
+         width: 100%;
+         height: 30px;
+         padding-right: 45px;
+         position: absolute;
+         bottom: 18%;
+      }
+      .navigation .navigation__social-ul {
+         float: right;
+         list-style: none;
+         white-space: nowrap;
+         opacity: 0;
+         visibility: hidden;
+         -webkit-transform: rotateY(-90deg) translateX(-300px);
+                 transform: rotateY(-90deg) translateX(-300px);
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .navigation .navigation__social-ul li {
+         display: inline-block;
+         opacity: 0;
+         visibility: hidden;
+         -webkit-transform: translateY(35px);
+                 transform: translateY(35px);
+         -webkit-transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+         transition: all 800ms cubic-bezier(.9, 0, .33, 1);
+      }
+      .navigation .social-icon {
+         width: 30px;
+         height: 30px;
+         display: block;
+         background: url(img/space-ship-logo.svg) no-repeat center center;
+         margin-left: 15px;
+      }
+
+      /* _-_-_-_-__ jQuery Navigation-Open __-_-_-_-_ */
+      .navigation-open {
+        padding: 0 40px;
+         overflow:scroll;
+         width: 350px;
+         height: 100%;
+         display: block;
+         background-color: #0f1b35;
+         /*background: #FFF;*/
+         position: fixed;
+         left: 0;
+         border-radius: 0% 1% 1% 0%;
+      }
+      .navigation-open .logo {
+         position: absolute;
+         left: 50%;
+         margin-left: -35px;
+         -webkit-transform: rotateY(0);
+                 transform: rotateY(0);
+      }
+      .navigation-open .navigation__icon {
+         left: 80%;
+      }
+      .navigation-open .navigation__ul {
+         width: 100%;
+         height: 100%;
+         opacity: 1;
+         visibility: visible;
+      }
+      .navigation-open .navigation__social-ul {
+         opacity: 1;
+         visibility: visible;
+      }
+
+      .navigation-open .topBar {
+         top: 21px;
+         -webkit-transform: rotate(45deg);
+                 transform: rotate(45deg);
+      }
+      .navigation-open .middleBar {
+         width: 0;
+         top: 22px;
+         opacity: 0;
+         visibility: hidden;
+         -webkit-transform: translateX(30px);
+                 transform: translateX(30px);
+      }
+      .navigation-open .bottomBar {
+         width: 55px;
+         top: 21px;
+         -webkit-transform: rotate(-45deg);
+                 transform: rotate(-45deg);
+      }
+      .navigation-open .navigation__ul {
+         -webkit-transform: rotateY(0) translateX(0);
+                 transform: rotateY(0) translateX(0);
+      }
+      .navigation-open .navigation__social-ul {
+         -webkit-transform: rotateY(0) translateX(0);
+                 transform: rotateY(0) translateX(0);
+      }
+      .navigation-open .navigation__social-ul li {
+
+         opacity: 1;
+         visibility: visible;
+         -webkit-transform: translateY(0px);
+                 transform: translateY(0px);
+      }
+
+      .navigation-open .navigation__social-ul li:nth-child(1) {
+         -webkit-transition-delay: .5s;
+                 transition-delay: .5s;
+      }
+      .navigation-open .navigation__social-ul li:nth-child(2) {
+         -webkit-transition-delay: .46s;
+                 transition-delay: .46s;
+      }
+      .navigation-open .navigation__social-ul li:nth-child(3) {
+         -webkit-transition-delay: .43s;
+                 transition-delay: .43s;
+      }
+      .navigation-open .navigation__social-ul li:nth-child(4) {
+         -webkit-transition-delay: .4s;
+                 transition-delay: .4s;
+      }
+      .is-nonvisible {
+         animation: Nonani 200ms ease-in forwards;
+      }
+      @keyframes Nonani {
+         0% {
+            opacity: 1;
+         }
+         100% {
+            opacity: 0;
+         }
+      }
+      .is-visible {
+         animation: Ani 200ms ease-in forwards;
+      }
+      @keyframes Ani {
+         0% {
+            opacity: 0;
+         }
+
+         100% {
+            opacity: 1;
+         }
+      }
+      .firstli{
+
+      }
+      ::-webkit-scrollbar {
+          width: 15px;
+      } /* this targets the default scrollbar (compulsory) */
+      ::-webkit-scrollbar-track {
+            background-color: #172c4f;
+      } /* the new scrollbar will have a flat appearance with the set background color */
+       
+      ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2); 
+      } /* this will style the thumb, ignoring the track */
+       
+      ::-webkit-scrollbar-button {
+            background-color: #7896b0;
+      } /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+       
+      ::-webkit-scrollbar-corner {
+            background-color: #ffffff;
+      } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+
+      .navigation__ul li div:nth-child(n){
+        z-index: 999999;
+        position: relative;
+        cursor: pointer;
+      }
+      .navigation__ul li div:nth-child(n):hover {
+        cursor: pointer;
+        transition: 0.7s;
+        /*background-color: red;*/
+      }  
+
+      /*//image effect/*/
+      .effect1 {
+        opacity: 0;
+        transform: translate3d(0, 0, 400px) rotateY(-40deg);
+      }
+      .effect2 {
+        opacity: 0;
+        transform: translate3d(0, 0, 400px) rotateY(40deg);
+      }
+      /*//image size*/
+      .slide-img {
+        position:relative;
+        width:400px;
+        height:400px;
+      }
+      .slide-img2 {
+        position:relative;
+        width:400px;
+        height:300px;
+      }
+      /*//*/
+      #slider {
+        width:1000px;
+        height:600px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      #slider > div {
+        width:100%;
+        height:100%;
+        position: absolute;
+      }
+      .btn{
+        position: absolute;
+        width:50px;
+        height:50px;
+        border:none;
+        border-radius:25px;
+        top:50px;
+        background:#7896b0;
+        color:white;
+        line-height: 20px;
+        font-size:20px;
+      }
+      #btn1:hover {
+        transition: 0.7s;
+        box-shadow: 10px 0px 20px 0px #7896b0;
+      }
+      #btn2:hover {
+        transition: 0.7s;
+        box-shadow: -10px 0px 20px 0px #7896b0;
+      }
+      #btn2 {
+        position: relative;
+        float:right;
+      }
+      /*//*/
+    html {
+      box-sizing: border-box;
+      background:#172c4f;
+      font-family:'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+    body {
+      margin: 0;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+      *{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+  }
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+    h3 {
+      text-align: center;
+    }
+    .firstli {
+      width:200px;
+    }
+    .otherli {
+      width:100px;
+    }
+    .site-wrap {
+      max-width: 1000px;
+      margin: 100px auto;
+      margin-top:0;
+      background:#0f1b35;
+      padding:40px;
+      text-align: justify;
+      color:#7896b0;
+    }
+
+    .align-left {
+      float:left;
+      margin-right:20px;
+    }
+
+    .align-right {
+      float:right;
+      margin-left:20px;
+    }
+
+    .slide-in {
+      opacity:0;
+      transition:all .5s;
+    }
+
+    .align-left.slide-in {
+      transform:translateX(-30%) scale(0.95);
+    }
+    .align-right.slide-in {
+      transform:translateX(30%) scale(0.95);
+    }
+
+    .slide-in.active {
+      opacity:1;
+      transform:translateX(0%) scale(1);
+    }
+    header{
+      max-width: 1000px;
+      margin: 100px auto;
+      margin-top:0;
+      margin-bottom: 0;
+      position: relative;
+     padding: 0px;
+     height:70px;
+     flex:1;
+     flex-direction: column;
+    }
+    .top {
+      max-width: 1000px;
+      margin: 100px auto;
+      margin-bottom: 0;
+      margin-top:0px;
+      position: relative;
+      height:70px;
+    }
+    .top_grid {
+      margin:auto;
+      width: 220px;
+    height: 30vh;
+    text-align: center;
+    }
+    .top h1 {
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color:#7896b0;
+      text-align: center;
+      clear: both;
+      padding-top: 10px;
+      line-height: 1.05;
+    } 
+    .top h1 span {
+    opacity: 0.8;
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    }
+      .menu {
+        margin:0;
+        position: absolute;
+        top:0%;
+        float: right;
+        padding: 0px;
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+/*    .menu li a {
+      text-decoration: none;
+      color:white;
+      display: block;
+        border: solid 0.1px #0f1b35;
+       border-top-left-radius: 10px;
+       border-top-right-radius: 10px;
+       transition: 0.7s;
+    }*/
+    .menu li p {
+      text-decoration: none;
+      color:white;
+      display: block;
+        border: solid 0.1px #0f1b35;
+       border-top-left-radius: 10px;
+       border-top-right-radius: 10px;
+       transition: 0.7s;
+    }
+    .menu li {        
+      list-style: none;
+      font-size:20px;
+      line-height: 70px;
+      opacity: 1;
+      text-align: center;
+      position: relative;
+      transition: 0.7s;
+    }
+    .menu li p:hover {
+      background-color: #000021;
+      opacity: 0.5;
+    }
+    .menu li ul {
+      position: absolute;
+    }
+    .menu li ul li {
+      display: none;
+      transition: 0.5s;
+    }
+        .menu li ul li a{
+       border:none;
+    }
+    .menu li:hover ul li {
+      display: block;
+    }
+    #chap {
+      margin-top: 20px;
+      margin-bottom: 40px;
+      position: relative;
+      width: 1000px;
+      height: 30vh;
+    }
+    .chap_grid {
+      margin: auto;
+      width: 220px;
+      height: 30vh;
+      text-align: center;
+    }
+     .avatar {
+      border-radius: 100%;
+      display: inline-block;
+      /*margin: 0 0 2em 0;*/
+      padding: 0.5em;
+      border: solid 1px rgba(255, 255, 255, 0.25);
+      background-color: rgba(255, 255, 255, 0.075);
+    }
+
+    #chap .avatar img {
+        border-radius: 100%;
+        display: block;
+        width: 10em;
+    }
+    .chap_top {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      position: relative;
+      width: 1000px;
+      height: 10vh;
+      color: #7896b0;
+    }
+    .chap_top_grid {
+      margin: auto;
+      width: 490px;
+      height: 30vh;
+      text-align: center;
+    }
+    .scroll-fixed {
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      /*margin-left: 350px;*/
+      position: fixed;
+      /*width: 10000;*/
+    padding: 0px;
+    height: 70px;
+    flex: 1;
+    flex-direction: column;
+    }
+    .scroll-fixed {
+
+    }
+    .scroll-fixed li a {
+      background-color: #172c4f;
+      text-decoration: none;
+      color:white;
+      display: block;
+        border: solid 0.1px white;
+       border-top-left-radius: 0px;
+       border-top-right-radius: 0px;
+       transition: 0.7s;
+    }
+  </style>
+</head>
+<body>
+<!--   <div class="top">
+      <div class="top_grid">
+        <h1>
+          <span>ZARD OFFICIALBOOK</span>
+        </h1>
+      </div>
+  </div> -->
+<!-- <div class="header">
+   <div class="header_grid"> -->
+      <nav class="navigation">
+
+         <section class="logo"></section>
+
+         <section class="navigation__icon">
+            <span class="topBar"></span>
+            <span class="middleBar"></span>
+            <span class="bottomBar"></span>
+         </section>
+
+         <ul class="navigation__ul">
+            <li class="li1">Chapter 1. 레코딩
+              <div class="choice1">5. 커튼이 쳐진 부스</div>
+              <div class="choice2">6. 어른스럽고 예쁜 여성</div>
+              <div class="choice3">7. 고생했던 초기의 레코딩</div>
+              <div class="choice4">8. 거의 만나지 않았던 작곡가들</div>
+              <!-- <div class="choice5">5. 커튼이 쳐진 부스</div> -->
+              <!-- <div class="choice1" id="choice1">1. 엄청난 양의 가사 노트</div> -->
+              <div class="choice5">1. 엄청난 양의 가사 노트</div>
+              <div class="choice6">2. 레코딩 할 때 애용품</div>
+              <div class="choice7">3. 저녁형 인간</div>
+              <div class="choice8">4. 스튜디오에서 보인 본모습/<div>
+<!--               <div class="choice5">5. 커튼이 쳐진 부스</div>
+              <div class="choice6">6. 어른스럽고 예쁜 여성</div>
+              <div class="choice7">7. 고생했던 초기의 레코딩</div>
+              <div class="choice8">8. 거의 만나지 않았던 작곡가들</div> -->
+            </li>
+            <li class="li2">Chapter 2. 작품
+              <div class="choice21">1. 숲 속의 곰 아저씨 같이</div>
+              <div class="choice22">2. 36회의 믹스 다운</div>
+              <div class="choice23">3. 18종류의 어레인지</div>
+              <div class="choice24">4. [영원]이 발매되기까지</div>
+              <div class="choice25">5. 카펜터스를 노래하다</div>
+              <div class="choice26">6. 엄선한 자켓 사진</div>
+            </li>
+            <li class="li3">Chapter 3. 프로모션
+            <div class="choice31">1. 뮤직스테이션에 출연하다</div>
+            <div class="choice32">2. 아이돌이 던진 한마디</div>
+            <div class="choice33">3. 나가시마 시게오를 맞이하다</div>
+            <div class="choice34">4. 프로모션의 대대적인 전개</div>
+            <div class="choice35">5. 한밤 중에 보내 오는 코멘트</div>
+            <div class="choice36">6. 고집이 낳은 많은 해프닝</div></li>
+            <li class="li4">Chapter 4. 촬영
+            <div class="choice41">1. 자연스러운 모습을 찍기 위해 사용한 여러가지 방법</div>
+            <div class="choice42">2. 데뷔 초기, 3작품의 PV감독은 이와이 슌지</div>
+            <div class="choice43">3. 원본 채로 폐기했던 최초의 사진</div>
+            <div class="choice44">4. 해외촬영에서의 대담한 행동</div>
+            <div class="choice45">5. 왕성한 호기심</div>
+            <div class="choice46">6. 스타일리스트가 없는 촬영 현장</div>
+            <div class="choice47">7. 본넷이 열려 있었던 [永遠]의 PV</div>
+            </li>
+            <li class="li5">Chapter 5. 라이브
+            <div class="choice51">1. 숲 속의 곰 아저씨 같이</div>
+            <div class="choice52">2. 총 리허설을 하지 않았던 첫 라이브 투어</div>
+            <div class="choice53">3. 단 2곡으로 게스트 출연</div>
+            <div class="choice54">4. 등장 하지 않았던 오사카 라이브</div>
+            <div class="choice55">5. 대기실에서 보인 본 모습</div>
+            <div class="choice56">6. 피아노보다는...</div>
+            <div class="choice57">7. 본넷이 열려 있었던 [永遠]의 PV</div>
+            </li>
+            <li class="li6">Chapter 6. 팬
+            <div class="choice61">1. 팬레터</div>
+            <div class="choice62">2. 유선 모니터들 앞에서</div>
+            <div class="choice63">3. ZARD Family</div>
+            <div class="choice64">4. 사인을 요청받다!</div>
+            <div class="choice65">5. 처음으로 보인 눈물</div>
+            </li>
+            <li class="li7">Chapter 7. 프라이뱃
+            <div class="choice71">1. 건강한 아기</div>
+            <div class="choice72">2. 다리는 빠르지만 마이 페이스</div>
+            <div class="choice73">3. 음을 알다</div>
+            <div class="choice74">4. 가족과 함께</div>
+            <div class="choice75">5. 카펜터스를 노래하다</div>
+            <div class="choice76">6. 엄선한 자켓 사진</div>
+            </li>
+            <li class="li8">Chapter 8. 투병생활
+            <div class="choice81">1. 몸 상태의 변화</div>
+            <div class="choice82">[ハ-トに火をつけて]의 촬영 다음날</div>
+            <div class="choice83">3. 예정되어 있었던 촬영</div>
+            <div class="choice84">4. 마지막 전화로 이야기했던 사람</div>
+            <div class="choice85">5. 마지막 전화로 이야기했던 사람</div>
+            <div class="choice86">6. Glorious Mind (글로리어스 마인드)</div>
+            </li>
+         </ul>
+      </nav>
+<!--    </div>
+</div> -->
+
+<div id="right_grid" class="margin_left_100">
+    <header class="chap_top">
+      <div class="chap_top_grid">
+          <h1>
+          <span>ZARD OFFICIALBOOK</span>
+          </h1>
+      </div>
+      </header>
+      <header id="chap">
+      <div class="chap_grid">
+
+          <span class="avatar"><img src="include/img/chapter1/zards.jpg" alt="" /></span>
+      </div>
+      </header>
+      <header class="main">
+            <ul class="menu">
+              <li class="firstli intro"><p>きっと忘れない</p>
+              </li>
+            <li class="otherli menu1"><p>1장</p>
+            </li>
+           <li class="otherli menu2"><p>2장</p>
+            </li>
+            <li class="otherli menu3"><p>3장</p>
+            </li>
+            <li class="otherli menu4"><p>4장</p>
+            </li>
+            <li class="otherli menu5"><p>5장</p>
+            </li>
+            <li class="otherli menu6"><p>6장</p>
+            </li>
+            <li class="otherli menu7"><p>7장</p>
+            </li>
+            <li class="otherli menu8"><p>8장</p>
+            </li>
+          </ul>
+    </header>
+      <div id="grid">
+          <div id="slider" class="slider1">
+            <div class="slides first1" id="first1" style="">
+                <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">1. 엄청난 양의 가사 노트</h3><br><br>
+                    <p class="p_first">ZARD 사카이 이즈미에 대해 이야기 할 때, 가장 화제가 되는 부분은 바로 노래가사일 것이다.그녀는 수많은 일상적이면서도 사소한 감정들을 쉬운 말로 표현하면서, 많은 사람들이 그것에 공감하게 만드는 힘이 있었다.그녀는 2004년에 열린 첫 라이브 투어 “What a beautiful moment Tour”에서 [저는 말이라는 것을 항상 소중히 여겨왔습니다. 그 생각이 제 음악으로 여러분께 전해지기를 바랍니다.] 라고 이야기 했었다.</p>
+
+                    <img src="include/img/chapter1/1-1.jpg" class="align-left slide-in slide-img">
+
+                    <p class="p_two">그녀는 데뷔 이전부터 노래 가사를 쓰고 있었다. 하지만, 작사라는 작업이 생각보다 쉽지는 않았던 것 같다. ZARD 데뷔 초기에는 사카이가 쓴 가사를 당시 프로듀서였던 나가토 다이코우가 보고 직접 지도하기도 했었다고 한다.가사가 곡에 잘 매치되지 못하면 아무리 좋은 가사와 곡이라도 그 조합이 좋지 않은 결과가 나올 수 있기 때문에, 나가토는 사카이가 몇 번이고 가사를 다시 고쳐 쓰도록 해서, 아주 철저하게 지도했다. 그 덕분에, 곧 요령이 생긴 그녀는 의미를 제대로 전달하면서도 멜로디에 꼭 맞는 가사를 쓰는 작사가로서의 능력을 꽃피우게 된다.</p>
+
+                    <img src="include/img/chapter1/1-2.jpg" class="align-right slide-in slide-img">
+
+                         <p class="p_three"> 2번째 앨범 [もう探さない]에서는, 앨범 전곡을 그녀가 쓴 가사로 채워졌고, 이후엔 그녀의 세계관을 완전한 가사로 표현할 수 있게 되었다.
+                    
+                          「꽤 어렸을 때부터 글쓰는 것을 좋아했고, 지금까지도 써오고 있어요. 사람이 머릿 속에 가지고 있는 [말] 이라는 것은 평생 동안 거의 변하지 않고, 또 개인차도 거의 없다고 생각해요. 하지만 사람마다 그것을 밖으로 잘 표현하던가, 아니면 자신의 내부에 그것을 그냥 가지고 있던가 둘 중 하나의 차이라고 생각해요. 즉 말이 많은 사람은 [이야기]라는 형태로 밖으로 표현하고, 그렇지 않은 사람은 자신의 내부에 말을 가지고 있지 않을까라고 생각해요. 아마 시인같은 분들은 후자에 속하는 사람으로, 말로 이야기 하기보다는 자신의 작품에 머리 속의 말을 표현하는 사람이 아닐까 하고 생각해요.」
+                 
+                          이렇게 말했던 그녀는 점차 작사가로서 그녀 마음 속의 말을 마음껏 표현하면서도 곡에 맞춰 완전한 하나의 작품이 되어갈 수 있도록 했다.
+                 
+                          「말로 표현 하는 것에는 욕심이 많아서, 책을 읽거나 대화하는 중에도 힌트를 얻거나, 사람들이 대수롭지 않게 생각하는 부분에도 초점을 맞추기도 했습니다.예를 들면, [負けないで]의 [우연한 순간에 시선이 마주치는] 같은 순간 모두가 항상 경험하지만, 그것을 가사로 쓸 것은 생각도 못했습니다. 이런 사소한 소재를 가사로 표현 할 수 있는 것이 바로 그녀의 재능이었습니다. 모든 순간을 가사의 소재로 사용했었습니다. 길을 걷고 있을 때나, 사람과 만날 때에도 항상 모든 것을 가사를 위해 관찰하고, 흡수하고 있었습니다. 그것들을 토대로 사람들이 대수롭지 않게 생각하는 말들을 사용해서 가사로 만들어왔습니다.」
+                           [코마츠 히사시 / 레코딩 디렉터]</p>
+
+                    <img src="include/img/chapter1/1-3.jpg" class="align-left slide-in slide-img">
+                    
+                    <p class="p_four">이렇게 말했던 그녀는 점차 작사가로서 그녀 마음 속의 말을 마음껏 표현하면서도 곡에 맞춰 완전한 하나의 작품이 되어갈 수 있도록 했다.
+                 
+                          「말로 표현 하는 것에는 욕심이 많아서, 책을 읽거나 대화하는 중에도 힌트를 얻거나, 사람들이 대수롭지 않게 생각하는 부분에도 초점을 맞추기도 했습니다.예를 들면, [負けないで]의 [우연한 순간에 시선이 마주치는] 같은 순간 모두가 항상 경험하지만, 그것을 가사로 쓸 것은 생각도 못했습니다. 이런 사소한 소재를 가사로 표현 할 수 있는 것이 바로 그녀의 재능이었습니다. 모든 순간을 가사의 소재로 사용했었습니다. 길을 걷고 있을 때나, 사람과 만날 때에도 항상 모든 것을 가사를 위해 관찰하고, 흡수하고 있었습니다. 그것들을 토대로 사람들이 대수롭지 않게 생각하는 말들을 사용해서 가사로 만들어왔습니다.」
+                          [코마츠 히사시 / 레코딩 디렉터]
+                    
+                          사카이가 틈틈이 생각해온 단어들과 가사의 프레이즈를 써둔 노트는 점점 쌓여 엄청난 분량이 되어있었다. 거기에는 연애에 관한 4글자의 프레이즈, 5글자의 프레이즈 등이 있었고 또 다른 상황에 맞춘 몇 가지의 패턴이나 2행시, 타이틀, 자신의 생각을 쓴 에세이까지 방대한 양의 글을 써 놓았다.그것을 몇 번이고 펴보는 사이, 전화번호부 수준으로 부풀어져버린 노트.생전 마지막으로 쓴 가사는 다른 노트에 자필로 정리해두었다고 한다.
+                          그러나, 스튜디오에서 가사를 새로 쓴 적은 거의 없었다.그녀가 가사를 쓰는 때는 대부분 혼자만의 시간, 자택의 방이나 가끔은 밖에 나가 카페나 공원에서 쓴적도 있는 것 같았다. 언제나 가사를 쓰는 시간에는 철저히 혼자였다.</p>
+
+                          <p>「호기심이라는 감성에만 의지해서, 저 자신의 머릿속의 안테나에 말이나 멜로디가 잘 잡히지 않으면 참 힘들어요. 지금까지 가사를 써온 비결을 말씀드린다면 나 자신이 청취자의 입장으로 있는 것, 그게 비결이 아닐까 생각해요. 」</p>
+                          <img src="include/img/chapter1/1-4.jpg" class="align-right slide-in slide-img"> 
+                           <p>그렇게 말했던 그녀는 최근까지도 시간이 있을 때면, 전철로 스튜디오까지 통근했었다. 그것은 직업상 스튜디오 작업이 많은 인도어 [In Door] 생활로부터의 기분 전환이라는 의미도 있지만, 거리에 나가면 보이는 풍경이나 들려오는 사람들의 대화, 시대의 흐름과 같은 것들을 관찰할 수 있어서 그것들을 자신이라는 필터를 통해 걸러내어 축적 할 수 있기 때문이었던 것 같다.</p>
+                           <p>[깨어 있는 시간은 전부 제 자신의 음악과 이어져 있네요] 라는 말도 남겼다.
+                              
+                          「‘역시나 작사가구나’ 라고 생각했던 때가 있습니다. 1장의 그림이나, 뉴스같은 시사 정보같은 것들을 통해 자신에게 관계가 있는 상황을 계속해서 가사로 만들어 내는 걸 눈 앞에서 직접 봤습니다.예를 들면 당시, 저희 회사는 일이 굉장히 바빠서 잠이 없는 회사라고 세간에 알려져 있었는데, 그런 생활을 하고 있는 남성 사원에 관한 가사를 쓴 적이 있었습니다. 일 때문에 늦어져서 돌아오지 않는 남성을 집에서 기다리고 있는 여성이라는 설정의 가사였습니다.」
+                          [코바야시 사유리 / A&R]</p>
+
+                          <p class="p_five"> 사카이의 단어를 선택하는 센스는 ZARD만의 개성이 되어 많은 사람들을 공감을 받았다. 누구나 쓸 수 있는 간단한 말만으로 사람들의 마음을 움직이게 하는 능력, 그것이 그녀가 가진 최고의 재능이었다.</p>
+
+                          <p>가사를 쓸 때 그녀는 후렴구의 멜로디 부분부터 쓴 작품이 많았다고 한다.예를 들면, [サヨナラは今もこの胸に居ます]에서는 이 타이틀이 먼저 만들어져 있었고, [永遠]에서는 [君と僕との間に 永遠は見えるのかな]라고 하는 부분이 먼저 만들어져 있었다.하지만 [搖れる想い]은 드물게 [このままずっとそばにいたい]라는 부분이 처음 만들어졌고, 후렴구의 타이틀 부분 [搖れる想い]는 마지막에서야 붙였던 에피소드가 남아 있다. 항상 누구나가 사용하는 말로 친밀한 세계를 가사로 그리면서, 또 한편으로는 멜로디에 딱 들어 맞는 말을 찾는 일에도 신경써왔다. 그 때문에, 전하고 싶은 메시지가 있어도, 가사에는 말수가 한정될 수밖에 없었기 때문에, 모든 것을 넣지 않았다.</p>
+                            <p>사카이는 ‘전하고 싶은 말을 전부 담으면 멜로디에는 맞지 않는다’하는 작사가가 아니라면 가질 수 없는 말에 대한 고민을 항상 가지고 있었다고 한다. 그 고민을 해결하기 위한 방법이었을까?
+                           
+                            사카이가 멜로디에 가사를 맞추는 방법에는 독특한 것이 많다.예를 들면, [心を 開いて]의 A멜로디[想ってる 樣な人では]이라고 하는 부분을 [想ってる]과 [樣な人は]으로 나눈다. 또, [負けないで]의 후렴구의[どんなに 離れてても]의 부분은[どんなに]와[離れて]로 나누는 개성적인 기술을 사용했다. 그리고 그것이 매우 인상적인 가사가 되어 좋은 결과로 이어졌다.</p>
+
+                            <p>  「가사를 맞추는 작업은 굉장히 신중하게 했던 작업이었습니다. 일단, 그 곡에 있어서의 정답이 어떤 것이다 하는 건 바로바로 딱 떠오르지는 않잖아요? 그래서 잘 떠오르지 않는 부분은 패턴을 만들어서 집에서든, 출퇴근길이든 틈틈이 생각하다가결국에는 사카이씨 스스로 [이거야!]하면서 결정을 했었습니다. 여튼 그 자리에서 곧바로 결론을 낸 적은 거의 없었네요.」
+                          [시마다 마사히로 / 레코딩 엔지니어]</p>
+                          <p>  「 저도 똑같은 높이의 1명의 인간이고, 아주 대단한 천재도 아니고, 항상 "아, 이거다“ 싶은 말이 바로바로 떠오르는 것도 아니니까요.」
+                              
+                          라고 사카이가 이야기했던 것처럼, 엄청난 양의 말들을 써둔 노트는 사카이의 감성과 노력의 결실 그 자체였는지도 모르겠다.</p>
+                                             <!--  <img src="img/rec5.jpg" class="align-right slide-in"> -->
+                  </div>
+            </div>
+            <div class="slides first2" id="first2" style="display: none;">
+            <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">2. 레코딩 할 때 애용품 </h3><br><br>
+                    <p>음악 제작을 활동의 최우선으로 했던 ZARD.그렇기 때문에 사카이는, 일상생활의 대부분을 레코딩 스튜디오에서 보냈다.
+                    데뷔 초기에 사용했던 스튜디오는 STUDIO BIRDMAN GRAYROOM.여기는 사카이가 프로듀서 나가토 앞에서 처음으로 노래를 불렀던 장소였고, 1번째 싱글 [Goodbye my loneliness]의 자켓 사진에 나온 장소가 바로 이 스튜디오이다.2번째 앨범 [もう探さない]까지는 주로 이 스튜디오에서 레코딩을 했었지만, 이후 3번째 앨범부터는 1991년 8월에 오픈한 MOD STUDIO BEING의 A스튜디오를 사카이 본인이 마음에 들어 해서 2000년 초반까지 이 스튜디오에서 보컬 레코딩을 했었다.</p>
+
+                    <img src="include/img/chapter1/2-1.jpg" class="align-right slide-in slide-img">
+
+                    <p>그 후, 음향 설계가 한층 더 좋아진 BIRDMAN WEST 스튜디오도 완성되었지만, 사카이는 MOD STUDIO BEING에서의 소리가 가장 좋다고 생각해서, 그 스튜디오가 없어질 때까지 계속 사용했다고 한다.</p>
+
+                    <p>자기 목소리의 음질과 느낌을 중요시 했던 그녀는 초기, 중기, 후기 그리고 그때그때 목소리에 맞는 마이크를 선정해 종류를 바꿔가며 사용했었지만, 기본적으로 사카이의 보컬 레코딩 전용으로 오랜 세월 동안 애용되어 온 것은, AKG The TUBE (통칭 아카게의 튜브)라는 마이크였다.곡마다 여러 가지 마이크를 시험했었고 마이크에 따른 소리의 미묘한 차이를 살리기 위해 NEUMANNU-87 Ai라는 마이크를 자비로 구입했다. 2000년 9월에 발매 된 [Get U're Dream]에서 사카이는 기존의 ZARD보다 샤프한 느낌을 내고 싶다고 하여, 이 마이크를 사용했다.</p>
+
+                    <img src="include/img/chapter1/2-2.jpg" class="align-left slide-in slide-img">
+
+                    <p>일반적으로 레코딩 스튜디오에서는 Sony MDR - CD900ST 모델의 헤드폰을 사용했었지만, 사카이의 헤드폰은 아시다 음향의 ST-31. 이 모델이 귀에 통증이 없어서 마음에 든다며 사용했었다고 한다.</p>
+
+                    <p>그리고 토이 피아노는 보컬 레코딩을 할 때 멜로디나 음정 확인용으로 바로 확인이 가능하도록 마이크 바로 우측에 세팅 되어 있었다.음정에도 엄격하게 신경을 썼던 그녀지만, 스튜디오 내에 튜닝이 제대로 된 비싼 전자 피아노가 설치되어 있었는데도 굳이 이 토이 피아노를 사용했던 걸로 보아, 아마 이 피아노가 상당히 마음에 들었던 모양이다.</p>
+                    
+                    <p>덧붙여서 사카이는 이 토이 피아노를 [베이비 그랜드]라고 불렀다. 이 이름은 1997년 12월에 발매된 23번째 싱글 [My Baby Grand~ ぬくもりが 欲しくて ~]로 하나의 타이틀이 되었다. </p>
+              </div>
+            </div>
+            <div class="slides first3" id="first3" style="display: none;">
+              <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">3. 저녁형인간 </h3><br><br>
+                    <p>사카이는 오랫동안 소위 말하는 저녁형 인간이었다. 매일같이 다니는 레코딩 스튜디오가 문을 여는 시간은 대체로 저녁 5시에서 6시. 그때부터 빠르면 밤 12시, 늦으면 아침까지 스튜디오에서 작업하는게 일상적이었다. 레코딩한 자신의 노래나 사운드를 듣고 고민하거나, 가사에 대해 많은 고민을 한 것도 주로 밤이었기 때문에, 결과적으로 저녁형 생활 습관이 되어 버렸고, [오늘은 오전 9시에 잠을 잤어요.]라고도 종종 이야기했었다.</p>
+
+                    <img src="include/img/chapter1/3-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>「저는 스튜디오 작업에는 잘 참여한 적이 없는데요. 사카이씨가 밤샘 작업을 하고나서 이른 아침에 연락을 하기도 했습니다. 당황해서 바로 일어나서 겨우 정신을 차리고 이야기를 했었는데, 사카이씨는 새벽인데도 흥분한 상태였습니다 (웃음).앨범 발매 페이스가 빨랐던 시절에는 위와 같은 일상과 함께, 주말에는 촬영도 있었습니다. 저녁형인 사카이씨에 맞춰서 촬영이 저녁부터 시작된 적도 많았습니다. 사카이씨의 사진에 나오는 빛들은 자연적인 빛처럼 보여도 실제로는 라이트로 만든 인공적인 빛도 있었습니다.」[코바야시 사유리 / A&R]</p>
+
+                    <p>그런 생활을 몇 년간이나 계속했었기 때문에, 아침은 사카이에게는 밤, 잠자리에 드는 시간이었다.그래서, 평소의 생활패턴과는 다른, 오전 중의 활동은 굉장히 힘들어했던 것 같다.레코딩 이외에도 촬영 때, 사카이의 저녁형 습관에 관한 에피소드가 하나 있다.</p>
+
+                    <img src="include/img/chapter1/3-2.jpg" class="align-right slide-in slide-img2">
+
+                    <p>「이탈리아에서의 촬영. 일정이 굉장히 빡빡하게 잡혀 있었고, 집합 시간이 항상 정오 전이었습니다. 매일 집합 시간을 사전에 사카이씨의 방에 가서 알려드렸는데요. 처음 초인종을 눌렀을 때에는 인기척이 없었고, 다시 계속 초인종을 누르면서 기다리고 있으면, [지금, 몇 시?]라고 말하면서 나옵니다. [곧 있으면 촬영 출발 시간입니다]라고 하면, [아침이 참 빨리 오네요.]라면서 문을 닫아버렸어요(웃음).지금 생각해보면 저녁형이었던 사카이씨에게, 오전 중의 활동은 잠을 줄여가면서 하는 활동과 같았겠죠. 열심히 촬영에 임하긴 했지만, 수면부족으로 꽤나 힘들지 않았을까 싶네요.」[이토 아유미 / 디자이너]</p>
+              </div>
+            </div>
+            <div class="slides first4" id="first4" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">4. 스튜디오에서 보인 본모습 </h3><br><br>
+                    <p>매일 같이 계속해서 스튜디오에서 일, 그래서 가족과 같이 긴 시간을 함께 보내온 스탭들 앞에서는 사카이도 편안한 모습을 보였다. 레코딩 작업 때 틈틈이 나는 시간에 있었던 에피소드로, 많은 스탭들이 말하기를, 사카이는 가녀린 몸으로는 상상도 할 수 없을 정도로 잘 먹는 사람이었다는 것.</p>
+
+                    <img src="include/img/chapter1/4-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>특히 데뷔 초기부터 스튜디오 근처에 있던 유명 불고기 가게의 불고기 도시락을 좋아했었고, 또 그 근처에 있는 중화 요리점의 볶음밥과 고기만두도 자주 먹었다.그 밖에도 MOD STUDIO BEING에서 레코딩을 하고 있을 때에는 록본기 교차점 가까이 있는 커피숍의 BLT(베이컨, 양상추, 토마토 샌드위치)를, 또 음료수는 칼피스의 오렌지 맛을 좋아해서 자주 마셨다.</p>
+
+                    <p>의외인 사카이의 새로운 모습들.그런 일면은 또 있었다.
+                    「평상시에 얼굴을 보기 힘든 친한 스탭이 스튜디오에 한번씩 올 때면, 그 사람과 이야기 하느라 레코딩 들어가기도 전에 지쳐버린 적도 있었습니다. (웃음).ZARD의 이미지를 생각해보면, 그다지 말이 없고, 신비로운 이미지가 있지만, 실은 의외로 이야기도 많이 하고 활발한 사람이었습니다.재미있었던 영화나 책에 관한 이야기를 한다던가, 은을 가지고 자기가 만든 액세서리를 보여 준 적도 있었어요. 취미가 많은 사람이어서, 가부키나 그림 전시회에 가거나, 도예도 하고 있다고 말한 적이 있었네요.」
+                    [시마다 마사히로 / 레코딩, 엔지니어]</p>
+
+                    <img src="include/img/chapter1/4-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>「레코딩 스튜디오에서 자주 촬영을 했었기 때문에 스탭들 모두가 바쁠 때면 전화를 직접 받기도 했었습니다.[네. 버드만 웨스트입니다!]주위 사람들에게 많은 배려를 해주었던 사람이라, 오히려 너무 그래서 다치거나 상처 받지 않을까 싶어 옆에서 걱정한 적도 있었지만, 항상 그 스튜디오에 있었기 때문에 본인에겐 자기 집 같이 아주 가까운 느낌의 장소로 생각하고 있었는지도 모르겠군요.」
+                    [스즈키 켄이치 / 아트 디렉터]</p>
+                    
+                    <p>최근의 몇 년 동안은 오사카에 있는 레코딩 스튜디오 GIZA HILLS STUDIO에서 작업한 적도 많았는데 거기엔 여성 스탭도 있었기에, 사카이는 한층 더 편안한 모습을 보였다고 한다.</p>
+                    <img src="include/img/chapter1/4-3.jpg" class="align-left slide-in slide-img">
+                    <p>「레코딩 작업 사이의 휴식시간에는 사카이씨가 정말 좋아하는 초콜릿 과자, 커피, 바나나, 미네랄 워터, 구아바쥬스, 블루베리 쥬스를 준비했습니다. 그리고 평소에도 어깨 결림이 심했기 때문에 자주 마사지를 해줬는데, 매일 주물러도 어깨에 돌이 있는 것 같이 딱딱했습니다. 아마 어깨 결림으로 많이 힘들지 않았을까 싶어요....어느 날이었나, 앨범 [君とのDistance] 의 [君と今日の事を一生忘れない]의 레코딩 날에도 사카이씨의 어깨를 마사지 하고 있었는데, 그때 저에게 [고마워, 이제 괜찮아요. 편안해졌어~], [나, 오늘, 어깨 주물러 준 일을 평생 잊지 않을게(웃음).]라고 했던 농담이 지금도 기억에 남아있네요.어깨 결림이 많이 심했고 정말로 고생하고 있었던 것 같아서, 도쿄에서는 구할 수 없는 파스가 있어요. 그걸 사카이씨가 애용했었는데, 오사카에 올 때마다 준비했었어요. 언제 한 번, 그걸 나에게도 붙여줬는데, 나에게는 너무나 효과가 좋았던지, 하루 종일 얼얼해져서 고생했네요 (웃음).」
+                    [노구치 마유 / 레코딩 엔지니어]</p>
+                    <p>사카이 자신은 2002년 당시 인터뷰에서 [어떻게 재충전을 하세요?]라는 질문에, [취미에 몰두하거나 일을 전혀 생각하지 않고 편안히 있을 수 있는 새로운 장소를 찾아내기], 그리고 [그러고 보니, 최근에는 불고기를 잘 안먹게 됐네요 (웃음).]라고 대답했다.</p>
+              </div>
+            </div>
+            <div class="slides first5" style="display: none;">
+               <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">5. 커튼이 쳐진 부스 </h3><br><br>
+                    <p>보컬 레코딩 작업은 항상 최소한의 스탭들로 해왔다. 원래는 테라오 히로시, 와타베 료, 코마츠 히사시 이 3명이 돌아가며 디렉터를 맡아 왔었는데, 최근 사카이 스스로 보컬 디렉션을 하기 시작하면서 엔지니어 시마다 마사히로와 사카이 이렇게 단 2명이 작.업하는 일이 많았다고 한다.</p>
+                    <p>보통 스튜디오에서의 보컬 레코딩은 서로 대화하기 쉽게 부스에 유리를 설치해서, 서로 잘 보이게 되어 있지만, 사카이는 커튼으로 유리를 가리고 가사의 세계에 집중했다.</p>
+
+                    <img src="include/img/chapter1/5-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>「사카이씨가 보컬 레코딩을 할 때는 얼굴을 보이지 않아요. 부스에서는 꼭 커튼을 쳤습니다. 그러는게 집중하기에 더 좋으니까 그랬던 것 같지만, 우리입장에서는 안쪽에서 무슨 소리가 들려오지 않는 한 아무것도 모르니까, 언제 사카이씨에게 말을 걸어야 할까 하고 항상 타이밍을 생각하고 있었어요 (웃음). 이제와서 생각해보니, 혼자서 노래와 싸우고 있었다는 느낌이 드는 군요. 그리고 저는 그녀가 음정에 굉장히 신경을 썼다고 생각해요. 저도 보통사람보다 음정을 신경쓰는 편이고 여러 사람의 노래를 작업해 왔지만, 음정에 대해 엄격한 것은 그녀가 최고였어요. 굉장히 엄격했어요.」[코마츠 히사시 / 레코딩 디렉터]</p>
+
+                    <p>그녀는 항상 납득이 될 때까지, 같은 곡을 몇 번이고 다시 노래했다. 한 번은 녹음한 것을 집에 가지고 돌아가서, 몇 번이고 다시 들어보고 만족스럽지 않은 부분을 체크해오고, 다시 스튜디오에서 고쳐서 노래하고 또 가지고 돌아가서 들어보고 하는 것을 몇 번이고 반복했던 적도 있다. 그렇게 자신이 신경쓰는 부분을 철저히 보완해왔다.</p>
+
+                    <img src="include/img/chapter1/5-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>「사카이씨가 많이 신경쓰고 있다고 느낀 부분은 보컬의 질입니다. 목소리의 투명감이라고 할까, 곡 안에서 노래가 나오는 상태, 물론 음정도 중요시 하고 있었지만, 노래의 느낌, 뉘앙스를 무엇보다도 가장 중요시 했었습니다. 그 외에도 저희가 중요시했던 부분은 사카이씨가 노래에만 집중할 수 있도록 주변을 최고의 상태로 준비했던 부분이었어요. 사카이씨가 스튜디오에 왔을 때 어떻게 하면 기분 좋게 노래에만 집중할 수 있을까?를 생각해서, 우선은 스튜디오의 화장실과 부엌을 청소 했었습니다. 그러고 보면 이런 사소한 생활적인 부분을 많이 신경썼었군요.</p>
+                    <p>ZARD 전용 화장실 용품도 있었고, 그것을 이것 저것 바꿔 보기도 했었습니다. 스튜디오는 마이크의 음질도 중요하지만, 무엇보다도 가수가 기분 좋게 노래할 때, 가장 좋은 결과물이 나오곤 했으니까요. 그리고 사카이씨 본인이 다른 사람들을 굉장히 잘 챙기는 스타일의 사람이었기 때문에 얼마나 자연스럽게 그러한 분위기나 환경을 최고의 상태로 만들 수 있는가가 저의 가장 큰 고민이었습니다.」[시마다 마사히로 / 레코딩, 엔지니어]</p>
+                    <img src="include/img/chapter1/5-3.jpg" class="align-left slide-in slide-img">
+                    <p>ZARD가 [제작에 전념한다]는 활동 스타일을 고집해 온 이유. 그것은 [보다 좋은 곡을 만들고 싶어서]라는 순수한 생각을 가지고 있는 ZARD팀 멤버들로 인해 당연한 것이 될 수 밖에 없었다. 앨범 발매를 거듭할 때마다,  ZARD로서 작품을 세상에 발표해 나갈 책임과 기쁨을 진지하게 받아들인 그녀는 보다 좋은 작품을 완성시키기 위해 스탭과 함께 수 많은 아이디어를 내고 그것을 완성해서, 몇 번이나 다시 듣고 고쳐가면서, 매일 매일을 곡 제작에 시간을 투자했다.</p>
+                    <p>「그녀는 근성이 있었습니다.나약한 소리를 하지 않았고, 지쳤다던가 하는 말조차 별로 하지 않았습니다. 정말로 납득할 때까지 작업을 끝내지 않았습니다. 그러다 보니 늘상 좋은 분위기만으로는 이 일을 할 수 없었어요. 구닥다리 같은 말입니다만, 터프하고 상냥하지만은 않은, 그녀를 한마디로 말하자면 이른바 심지가 강한 사람정도가 되겠네요.」[코마츠 히사시 / 레코딩 디렉터]</p>
+                    <img src="include/img/chapter1/5-4.jpg" class="align-right slide-in slide-img">
+                    <p>또, 레코딩에 참여했던 스탭들이 사카이의 보컬 특징으로 말했던 점은 목소리를 음악에 완벽하게 맞춘다는 것, 그리고 블루스나 재즈같이 보통 리듬보다 조금 느리게 노래하는 방법을 자주 사용했다고 했다. 그것은, 가사를 듣기 쉽고, 보다 설득력을 갖게 하여 한층 더 목소리의 감정을 느끼기 쉽다는 효과가 있다.</p>
+                    <p>그것도 그녀의 천성이었다. 사카이의 보컬은 투명감과 표현력이 높게 평가받곤 했지만, 가창력 자체로 높은 평가를 받은 적은 많지 않았다. 그러나, 그녀의 노래를 단순히 잘한다, 못한다 라는 판단 기준이 아니라, 사람의 마음에 영향을 주는가 하는 기준으로 생각해보면, 압도적인 지지를 받는다.</p>
+                    <p>「[カナリヤ](もう少しあと少し...c/w수록)라는 곡의 작업을 했을 때, 여러 가지 악기가 들어가 있는 반주로 노래를 하면 몇 번을 했어도 하기 힘들어 하는 것 같았습니다. 그래서 마지막으로 악기를 피아노 하나 만으로 해서 노래를 했는데, 그게 굉장히 좋았습니다. 보통은 그런 경우 노래를 다 하고 나면 거기에 다른 악기 소리들을 다시 넣지만, 저는 그 피아노 버전이 너무 좋아서 아예 악기가 전부 들어가 있는 버전과, 피아노에 약간의 기타와 코러스를 넣은 버전을 만들었는데, 최종적으로 피아노 버전이 채택되었습니다. 지금도 생각나는 작업이었네요.</p>
+                    <img src="include/img/chapter1/5-5.jpg" class="align-left slide-in slide-img">
+                    <p>보통 노래를 거의 무반주로 불러서 사람들에게 감동을 주는 건 굉장히 어렵습니다. 그런 측면에서 생각해보면, 그녀의 목소리와 노래의 조합 자체가 좋았다고 생각합니다. 그러니까 피아노 1개만로 사람들에게 감동을 전할 수 있었겠지요. 더 나가자면, 아예 피아노가 없었어도 좋았을 것 같다고 생각도 해봅니다. 정말로 그녀의 노래 그 자체가 좋았다고 생각합니다.」
+                    [코마츠 히사시 / 레코딩 디렉터]</p>
+                    <p>그야말로 노래와 함께 살아온 사카이. 어떤 인터뷰에서 [음악의 길의 끝에 가는 것은 어떤 일일까요?]라는 질문에 [음, 끝까지 간다는 것은 평생 불가능 할 거예요.]라고 대답했지만, 그것은 ZARD, 자체에 대해 객관적인 시선을 가지고 있던 그녀만이 가능한 평가가 아니었을까.</p>
+                    <p>「ZARD의 작업현장에서 감동했던 일은 곡을 여러 가지로 생각해보면서, 서로 이것저것 아이디어를 낸 것이 진짜 음악으로 만들어지는 모습을 봤을 때였습니다. 또 그것을 다시 들어볼 때는 제작자 사카이 이즈미가 아니라 한 사람의 음악 팬 사카이 이즈미로 바뀌어 듣고 있었습니다. 조금 전까지 자신이 열심히 만들고 있던 곡을 한 사람의 음악 팬으로서 듣고 나서, [여기가 별로네요.]라며 제 삼자가 되어 아무렇지도 비판하기도 했습니다. 그런 부분에 엄청나게 놀랐고 또, 감동했습니다. 음악 제작을 하고 있으면 그런 일들은 좀처럼 불가능합니다. 자신이 빠져들어서 필사적으로 만들고 있는 것에 대해, 한 순간에 객관적인 한 사람의 음악 팬으로 변하는 것은 정말 어려운 일입니다. 그로인해 다시 노래하는 것은 본인이니까요 (웃음). 하지만 그것을 사카이씨가 정말로 하고 있었고, 저에게는 굉장한 공부가 되었습니다.
+                    [노무라 마사유키 / 레코딩 엔지니어]</p>
+              </div>
+            </div>
+            <div class="slides first6" style="display: none;">
+                  <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">6. 어른스럽고 예쁜 여성 </h3><br><br>
+                    <p>ZARD 탄생 시기는, 1990년 8월 무렵.같은 해 4월에 데뷔해 [おとるポンポコリン]으로 많은 인기를 얻고 있었던 B.B.퀸즈의 코러스를 뽑는 오디션에서였다.당시 사카이 이즈미는 23세.스타더스트 프로모션에서 온 15명 중 사카이 혼자 프로듀서 나가토 다이코우 앞에서 안-루이스의[六本木心中], [WOMAN], 그리고 타카하시 마리코의[for you...]를 불렀다.그러나, 아쉽게도 이 오디션에서 사카이는 탈락했다.코러스 멤버는 후에 Mi-ke로 데뷔한 우케이코 등 3명이 뽑혔다.</p>
+                    <p>「저는 그 날 엔지니어로서 참가했었습니다. 스튜디오에 예쁜 여자들이 그렇게 많이 있던 적이 없었기 때문에 조금 두근두근 했었습니다 (웃음). 사카이씨는 그때도 좋은 목소리 였다고 기억하고 있습니다. 똑같아요, 그때부터 투명감이 있는 목소리였습니다. 오디션이 있었던 스튜디오는 STUDIO BIRDMAN GRAY ROOM였습니다.」
+                    [이치카와 타카유키 / 레코딩 엔지니어]</p>
+
+                    <img src="include/img/chapter1/6-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>그 후, 후지 TV의 프로듀서 카메야마 카즈히로에게 TV드라마 [결혼의 이상과 현실]의 테마곡을 의뢰받은 프로듀서 나가토는 사카이를 보컬로 발탁해서 새로운 밴드, ZARD를 만들기로 한다. [그늘진 느낌이 있는 UK락 같은 느낌의 곡으로 부탁드립니다.] 라는 카메야마씨의 요청으로 영국 출신의 락 밴드, 폴리스의 대히트곡 [見つめていたい]의 사운드를 샘플링해서 만든 [Good-bye My Loneliness]를 제작, 바로 ZARD의 데뷔가 결정됐다. 정확히 그 무렵, 사카이는 프로듀서 나가토에게 발탁되고, 그 후 오랜 세월동안 함께 하게 된, ZARD 팀이라고 불렸던 스탭들과 인사하게 된다.</p>
+
+                    <p>「처음으로 스튜디오에서 만난 사카이씨는, 정말 성숙하고 어른스러운 사람이라고 느꼈어요. 완전히 등을 쫙 펴고 딱 올바른 자세로 의자에 앉아 있는 걸 보고, [검도라도 했었나]라고 마음대로 생각했었습니다. 얼마 뒤에 물어 봤을 때 [아니요. 저는 육상을 했었어요.]라고 했습니다. 그때 말로는 중학생 때, 카나가와현 대회에서 단거리 기록을 세웠는데 지금도 안 깨지고 있다던가(웃음). 아무튼, 완전히 나의 착각이었습니다.」[테라오 히로시 / 레코딩 디렉터]</p>
+
+                    <img src="include/img/chapter1/6-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>「데뷔 1개월 전에 만났습니다. 그 때, 어떤 이야기를 했었는지 전혀 기억나는게 없지만, 그때부터 몇 주일 후에 데뷔곡[Good-bye My Loneliness]의 프로모션 비디오 촬영이 예정 되어 있어서, 프로모션 비디오에 관해서 이야기했었던 것 같아요. 솔직히 말하자면, 딱 그 정도만 기억나는, 평범한 사람이라는 첫인상이었습니다.」[타카노 아키히코 / 영상프로덕션 매니저]</p>
+
+
+                    <p>「솔직히 말해서, 첫인상은 거의 기억나지 않아요. 미니스커트 차림으로 노래하러 왔던 정도 밖에 기억나지 않습니다 (웃음).」
+                    [시마다 마사히로 / 레코딩, 엔지니어]</p>
+
+                    <p>테라오, 타카노, 시마다 이 3명은 그 후 쭉 음원이나 프로모션 비디오 등 ZARD 활동의 중심이 되는 부분을 맡아 온 인물들이다. 특히 시마다는 ZARD의 보컬 레코딩을 담당해 온 엔지니어로, 사카이가 [시마다씨는 제가 가족 이외의 남자 중에 가장 긴 시간 동안 함께 있었던 남자일지도 몰라. 근데, 제 인생 그래도 괜찮은 걸까요?(웃음).] 라고 말할 정도로, 사카이와 스튜디오 작업할 때 같이 있었던 적이 많았다.</p>
+                    <img src="include/img/chapter1/6-3.jpg" class="align-left slide-in slide-img">
+                    <p>그런데, 사카이를 처음 만났을 때의 인상이나 에피소드를 기억하고 있는 사람은 정말 거의 없었다. 점잖고 평범한 예쁜 사람이라 느낀 사람이 많았고, 그녀를 소개받은 스탭 중에는 솔직히 [이 친구로 괜찮을까?] 라고 아티스트로서 데뷔한다는 말에 당황스러워 했던 사람도 있었던 것 같다. 그런데 첫 레코딩때, 사카이의 목소리를 들었던 사람들 모두가 놀랐다. 폭발적인 성량, 그리고 평안하고 투명한 그녀의 목소리에.</p>
+                    <p>[조용하고 예쁜 여자] 이라는 첫인상은, 곧바로 [큰 목소리를 가진 노래 잘하는 예쁜 여자]로 바뀌었다.마이크 앞에 서있는 사카이의 노랫소리를 듣는 순간, 나가토를 포함한 전원이 그 목소리에이끌리면서, 그녀의 성량에 압도되었다. 당시는 아직 조잡한 면도 있었지만, 어쨌든 좋은 목소리였다. 그리고 일본어 가사로 노래할 때 정확하게 들리는 발음은 다른 가수와 비교할 수 없는 그녀만의 개성이었다.</p>
+                    <p>처음 사카이씨가 레코딩 부스에 들어와 노래하기 시작했을 때, 너무나 좋은 목소리를 내서놀랐습니다. [음 이거, 이 사람 꽤 잘 될지도...] 하고 생각했어요. 그런데 그런 제 속마음을 들켰던 것 같아요(웃음). 그녀는 [해냈다!]라고 생각하기도 했지만, 마지막 레코딩 때까지 그때의 일을 이야기하곤 했습니다. [테라오씨는, 내가 노래 못 할 거라고 생각했었죠?]라고.[테라오 히로시 / 레코딩 디렉터]</p>
+                    <p>「그때부터 아주 큰 목소리로 열심히 노래하고 있었어요. 보통, 오래된 가수의 데뷔 시절의 노래를 들어보면 [어! 이 가수, 이런 목소리였나?]하고 생각하게 되는 경우가 많은데, 그녀의 목소리는 처음부터 지금까지 거의 변하지 않았습니다.」
+                    [노무라 마사유키 / 레코딩 엔지니어]</p>
+                    <p>사카이는 지는 것을 정말로 싫어하는 오기가 있는 사람이었다. 그랬기에, 스탭들과의 첫 대면 당시 그들의 반응에 [한번 지켜봐 주세요~]라고, 평소보다 훨씬 노력해서 노래를 불렀을지도 모르겠다.</p>
+                </div>
+            </div>
+            <div class="slides first7" style="display: none;">
+               <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">7. 고생했던 초기의 레코딩 </h3><br><br>
+                    <p>ZARD 사카이 이즈미라고 하면, 투명하면서도 테크닉적인 하이톤 보이스가 먼저 떠오른다. 하지만, 데뷔곡 [Good-bye My Loneliness]를 불렀을 당시의 사카이는 높은 음이 잘 나오지 않아서, 오다 테츠로가 작곡 했던 원본을 약간 수정하게 된다.최초의 멜로디는 더 낮은 음정이었는데 아직 높은 음을 잘 못냈던 사카이였기에 고음으로 노래의 키를 맞추면 저음이 나오지 않고, 저음으로 키를 맞추면 고음이 나오지 않는 상황이었던지라, 멜로디 자체를 바꾸게 되었다.</p><br>
+                    <img src="include/img/chapter1/7-1.jpg" class="align-left slide-in slide-img">
+                    <p>「당시의 사카이씨는 정말 있는 힘을 다해 노래를 했었어요. 후에는 고음을 낼 수 있게 되었지만, 그 무렵에는 ‘노래를 어떻게 해야 하나?’하고 고민했었을 겁니다. 안 그래도 그렇게 고민하고 있던 그녀에게 제가 1주일 동안 연속으로 [Good-bye My Loneliness]의 후렴 부분만 노래하라고 시켰던 것 같아요 (웃음). 솔직히 저는 기억이 안나요. 신인 아티스트에게 그런 식의 특별 훈련은 자주 시키기도 하구요. 그렇지만, 사카이씨가 저에게 [나는 지금도 테라오씨가 스튜디오에 오시면 또 그렇게 노래를 많이 해야할까 싶어서 두근두근 합니다. 트라우마예요.] 라고 자꾸 그래요 (웃음). 당시 저도 젊었을 때라 혈기가 넘칠 때라 나가토 씨에게 [오늘은 그만 보냅시다]라고 야단쳐서 사카이씨를 보냈던 기억이 있습니다. 그래도 한밤중까지 레코딩을 계속 해도 열심히 임했던 기억이 있네요.」 [테라오 히로시 / 레코딩 디렉터]</p><br>
+
+                    <img src="include/img/chapter1/7-2.jpeg" class="align-right slide-in slide-img">
+
+                     <p>후에 사카이는 첫 번째 싱글과 첫 번째 앨범에 대해서, [아무것도 모르는 상태에서 그냥 열심히 노래만 했던 것 같아요.]라고 되돌아 보았다.또, 현장 스탭들이 밤낮을 가리지 않고 제작 작업에 몰두하는 모습을 눈 앞에서 본 놀라움에 대해, [밤부터 아침까지는 "당연히 가는거지!"라는 회사 여러분의 열기와 결코 타협하지 않는 정신을 저 사카이 이즈미는 확실히 계승했습니다!(웃음).]라고 말했었다.</p><br>
+                    <p>「그 무렵은 정말로 모두들 필사적이었습니다. 차고 넘칠 만큼 써서 모아 둔 작사 노트가 순식간에 불어나서 사카이가 항상 들고다니던 가방 안은, 작사 노트로 가득차 있었습니다.매일 매일 퇴짜의 연속, 한마디로 시행 착오의 시대, 이렇게 말할 수 있겠군요.」[와타나베 료 / 레코딩 디렉터] </p><br>
+                     <img src="include/img/chapter1/7-3.png" class="align-left slide-in slide-img2">
+                    <p>「데뷔 1개월 전에 만났습니다. 그 때, 어떤 이야기를 했었는지 전혀 기억나는게 없지만, 그때부터 몇 주일 후에 데뷔곡[Good-bye My Loneliness]의 프로모션 비디오 촬영이 예정 되어 있어서, 프로모션 비디오에 관해서 이야기했었던 것 같아요. 솔직히 말하자면, 딱 그 정도만 기억나는, 평범한 사람이라는 첫인상이었습니다.」[타카노 아키히코 / 영상프로덕션 매니저]</p><br>
+                    <p>「솔직히 말해서, 첫인상은 거의 기억나지 않아요. 미니스커트 차림으로 노래하러 왔던 정도 밖에 기억나지 않습니다 (웃음).」
+                    [시마다 마사히로 / 레코딩, 엔지니어]</p><br>
+             </div>
+            </div>
+            <div class="slides first8" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-1장 [레코딩]-</h1><br><br>
+                    <h3 class="">8. 거의 만나지 않았던 작곡가들 </h3><br><br>
+                    <p>사실 ZARD의 곡에 대하서 이야기하자면 ZARD를 위해서 새로 만들어진 곡은 거의 없었다.
+                    프로듀서 나가토가 자신이 가지고 있는 엄청난 양의 데모 테이프가 들어있는 창고 안에서 고르거나 다른 곡들과 조합하거나 해서, 그때 그때 필요한 곡이 선택되거나 만들어졌다.대히트곡 [負けないで]는 원래 [오다테츠로] 본인이 노래할 예정이었던 곡이었고, 어찌어찌ZARD에게 간 것도 타이틀이 아니라 앨범 수록곡으로 가게되었다.그러나, 사카이가 쓴 가사가 정말 좋았고, 동시에 드라마 타이업 이야기도 나오게 되어, 장시간 회의 끝에 싱글로 발매 하게 되었다고 한다. [君がいない]도 쿠리바야시 세이이치로가 자신의 앨범에 이미 수록하고 있던 곡이었다.</p><br>
+                    <img src="include/img/chapter1/8-1.jpg" class="align-left slide-in slide-img">
+                    <p>이러한 유연함과 [앨범의 어떤 곡이든 싱글 타이틀이 될 수준으로 만들자]라는 ZARD팀 전원의 마인드. 그것이 ZARD의 성공에 큰 영향을 주었다고 할 수 있다. 또 작곡가들을 만나고 그들을 알게 되면 작품에 대해 단호하게 대할 수 없게 된다고 해서, 사카이 자신은 거의 작곡가들과 만나지 않았다.</p><br>
+
+                     <p>작곡가나 편곡가들과 친해지면, 신경 쓰이는 부분이 있어도 말하기 어려워지거나 하는, 제작의 방해가 될 수 있는 점을 생각했던 것이다. 그 결과 [負けないで], [搖れる想い]를 작곡 한 오다와는 그가 작곡 한 [もう探さない]의 노래를 녹음 할 때 처음 만났었고, 그때는 오다가 임시로 노래를 불러주기 위해서 왔는데 사카이가 그 현장에 있어서 그나마도 우연히 만났던 거였고, 그 후로 2번째로 만난 것은 2004년 라이브투어 때라는 사실은 놀라울 정도다.</p><br>
+                     <img src="include/img/chapter1/8-2.jpg" class="align-right slide-in slide-img">
+                    <p>「[もう探さない]의 때에, 오다씨가 임시로 노래를 불러 주셨던 일이 있었습니다. 이 때가 사카이 이즈미와 작곡가 오다 테츠로가 제작 현장에서 처음으로 만났을 때군요.그런데 현장에서 그녀의 키로 다시 어레인지 된 버전에 노래를 할 수 밖에 없었기 때문에, 오다씨는 제대로 부르지 못하고 가성으로 불러서, 약간 묘한 [もう探さない]가 되었습니다만 (웃음), 그것을 들었던 사카이씨는 그 노래에 대한 망설임이 다 해결되었다고 했었어요.」
+                    [와타나베 료 / 레코딩 디렉터]</p><br>
+
+                    <p>[もう探さない]의 레코딩 기록을 보면, 1991년 7월 23일에 제작이 스타트. 우선은, 반주의 제작이 진행되었고, 8월 1일부터는 보컬 레코딩을 4회정도 했었지만 당시의 ZARD에게 있어서 새로운 타입의 곡이었기 때문에 제작은 난항을 거듭했다. 8월 23일에 오다 테츠로에게 임시로 노래를 불러 달라고 의뢰해서, 그 후, 2회의 보컬 레코딩을 거쳐 보컬 트랙을 완성하게 되었다.오다가 노래하는 것을 본 날을 계기로, 사카이의 노래하는 방법이 조금 바뀌었다고 하는 걸로 봐서는 분명히 그녀는 그 날 여러 가지를 배웠던 것 같다.</p><br>
+                    <img src="include/img/chapter1/8-3.jpeg" class="align-left slide-in slide-img">
+
+                    <p>그 외의 ZARD 넘버의 대표적인 작곡가들도 오다같이 거의 사카이를 만나지 않았다. 쿠리바야시 세이이치로와는 2회 정도, 다만[영원]등을 작곡·편곡한 토쿠나가 아키히토는 그의 오디션을 우연히 사카이가 보러 왔었고, 사카이가 그를 추천했다는 이야기가 있었지만, 일을 할 때는 역시나 그녀와 직접 만난 적은 없었던 것 같다. 또, 데뷔 초기부터 편곡에 참가해왔던 어레인저 하야마 타케시나 이케다 다이스케도 몇 번 밖에 그녀를 만난 적이 없었다. 그러나, ZARD에 관계된 사람들은, 사카이 이즈미의 개성을 살릴 수 있도록 하는데에 집중했고 또 의욕적으로 작품을 제작했다.</p><br>
+                    <img src="include/img/chapter1/8-4.jpg" class="align-right slide-in slide-img">
+                    <p>「어떤 아티스트라도 노래를 가장 우선으로 생각합니다만, 사카이씨의 목소리는 개인적으도 아주 좋아했기 때문에, 그 매력을 최대한 끌어 낼 수 있도록 신중히 했었습니다. 마이너조의 어두운 곡에서도, 템포가 느린 발라드에서도, 철저하게 [상쾌한] 느낌을 낼 수 있도록 어레인지 하고나서도 항상 생각하고 있었어요.」
+                    [하야마 타케시 / 어레인지]</p><br>
+                    <p>「나는 어레인저로서만 ZARD에 관련되어 있을 뿐입니다만, 지금 생각하면 선배인 아카시 아키라씨, 하야마 타케시씨와 서로의 신호를 보내고 또 느끼면서, 사카이씨가 계속 지키고 있는 ZARD의 스타일을 하나 하나씩 정성스럽게, 작품으로 만들고 있었다는 생각이 드는 군요.」[이케다 다이스케 / 어레인지]</p><br>  
+              </div>
+             </div>
+           
+            <button class="btn" onclick="plusIndex(-1)" id="btn1">◀</button>    
+            <button class="btn" onclick="plusIndex(1)" id="btn2">▶</button>           
+          </div>
+
+          <div id="slider" class="slider2">
+            <div class="slides2 second1" style="display: block;">
+                <div class="site-wrap">
+                    <h1>-2장 [작품]-</h1><br><br>
+                    <h3 class="">1. 숲 속의 곰 아저씨 같이</h3><br><br>
+                    <p>ZARD팀의 제작 현장은 [보다 좋은 것을 만들자]라는 기본 자세를 가지고 타협하지 않으며, 몇 번이나 재검토를 하면서 한층 더 좋은 결과물을 만들어 내는 식으로 철저히 작업을 해왔다. 그런 만큼 작품에 관한 에피소드가 많다.</p>
+
+                    <img src="include/img/chapter2/1-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>먼저, 데뷔 초기 2번째 싱글[不思議ね...]의 레코딩 때 에피소드. 1991년 6월에 발매된 이 곡은 원래 오다 테츠로씨의 곡이었지만, 그가 쓴 멜로디는 음역이 넓었고, 그 멜로디를 자신이 소화하려면 상당한 가창력이 필요했다.</p>
+
+                         <p>물론 사카이가 선천적으로 타고난 음감은 매우 정확했고 성량도 컸지만, 청명하고 깨끗한 그녀의 목소리 특성 상 조금이라도 음정이 어긋나면 그 부분이 상당히 크게 티가 나는 편이었다.그 때문에 스탭들과 사카이는 노래와 씨름하며 여러 날을 보냈다. 몇 번이고 노래를 다시 했었다고 한다.</p>
+                    <img src="include/img/chapter2/1-2.jpg" class="align-right slide-in slide-img">
+                          <p>「[不思議ね...]는, 1991년 2월부터 스튜디오에서 반주의 어레인지를 시작했습니다. 스탭도 아직 사카이씨의 목소리 음역이 어떠한지에 대한 파악이 다 되지 않은 상태여서, 여자 키에 맞추어 키를 올려 다시 만들었어요. 그 후, 보컬 레코딩을 5번 정도 했습니다. 하루에 4~5 테이크를 노래했었고, 다해서 20 테이크 이상의 보컬을 1곡에 시도 했었는데요. 이 횟수는 제가 경험한 녹음 중 가장 많은 보컬 테이크 수였네요.」
+                          [이치카와 타카유키 / 레코딩 엔지니어]</p>
+                 
+                          <p>보컬 레코딩은 3월 16일에 시작해서, 3월 22~23일, 4월 45일, 다해서 5번의 보컬 레코딩을 했는데 하루에 4~5 테이크를 녹음해서 각각의 좋은 부분을 골라 이어 붙여 OK트랙을 만든다. 그리고 그 다음 날의 보컬 레코딩 후에, 전날의 OK트랙과 새롭게 노래한 테이크 중에서 좋은 부분을 선택해, 또 OK트랙을 만든다. 그것을 5번 반복해 1곡 분량의 OK트랙이 완성되면, 보컬 레코딩은 끝이 나게 된다. 그러나, 최종적인 1곡 분의 OK트랙은 복사에 또 복사가 되어 있기 때문에, 한번 더 첫째 날부터 해온 20회 정도의 테이크를 늘어놓고 다시 비교해보고 선택하여 정리했다. 당시는 지금과는 달리 녹음실 기기도 세세한 조작이 힘들어서, 이 연결 작업이 끝나기까지는 반나절 이상이 걸렸다고 한다.</p>
+                    <img src="include/img/chapter2/1-3.jpg" class="align-left slide-in slide-img">                 
+                          <p>또 유명한 에피소드는 [君がいない]가 2개 버전이 있었던 일이다. 이 곡은 1993년 4월에 ZARD의 7번째 싱글로 발매 되었다. 이 싱글에서의[君がいない]는 "C" 키로 만들어져 있는 "C-version"이었다. 당연히 최선을 다해 완성시킨 곡이었지만, 발매 후 사카이는 자신의 하이톤 보컬이 마음에 걸렸다고 한다. 그 때가 정확히 7월에 발매가 예정되어 있던 4번째 앨범[搖れる想い]를 제작 중이었던 시기였는데, 통상적으로는 앨범에 싱글 곡을 그대로 수록하지만, 사카이의 제안으로 노래가 보다 더 잘 전달 될 수 있는 방법을 생각해서 나온 결과로, 반음 밑의 "B" 키로 다시 제작했다. 그리고 그것은 "B-version"으로 앨범에 수록되었다.</p>
+                    <p>또, 5번째 앨범[OH MY LOVE]에 수록되어 있는[來年の夏も].이 곡에서는, 후반에 들어가 있는 활발한 느낌의 피아노 솔로에는 사카이의 악곡에 대한 열정적인 생각이 담겨 있다.
+
+                    「[來年の夏も] 레코딩 때, 곡의 후반부에 있는 피아노 솔로에 사카이가 좀처럼 OK를 내 지 않았습니다. 그런 중에 사카이로부터 [리스트의 라칸파넬라를 참고해서 만들어 주었으면 해요. 구체적인 것은 머릿속에 있으니까, DIMENSION의 피아니스트 오노즈카씨를 섭외해 주실 수 있나요?] 라는 요청을 받았습니다. 사카이는 하드 록도 좋아했지만, 클래식에도 정통했습니다. 어렸을 때, 피아노를 오래 배웠으니까요. 사카이의 그 아이디어에 오노즈카가 피아노 솔로를 만들었습니다. 라칸파넬라의 뛰어난 기교적인 요소와 리스트가 애용했던 베젠돌프 피아노의 풍부한 음색을 상상해가면서.... 만족할 만한 결과라며 사카이는 매우 기뻐했었습니다. 2004년 라이브 투어때도 [來年の夏も]를 꼭 부르고 싶다고 해서, 피아노의 오오쿠스 군이 열심히 연습해서 연주했던 것을 매우 기뻐했었어요.」
+                    [와타베 료 / 레코딩 디렉터]</p>
+                    <img src="include/img/chapter2/1-4.jpg" class="align-right slide-in slide-img"> 
+                    <p>그리고, 2005년 4월에 발매 된 40번째 싱글 [夏を待つセイル(帆)のように]에서도, ZARD이기에 가능한, 사카이의 통통 튀는 감성이 돋보였다.
+
+                    「처음에 나왔던 이야기에는 극장용 [명탐정 코난]의 주제가로 결정 되어 있었고, 또 다른 곡도 후보가 되어 있었습니다. 그렇지만, 사카이씨를 포함한 전원에게 ‘이거다!’ 싶은 느낌이 오지 않았어요. 그러고 있을 때, 사카이씨가 [夏を待つセイル(帆)のように]의 데모를 듣고 그걸로 하자고 했어요. 그 이유가, [이 곡은 아마도 아이들이 들으면 재미있어 할 것 같아서]였습니다. 확실히 사카이씨가 이 데모를 들으면서 천천히 몸을 좌우로 흔들고 있어 굉장히 재미있어 보였고, 어레인지로 그러한 느낌을 더 부각 시키려고 했습니다. 사카이씨가 말한 것은 [숲속의 곰 아저씨]같은 느낌이었지만, 그것보다 깊이 들어가서 레게 스타일의 리듬도 들어가게 되었습니다. 하지만, 전까지의 ZARD는 어른들의 세계만을 노래해왔었기 때문에, ZARD라는 이름으로, 그것도 싱글 타이틀로, 레게 같은 느낌으로 아이들이 재미있어 할만한 곡이라는게 솔직히 괜찮을까 싶었어요. 그렇지만, 사카이씨의 도전 정신에 끌려가서, 모두 시행 착오를 겪어가며 완성했어요. 편곡가 하야마씨도 정말 노력과 고생을 많이 하셨습니다. 그녀는 [이렇게 하고 싶어요], [저렇게 하고 싶어요]라며 여러 가지 희망 사항을 말했지만, 자신 안에 ZARD라는 중심이 제대로 자리 잡고 있었기 때문에, 모험을 거쳐 마지막에는 결국 ZARD의 색을 잃지 않으면서도 신선한 곡이 되어 있었습니다.」
+                    [테라오 히로시 / 디렉터]</p>
+                  </div>
+            </div>
+            <div class="slides2 second2" style="display: none;">
+            <div class="site-wrap">
+                    <h1>-2장 [작품]-</h1><br><br>
+                    <h3 class="">2. 36회의 믹스 다운 </h3><br><br>
+                    <p>레코딩 마지막 단계를 흔히 믹스 다운(믹스)또는 트랙 다운이라고도 하는데, 90년대 초반에는 멀티트랙(48 채널이나 96 채널)으로 테이프에 녹음된 것을 밸런스 좋게 믹스해서 2 트랙의 마스터 테이프에 정리하는 작업을 말한다. 이 작업의 결과에 따라 완성된 곡의 느낌이 처음과 많이 달라질 때도 있기 때문에, ZARD 팀은 작업의 마지막에 곡의 중요부분만을 여러 버전으로 만들고 비교해서, 가장 좋은 것을 선택하는 식으로 작업을 해왔다.</p>
+
+                    <img src="include/img/chapter2/2-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>「사카이씨는 프로듀서에게도 [나는 이쪽이 더 좋다고 생각해요]라고 제대로 이야기하는 편이었습니다. 자신이 제일 좋다고 생각한 것을 그대로 만들어 보고, 또 새로운 아이디어를 제안합니다. 그렇기 때문에 믹스작업 할때 하는 테이크 수가 모자라거나 하는 일은 없었네요 (웃음). 그런 상황은 ZARD가 가장 많지 않았을까 싶어요. 세세한 것까지도 신경을 많이 써왔고, 포기하는 사람이 아니었습니다. 사카이씨 뿐만 아니라 제작 팀 전원이 그랬습니다.」
+                    [시마다 마사히로 / 레코딩 엔지니어]</p>
+
+                    <p>「사카이씨는, 소리나 음질이 약간 바뀐 것만으로도 [어? 어쩐지 여기 다르군요]라며 그것을 바로 알아차립니다. [어디가 다른 거야?]라는 사람이 있을 정도로, 아주 세세한 부분까지도 구분할 수 있는, 굉장히 귀가 좋다고 할까요. 프로듀서와 사카이씨가 신경쓰는 부분도 바로 그런 소리나 음질 같은 부분이기 때문에, ZARD 팀은 작품이 CD가게에 발매가 되고 나서도, 그것이 생각과 다르다 싶으면 다시 작업을 했습니다. 실은 발매 후에 전곡 믹스를 다시 해서 2번재 판을 만든 작품도 있습니다.」
+                    [이치카와 타카유키 / 레코딩 엔지니어]</p>
+
+                    <img src="include/img/chapter2/2-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>1998년 3월에 발매된 24번째 싱글[息もできない]는 ZARD의 곡 중 가장 많은 믹스 테이크 횟수를 기록하고 있다. 믹스 작업은, 1997년 12월 10일에 스타트. 한 번의 믹스로 [보컬 기본] [보컬 약간 크게] [보컬 크게] [보컬 약간 작게] [보컬 작게] 라는 식으로 보컬의 크기가 다른 5개의 버전을 무려 26번이나 작업해서 만들어 냈다. 그것도 16번째의 믹스에서는, 그전까지의 5개 버전에 [보컬 아주 약간 크게] 와 [보컬 아주 아주 조금만 작게]하는 방식이 더해져, 총 7 테이크가 만들어지게 되었다. 또 그 안에는 색소폰의 솔로를 넣은 버전, 가장 좋은 코러스가 있는 버전도 만들어져 있다. 최종적으로 26번째 믹스를 한 날은 1998년 2월 11일. 작업 시작부터 무려 2개월을 거쳐서 겨우 완성한 결과, 최종적으로는 23번째에 만들어진 [보컬 크게]의 테이크(T-234 Vo크게)가 싱글로 나가게 되었다. 믹스는 스튜디오 버드만의 치프 엔지니어 노무라 마사유키가 담당하고 있었다.</p>
+
+                    <p>그러나, [息もできない]의 믹스 작업은 그것만으로 끝나지 않았다. 1998년 2월에 발매 된 8번째 앨범[영원]에 수록되기 전에, 앨범 버전으로 한번 더 테이크가 추가된 믹스 작업이 이루어졌다. 도쿄에서 2회, 오사카에서 8회, 그 전까지 모두 다해서 52 테이크가 만들어진 결과, 싱글에 사용된 23번째의 [보컬크게]의 테이크가 다시 앨범 [영원]에 수록되었다. 세밀한 곳까지 신경써온 음악 만들기. 여기서 ZARD의 음악제작의 진면목을 볼 수 있다.</p>
+              </div>
+            </div>
+            <div class="slides2 second3" style="display: none;">
+              <div class="site-wrap">
+                    <h1>-2장 [작품]-</h1><br><br>
+                    <h3 class="">3. 18종류의 어레인지 </h3><br><br>
+                    <p>[어릴 적부터 좋아하는 일에 몰두하면 시간 가는 줄 모르고 다른 것은 쳐다도 보지 않고 오로지 그것 하나만 잡고 있는 그런 면이 있었습니다(웃음).] 라는 사카이의 말은 확실히 제작 현장에서의 그녀 그 자체다. 그런 그녀를 중심으로 한 ZARD의 제작 현장에서는 악곡이 어레인지 단계부터 여러가지 타입을 만들고 다듬어 완성되어 가고 있었다. 그 중에서도 1998년 9월에 발매된 25번째 싱글 [運命のル-レット廻して]는 아주 많은 버전의 어레인지가 만들어졌던 곡으로 스탭들에게 기억되고 있다.</p>
+
+                    <img src="include/img/chapter2/3-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>1998년 4월, 먼저 후루이 히로히토가 만든 어레인지 [타입 1]이 완성. 이케다 다이스케가이 버전에서 반주를 고치고, 템포나 사이즈가 다른 [타입 3]을 만들었다. 거기서 한층 더 사이즈와 템포를 다르게 만들고, 간주 어레인지를 변경, 후렴구 템포를 변경, 음색을 바꾸고 간주의 소절을 컷, 인트로를 스패니쉬 풍으로 변경, 각각의 어레인지 버전을 다시 재구성한[타입 13]을 완성 하고, 마지막에 사카이의 아이디어가 들어간 드럼 음색을 바꿔 넣은 [타입 13-2]가 드디어 OK 되었다고 한다. 정말로 난산인 곡이었다. 그 이후로도 앨범 수록 버전을 위해 18 타입까지 만들었다고 했었으니, 납득이 갈 때까지 추구한다는 자세는 정말 끝을 몰랐던 것 같다.</p>
+
+                    <img src="include/img/chapter2/3-2.jpg" class="align-right slide-in slide-img2">
+
+                    <p>이 어레인지 작업은 사카이의 주도 하에 여러 가지로 힘들었지만 하나하나 충실하게 해왔다. [나도 그렇고 스탭들도 타협하지 않기 때문에 이 곡은 지금까지 해온 것 중 가장 어레인지 테이크가 많습니다. 아마 스탭 모두 믹서 MAC안의 데이터 표를 보지 않으면 이 테이크와 저 테이크가 어떻게 다른지도 잘 모를거예요. 시험해 볼 수 있는 것들은 모두 해봤던지라 보통, 아티스트가 앨범 1장을 만들 정도의 시간이 이 곡 하나에 들었습니다. 여기 까지 함께 노력한 여러분에게 감사드립니다.]라는 말을 작품 완성 후에 남겼다.</p>
+              </div>
+            </div>
+            <div class="slides2 second4" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-2장 [작품]-</h1><br><br>
+                    <h3 class="">4. [영원]이 발매되기까지 </h3><br><br>
+                    <p>1997년 봄, TV 드라마 [실락원]의 주제가를 맡게 된 사카이와 제작 스탭은 예전부터 굉장히 마음에 들었던 토쿠나가 아키히토가 작곡한 발라드 [Fallin of the Rain]을 리메이크 하기로 결정했다. 그러나 그 곡은 이미 캐논 [Eoskiss] CM송으로 96년부터 사용되었던 곡이었기에 리메이크를 하려면 승낙을 얻지 않고는 불가능했다. 그러나, 사카이와 스탭은 이 곡을 쓰기를 간절히 원했다.</p><br>
+
+                    <img src="include/img/chapter2/4-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>「무엇하나 원활하게 진행되는 것이 없었습니다. 그러나 결국 클라이언트인 캐논에 직접 찾아가서 정중히 저희들이 이 곡을 리메이크 하고 싶다고 자세히 설명을 했고, 그들은 우리의 약간은 이기적인 이야기를 승낙해주었습니다.」
+                    [와타베 료 / 레코딩 디렉터]</p><br>
+
+                    <p>베이직 어레인지는 토쿠나가가, 현악기와 코러스 더빙은 뉴욕에 있는 프로듀서 우메노 타카노리가 디렉션을 담당했다. 그는 빙 초창기에 매니퓰레이터로 활약했었고, 그 후 미국에 건너가서 음악 프로듀서로서 성공가도를 달리고 있던 인물.</p><br>
+
+                    <img src="include/img/chapter2/4-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>실은 이 곡에는 매우 교묘한 레코딩 테크닉이 사용되었다. 현악기와 코러스더빙은 뉴욕의 톱 뮤지션이 해주었고, 우메노가 확인용 음원을 MP3 파일로 이메일에 첨부해서 보내주는 방식으로 작업을 진행했다. 지금은 별거 아닌 것 같지만, 그 당시에는 초고속 인터넷이라는 개념이 없었던 만큼, 모뎀이나 ISDN의 삐-삐-소리를 들으면서, 다들 신기하다는 생각을 하면서 파일을 받곤 했었다.</p><br>
+                    <img src="include/img/chapter2/4-3.jpg" class="align-left slide-in slide-img">
+                    <p>이러한 열정적인 작업의 결과물은, 상상을 초월할 만큼 훌륭했고, 사카이도 칭찬을 아끼지 않았다. [永遠]이라는 타이틀을 붙였고 가사도 고쳐 썼다. 한 번 만든 세계를 무너뜨리는 작업, 그리고 텔레비전 드라마 쪽의 요청으로 몇 번이나 곡을 고치는 등의 많은 고생을 했었지만, 결국 첫 라이브 투어에서 오프닝 영상으로[What a beautiful moment Tour Opening Ver.] 사용되는 등, [永遠]은 ZARD를 대표하는 명곡이 되었다.</p><br>
+
+                    <p>또 사카이는 1999년 2월에 발매된 앨범도 [永遠]을 타이틀로 하고, 그 이유를[자신이 하고 있는 음악이, "영원"히 표준이 되면 좋겠다 라는 의미도 담겨 있습니다.]라고 말했다.</p><br>
+              </div>
+            </div>
+            <div class="slides2 second5" style="display: none;">
+               <div class="site-wrap">
+                    <h1>-2장 [작품]-</h1><br>
+                    <h3 class="">5. 카펜터스를 노래하다 </h3><br>
+                    <p>사카이의 기존의 이미지와 전혀 다른 뜻밖의 작품이 있다. 바로 1993년 11월에 발매 된 [Royal Straight Soul Vol 2.]에 참여 했을 때의 이야기다. 그녀는 이 앨범에서 카펜터스의[This Masquerade]를 노래했다. 원곡은 레옹 러셀. 그러나, 그녀는 ZARD와 비슷한 느낌이라며 레옹 러셀 버전보다 카펜터스 버젼을 선택해, 밝지만 조금은 슬픈느낌으로 노래했다.참고로, 그녀는 비틀즈도 좋아했었는데, 비틀즈 노래 자체가 좋다는 점과 장르의 구분이 없는 음악, 그리고 좋은 팝송이라는 부분이 ZARD와 공통점이 아닐까 하고 이야기 했던 적도 있었다.</p>
+                    <img src="include/img/chapter2/5-1.jpg" class="align-left slide-in slide-img">
+                    <p>또, 1997년 4월에는, [J-BLUES BATTLE Vol.3]라는 인디즈 작품 중에서, Alannah Myles의 [Black Velvet]을 커버했다. 永井隆, 塩次伸二, 次尾隆一郞, 近藤房之助 등, 일본의 블루스를 대표하는 사람들 사이에 서서 사카이가 블루스 곡을 노래한다는 소식에 많은 사람들이 놀랐지만, 결국 원곡에 지지 않는, ZARD가 아니면 할 수 없는 그녀의 보컬은 큰 임팩트를 남겼다. 이 곡도 사카이가 자신의 직감으로 [좋아해서]라고 선택한 것이었다. 또 [ZARD와 비슷한 느낌]이라서 선택했다고 하지만 원래, 사카이는 블루즈나 재즈 계열의 음악을 좋아했었고, 사카이의 조금 느린 듯한 느낌의 노래스타일도, 원래 그쪽 계열의 노래를 해본 적이 있는게 아닌가 하는 소리를 들을 정도였다.이 작품은 후에, [J-BLUES compilation at the BEING studio]라는 작품으로도 발표되었다.</p>
+
+                    <img src="include/img/chapter2/5-2.jpg" class="align-right slide-in slide-img">
+
+                     <p>1999년에는 [CAN'T TAKE MY EYES OFF OF YOU]를 리메이크해서 앨범 [영원] 초회반에 넣은 8센치 CD와 응모 특전의 아날로그 반에 수록했다. 초회 특전 수록에는 [CAN'T TAKE MY EYES OFF OF YOU ~ readymade wizard mix short cuts ~ ]가 있는데, 이 작품의 어레인지는 당시 Pizzicato Five의 코니시 야스히루, 게스트로는 coba(아코디언)를 초청해서 ZARD와 프렌치 팝의 융합이라는 기존의 이미지와는 다른 면을 들려주는 작품이 완성 되었다. 코니시는 사카이의 깨끗한 목소리를 원곡의 Frankie Valli 이나 유명한 보이즈 타운 갱 버전과는 다른 파리의 카페에서 들려오는 것 같은 느낌으로 어레인지 하는데 집중했다고 한다. 그렇게 멋지고 경쾌한 클럽 댄스 뮤직을 노래하는 사카이는, 꽤 참신했다.</p>
+
+                    <p>그 곡은 1999년 9월 15일에 아날로그 반으로 인디즈에 발표했다. [CAN'T TAKE MY EYES OFF OF YOU Original Long Version ~ readymade wizard mix original]로 이름 지어진 리믹스도 수록되는 등, FM라디오를 중심으로 일본 전국에서 방송 되어 화제가 되었다.</p>
+
+                    <img src="include/img/chapter2/5-3.jpg" class="align-left slide-in slide-img">
+
+                    <p>ZARD는 본래 이미지가 강렬한 편이기에, 이런 다른 장르의 시도는 일부에서만 주목받았을지도 모른다. 그러나 그녀는 ZARD로서도 사카이 이즈미로서도 항상 참신한 것을 요구했고 그것을 자신 내부에서나 음악으로 승화시켜 가는 노력을 아끼지 않고 해왔다. 데뷔 10주년을 맞이했던 2000년에는 [지금은 무엇이 되었던, 해본 적이 없는 것을 해 보고 싶어서 고민하고, 또 괴로워하면서 시행 착오를 하고 있습니다.]라는 말을 남기고 있다.</p>
+                    <p>「ZARD가 매너리즘이 되지 않도록 조금씩 바꾸어 가고 싶다고 하는 생각은 항상 있었습니다. 그러니까 과감히 가사를 곡에 가득 담아본 적도 있고, 당연한 상식을 없애고 꼭 이건 해야한다는 모험이라고 할까, 테두리에 갇혀 있지 않는 도전이라고 할까, 항상 그런 마음을 가지로 작품을 만들어 내곤 했어요. 그런 이야기는 몇 번이나 했었고, 그런 마음가짐은 꽤나 강했다고 생각합니다.」
+                    [테라오 히로시 / 디렉터]</p>
+              </div>
+            </div>
+            <div class="slides2 second6" style="display: none;">
+                  <div class="site-wrap">
+                    <h1>-2장 [작품]-</h1><br><br>
+                    <h3 class="">6. 엄선한 자켓 사진 </h3><br><br>
+                    <p>ZARD의 작품은 노래 만이 아니다. 그의 작품 중 하나인 자켓 사진들을 늘어놓고 보면, 사카이의 자연스러운 모습을 포인트로 잡을 수 있었던 3번째 앨범 [HOLD ME] 사진 이후, 그 같은 분위기로 보기 좋게 통일되고 있다. 그것은 많은 사람이 가지고 있는 ZARD의 이미지와도 연결되지만, 그런 자켓 워크에는 ZARD의 이미지를 전하기 위해서 상당한 창의적인 생각들이 들어있었다.</p>
+                    <img src="include/img/chapter2/6-1.jpg" class="align-left slide-in slide-img">
+                    <p>「앨범 [搖れる想い] 자켓 사진은 전체적으로 희미한 보라색의 느낌이 있잖아요. 그것이 기존의 인쇄방법으로는 좀처럼 표현이 불가능했어요... 일반적인 4색 인쇄로는 몇 번을 해도 그 느낌이 나오지 않아서, 결국 여러가지 잉크를 섞어서 8색인쇄로 했습니다. 색의 진함은 고작 몇 퍼센트의 차이였지만, 색교정까지 해서 50여 가지의 패턴이 있었어요. 아마 이건 두 번 다시 재현하지 못할거라고 생각합니다 (웃음).」
+                    [스즈키 켄이치]</p>
+
+                     <p>그 밖에도 5번째 앨범 [OH MY LOVE], 베스트 앨범 [ZARD BEST The Single Collection 궤적]은, 자켓의 색감에 굉장히 신경을 많이 썼던 작품이었다. [ZARD BLEND Sun & Stone ]은 흰색을 보다 두드러지게 하기 위해 여러번의 시행 착오를 겪었는데, 특히 그 느낌을 표현 가능한 종이가 없었기 때문에, 제지회사에 직접 찾아가서 여러 가지로 실험까지 했었다고 한다. 그리해서 그 사진에서 하늘을 보면 감색의 깊은 곳이, 꽤 훌륭하게 생각 했던만큼 잘 나왔다고 한다. 그것도 20여가지 패턴으로 색 교정을 해서 가장 좋은 것을 선별했었다고 한다. 이러한 작은 것들도 ZARD라는 아티스트의 이미지에 크게 영향을 주고 있었다.</p>
+                </div>
+            </div>
+            
+           <!-- 
+             </div> -->
+           
+            <button class="btn" onclick="plusIndex2(-1)" id="btn1">◀</button>    
+            <button class="btn" onclick="plusIndex2(1)" id="btn2">▶</button>           
+          </div>
+
+          <div id="slider" class="slider3">
+            <div class="slides3 third1" style="display: block;">
+                <div class="site-wrap">
+                    <h1>-3장 [프로모션]-</h1><br><br>
+                    <h3 class="">1. [眠れない夜を抱いて]로 뮤직스테이션에 출연하다</h3><br><br>
+                    <p>4번째 싱글[眠れない夜を抱いて]는 1992년 8월에 발매 되었다. ZARD의 역사로 보자면 이 곡은 포지티브한 팝송에 슬픈 가사가 들어가 있는 ZARD 특유의 스타일을 확립한 곡이라고 말할 수 있다. 또 이 곡을 계기로 몇 번의 TV 출연을 하게 되어, ZARD 노래와 그녀의 모습이 한 번에 세상에 알려지게 되었다.</p>
+
+                    <img src="include/img/chapter3/1-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>ZARD가 처음으로 음악프로에 출연한 것은 1992년 8월 7일 TV 아사히 계의 [뮤직 스테이션]이었다. 지금 봐도 상당히 긴장 하고 있는 모습이 역력했던 사카이는, 청순하면서도 앳띤 미소를 짓고 있었다.</p>
+
+                    <img src="include/img/chapter3/1-2.jpg" class="align-right slide-in slide-img">
+
+                         <p>「첫 [뮤직 스테이션]출연은 저희들 스탭에게도 긴장되는 일이었습니다. 역시 첫 텔레비전 라이브이라는 점 때문에 전체적인 인상 뿐만 아니라, 정말로 세세한 부분까지 생각했어요. 예를 들면 사카이의 머리에 빗질을 너무 많이 하지는 않는지, 흰 셔츠는 소재나 형태뿐만이 아니라, 다림질을 엄청 많이 해서 [어떻게 봐도 이건 무대의상이다]싶게 부각시키거나 등등, 사카이와 계속해서 의견을 교환하면서 준비하는데 그걸 방송 직전까지 계속했었습니다. 무대 뒤에서는 매우 긴박감이 감돌고 있었습니다.」
+                        [와타베 료 / 레코딩 디렉터]</p>
+                    <img src="include/img/chapter3/1-3.jpg" class="align-left slide-in slide-img">
+
+                          <p>또, 5번째 싱글 [IN MY ARMS TONIGHT]로 같은 방송에 출연했을 때, 스탭이 몹시 당황했던 에피소드가 남아 있다.
+                          방송 전에, 의상을 입고 하는 리허설에서 사카이를 보고 있던 스탭들 사이에서 [역시 셔츠를 입는 게 더 어울리는 것 같아]라는 이야기가 나왔다. 그 때가 딱 방송까지 45분 남은 상황. 그렇다고 더 어울리는 걸 놔두고 방송에 출연할 수도 없기에, 스탭들은 팀을 나누어 록폰기 부근에 있는 옷가게를 이리저리 돌아다녔다. 그때는 지금같이 록폰기 힐즈가 있던 때도 아니어서 가게들이 한 곳에 집중되어 있지 않았던 시절이었기에, 어떻게든 방송시간에는 맞췄지만, 스탭들 모두가 폭포와 같이 땀을 흘리며 텔레비전 방송국에 돌아왔다고 한다. 최종적으로 프로그램에서 입은 의상은 로아 빌딩의 뒤에 있던 [ARMANI]에서 구입한 신사용 셔츠. 당연한 말이지만 사카이에게 꽤 사이즈가 컸기 때문에, 안보이게 뒤를 핀 같은 것으로 채우고 프로그램에 들어갔다.</p>
+                 <img src="include/img/chapter3/1-4.jpg" class="align-right slide-in slide-img"> 
+                          <p>이 에피소드에서 볼 수 있듯이, 스탭들은 매번 ZARD라는 아티스트를 어떻게 방송에 내보낼까 하는 일에 굉장히 신경을 쓰고 공을 들여왔지만, 결국 사카이가 방송에서 극도로 긴장해서 보인 딱딱함이나 어색함을 보고, ZARD의 음악을 전달하는 장소는 텔레비전 같은 미디어가 아니라고 판단해, 그 후[負けないで]로 같은 프로그램에 출연한 이후로 ZARD가 음악 방송에서 노래를 발표하지 않았다. 확실히 지금 영상을 다시 봐도 분명히 ZARD지만 또 ZARD가 아닌 듯한 모습의 사카이가 필사적으로 노래하고 있는 모습이 인상적인 영상. 미디어에 나오지 않는다는 판단은 매출에도 영향을 주겠지만, 또 반대로 용기가 있는 일이라고 생각했고, 아티스트의 특징을 생각해서 내린 이 판단은 결국 정확한 판단이 되었다.</p>
+
+                  
+                  
+                  </div>
+            </div>
+            <div class="slides3 third2" style="display: none;">
+            <div class="site-wrap">
+                    <h1>-3장 [프로모션]-</h1><br><br>
+                    <h3 class="">2. 아이돌이 던진 한마디 </h3><br><br>
+                    <p>1992~1993년 사이 몇몇 개의 텔레비전이나 라디오에 출연했던 ZARD. 그 때 ZARD가 얼마나 다른 아티스트들과 차이가 있었는지를 보여주는 에피소드가 있다.</p>
+
+                    <img src="include/img/chapter3/2-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>음악 프로그램에 출연하기 위해 스탭과 함께 방송국의 분장실에 들어간 사카이. 물론 그 때는 사복이었지만 분장실에서 무대 의상으로 갈아입고 리허설로 향하는 중에, 여자 아이돌 가수와 마주쳤다. 그녀는 인사를 하며 ZARD를 동경한다며 기쁜 듯이 말했지만, 동시에 웃는 얼굴로 이렇게 물었다. [리허설인데 사카이씨는 무대 의상으로 갈아입지 않았나요?]라고.</p>
+
+                    <p>물론 사카이는 이미 무대 의상으로 갈아입고 있었다. 하지만, 의상도 그렇고 너무나 평범한 모습이었기 때문에 휘황찬란한 의상으로 갈아입고 있던 아이돌 가수는 [무대 의상은 왜 안입는거지?]라고 이상하게 생각했을 것이다.</p>
+
+                    <img src="include/img/chapter3/2-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>같은 현장에 있던 사람들마저 사복이라고 생각했었으니, 어찌보면 사카이와 스탭의 노력은 성공 했다고 할 수 있을지도 모르겠다. 왜냐하면 ZARD라는 아티스트는 자연스러운 모습이 최고의 매력이라고 생각했기에, 그것을 많은 사람들에게 보여 주기 위해서는 평소에 입는 옷차림이 가장 좋다고 생각해서 선택했었으니까.</p>
+
+                    <p>그러나, 그런 ZARD가 음악 프로그램 안에서는 꽤나 튀는 모습이었다. 지금은 말이 없는 과묵한 뮤지션도 그런 면을 오히려 개성으로 어필할 수 있는 시대지만, 그 당시에는 달랐다. 때문에 카메라 앞에서는 딱딱하게 굳어버리는 사카이에게 TV 출연은 굉장히 어려운 일이었다. 그렇지만, 방송을 통해 보다 많은 사람들이 ZARD의 곡을 알게 된 계기가 되었던 것도 사실이다. 그리하여 결국, 1993년 2월 5일 [뮤직 스테이션]에서의 마지막 TV 방송 출연은 지금은 전설의 영상이 되어버렸다.</p>
+              </div>
+            </div>
+            <div class="slides3 third3" style="display: none;">
+              <div class="site-wrap">
+                    <h1>-3장 [프로모션]-</h1><br><br>
+                    <h3 class="">3. 나가시마 시게오를 맞이하다 </h3><br><br>
+                    <p>1993년 6월, ZARD는 ZYYG, REV, ZARD & WANDS featuring 나가시마 시게오 이렇게 함께 [果てしない夢を]라는 곡을 발표했다. 뜻밖의 조합으로 이 합작 싱글은 많은 화제가 되었지만, 나가시마 시게오씨가 참여 하기까지는 스탭들과 사카이의 많은 노력이 있었다고 한다. 그 결과 많은 사람들에게 좋은 추억을 만들어준 이 작품이 만들어지고, 지금들어보면 더욱 인상적인 노래가 되었다. 덧붙이자면, 나가시마씨는 [ZARD]라는 이름을 자신의 수비 위치 [서드(3루수)]로 잘못 알아 듣고 기뻐했다고도 했었다고 한다.</p>
+
+                    <img src="include/img/chapter3/3-1.jpeg" class="align-left slide-in slide-img">
+
+                    <p>「[果てしない夢を]의 레코딩때를 기억해보면, 나가시마 시게오씨가 잘 다니던 아카사카의 초밥집에 사카이와 나가토가 직접 갔었고, 우리들 스탭은 근처에 있던 레코딩 스튜디오[MOD STUDIO BEING]에서 언제 도착하더라도 바로 녹음을 할 수 있도록 모든 준비한 채로 대기하고 있었습니다. 비디오 촬영팀, 카메라 맨 등 총 20명 정도가 대기 하고 있었습니다. 잠시 후 [지금 바로 들어갈테니 다들 들키지 않게 숨어있어!]하고 연락이 왔습니다. 잠시 후 3명이 도착한 기척이 느껴졌습니다만, 숨어있던 중이라 어디까지나 [기척]만 느껴졌습니다 (웃음). 그렇게 10분 정도 지나고 말하기를 [촬영 허가를 받았으니, 가능하면 빨리 준비!]라고 했습니다. 네, 정말 아무런 허가도 받지 않고 있었던거예요 (웃음). 그 후, 사카이가 나가시마 감독에게 가창 지도를 시작했습니다. 나중에 들은 이야기로는, 초밥집에서 사카이는 감독의 옆에 앉아서 술을 따라 드리기도 했었다고 합니다. 역시나 감독님도 기분이 좋아지셔서, 노래하러 오신 게 아닐까 (웃음).」
+                    [와타베 료 / 레코딩 디렉터]</p>
+
+                    <p>사카이는 원래 자이언츠(요미우리)팬으로, 그 후 팬클럽[WEZARD]의 회보에서도 거인군*이나 나가시마 시게오에 대한 일을 가끔씩 언급하곤 했었다.</p>
+              </div>
+            </div>
+            <div class="slides3 third4" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-3장 [프로모션]-</h1><br><br>
+                    <h3 class="">4. 프로모션의 대대적인 전개 </h3><br><br>
+                    <p>도쿄의 JR 야마노테선을 타고 가다 보면 보이는 타워 레코드 시부야점의 벽면 대간판. 지금은 완전히 시부야의 한 상징으로 친숙해진, 그 간판을 맨 처음 장식한 아티스트는 ZARD였다. 수입 CD판매가 중심이었던 타워 레코드가 일본 아티스트를 다루는 국내 최대 급의 대형 음반가게를 시부야에 오픈했던 1995년 3월. ZARD의 6번째 앨범[forever you]가 발매되어 그 앨범 수록곡 중에서 타워 레코드의 TV 광고용 타이업 송으로[I'm in love]가 선택되어 나오고 있었다. 또, 가게의 오픈 일에는 스페셜 산플라티나로 만든 상품이나 공동으로 만든 광고 신문을 배포하는 등, 다양한 이벤트를 실시했다.</p><br>
+
+                    <img src="include/img/chapter3/4-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>또, "ZARD YEAR"라고 제목을 붙인 1999년에는 팬들을 기쁘게 했었던 도전적인 프로모션 기획이 차차 전개되었다.
+                    먼저, 2월에 발매된 앨범[영원]에는 초회판에 응모 특전으로 사카이가 리메이크한 [CAN'T TAKE MY EYES OFF OF YOU]의 아날로그반을 수록했다. 이때 총 응모자 수는 5만 4490명에 달했다.</p><br>
+
+                    <p>[ZARD BEST The Single Collection 궤적]을 발매했을 때에는 붉은 랩핑 버스가 도내와 치바, 카나가와를 돌아다녔다. 이때의 추첨 응모 특전은 바로, ZARD의 첫 라이브 [ZARD 1999 Cruising & Live]에 600명을 초대한다는 것이었다. 덕분에 총 응모 수가 100만통에 이를 정도로 폭발적인 반응이 일었다. 또, 발매일의 CD숍 매장에서는,"負けない DAY"라는 이름을 붙인 추첨회를 개최. 이때 토키와 교우가 디자인 한 T셔츠를 스탭이 입고 있었는데, YEAR와 EAR를 합친 "귀"가 디자인 되어 있었다. 그 디자인은 YEAR와 EAR라며 사카이가 무심코 했던 개그가 계기가 됐다는 뒷 이야기가 있다.</p><br>
+
+                    <img src="include/img/chapter3/4-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>팬으로부터 120만통에 이르는 투표 랭킹으로 구성된 베스트 앨범 [ZARD BEST ~ Request Memorial ~ ]이 발매될 무렵에는 앨범 광고를 높이 게시한 초록색 2층 런던 버스가 돌아다녔다. 또, 이것을 본뜬 [ZARD 오르골 버스]가 추첨으로 증정되었는데 무려, 5000명이 엽서로 응모했다. 이 버스는 도쿄도 공인의 전통 공예 장인이 직접 만든 멋진 작품이었다.</p><br>
+                    <img src="include/img/chapter3/4-3.jpg" class="align-left slide-in slide-img">
+                    <p>그리고, ZARD가 15주년을 맞이한 2006년에는 베스트 앨범 [ZARD Golden Best ~ 15th Anniversary ~]를 발매했다. 이 앨범을 발매할 때 세계 최초로 앨범의 전 수록곡을 미리 들어볼 수 있다는 광고가 신문에 게재 되어, 사단법인 일본 POP 광고 협회가 실시하고 있는 [제5회 JPP 프로모션 플래닝 어워드]에서 [금상]을 수상했다.</p><br>
+
+                    <p>이 광고는 미리 모든 곡을 듣게 되면 CD를 사고 싶다는 생각이 들게 만드는 ZARD의 매력과 곡의 퀄리티에 자신을 가졌던 ZARD 팀이 아니었다면 나오기 어려웠던 기획이 아닐까 하는 생각이 든다.</p><br>
+              </div>
+            </div>
+            <div class="slides3 third5" style="display: none;">
+               <div class="site-wrap">
+                    <h1>-3장 [프로모션]-</h1><br>
+                    <h3 class="">5. 한밤 중에 보내 오는 코멘트</h3><br>
+                    <p>ZARD는 텔레비전이나 라디오등 미디어에는 거의 출연하지 않았지만, 잡지나 서면을 통한 인터뷰에는 많이 등장 했었다.</p>
+                    <p>방송 출연이 거의 없었기에 새로운 작품을 음악지, 텔레비전 잡지, 정보지를 통해 홍보하려는 것이 큰 이유 였다. 때문에 그러한 인터뷰가 실린 잡지가 발매 되는 때는 대부분 작품의 발매 전후가 될 수밖에 없었다. 그래서 사카이가 인터뷰를 의뢰받는 시기는 대부분 작품 제작 마무리단계일 때가 많아서, 그 때가 되면 인터뷰 마감이 집중되어 눈코뜰새 없이 바빴다고 한다.</p>
+
+                    <img src="include/img/chapter3/5-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>마감이 집중된 시기의 질문은 대부분 비슷한 질문이 반복된다. 그러기에 답변도 비슷하게 될 수 밖에 없지만, 사카이는 그런 질문에도 각각의 잡지 마다 다른 답변을 하는 배려를 보였다. 그리고 사카이의 코멘트를 확인한 스탭에게 연락을 받고 다시, 또 글을 수정하는 일을 반복하곤 했다. 꽤나 힘든 스케줄이지만, 자신이 심혈을 기울여 만든 작품에 대해서, 한마디의 말로 이루어지는 프로모션 활동이었기에 스스로도 적극적으로 모습이 될 수 있었던 것 같다. 특히 코멘트나 FAX를 통한 인터뷰는, 자기 자신이 신경쓰는 부분을 문자를 통해 전할 수 있었기 때문에 조금은 편하게 응했던 것 같다.</p>
+
+                    <p>사카이의 답변은 언제나 자필로 세심하게 작성되어 들어왔다. 마감에 빠듯하게 보낸 적도 있었지만, 아무리 바빠도 답변을 아예 하지 않거나 한 적은 없었다. 다만 저녁형인 사카이였던 만큼, 마감일의 한밤 중부터 아침에 걸쳐 답신이 오곤 했지만, 음반 작업을 마지막으로 재검토하는 아주 바쁜 시기에도, 작품에 대한 자신의 생각을 자신의 말로 확실하게 써서 전달해주었다.</p>
+
+                    <img src="include/img/chapter3/5-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>사카이가 항상 즐거워했던 것은 근황을 쓰는 칸이었다고 한다. 가면극 감상, 유화, 플라워 아트같은 최근의 취미에 대한 이야기나, 휴가가 생기면 하고 싶은 일, 좋아하는 가게, 애견에 관한 이야기 등을 썼었고, 그러면서 자신의 솔직한 모습을 보이는 걸 사카이 자신이 좋아했을지도 모르겠다.</p>
+                    <img src="include/img/chapter3/5-3.jpg" class="align-left slide-in slide-img">
+                    <p>「FAX의 수신인에 작은[♡]가 써져 있거나, 기다리고 있는 저희들에게 [어제, 한밤중까지 괜찮으셨나요?]와 같이 저희들을 걱정하는 코멘트가 써져 있기도 했습니다. 2004년 라이브 콘서트를 했던 무렵에는 [11일, 후쿠오카에서도 있는 힘껏 노력하겠습니다♡]라고 쓴 적도 있었어요. 한밤 중에 사카이씨의 답변이 오는 것을 기다리고 있었고 또 그것을 읽는 일이 즐거워서, 저도 모르게 힘이 나곤 했습니다.」[아쿠자와 에미 / A&R]</p>
+                    <p>프로모션이라면 ZARD와는 크게 관련이 없다고 생각되지만 실은 작은 범위 내에서, 사카이는 굉장히 노력하고 있었다. 항상 심혈을 기울여 작품을 계속 만들었던 그녀였지만, 조금이라도 ‘이 마음이 전해졌으면’ 하는 그녀의 노력은 이러한 작은 부분에서도 나타나고 있었다.</p>
+              </div>
+            </div>
+            <div class="slides3 third6" style="display: none;">
+                  <div class="site-wrap">
+                    <h1>-3장 [프로모션]-</h1><br><br>
+                    <h3 class="">6. 좋은 작품을 만들기 위한 고집이 낳은 많은 해프닝 </h3><br><br>
+                    <p>ZARD라는 아티스트의 제작 현장은 음원, 자켓 사진, 뮤직 비디오 등등 세세한 것 하나도 철저하게 한다는 고집을 끝까지 관철해왔다. 그런 만큼 작품이 팬들의 손에 들어가기까지 많은 해프닝이 일어났다.</p>
+                    <p>먼저, 16번째 싱글 [サヨナラは今もこの胸に居ます]는 CD 제품 완성 후인데도, 자켓 뒷편의 사진을 보다 ZARD의 이미지에 맞추어 바꾸자라는 제안이 있어서, 초회 출하된 50만장 모두를 재인쇄해서 교체했다. 그러는 과정에서 발매는 1995년 8월 21일에서 8월 28일로 연기되었다.</p>
+
+                    <img src="include/img/chapter3/6-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>18번째 싱글 [心を開いて]는 타이틀 부분이 반투명의 씰로 만들어졌는데, 그 부분에 기포가 들어가는 문제가 발생했다. 제작진은 음악 뿐만이 아니라, 자켓 사진과 패키지 등 모든 것을 포함한 1장의 CD가 바로 ZARD의 작품 그 자체라고 생각했었기 때문에, ZARD 스탭들은 발매 후에 CD점에 직접 찾아가 봉투와 씰 교체 작업을 했었는데, 그렇게 해 간 작업량이 무려 한번에 만장 단위였다고 한다.</p>
+                     <p>그리고 2004년 1월에 발매 된 10번째 앨범 [止まっていた時計が今動き出した] 자켓 표지에 있는 사카이의 사진에서 느껴지는 피부의 질감을 잘 나타내기 위해서 특수한 패키지 재질이 선택되었다. 덕분에 비용 면에서 보통보다 3배 정도가 더 들었다고 하지만, 확실히 사카이사진의 피부 질감은 무심코 만지고 싶어질 정도로 잘 나타나있다.</p>
+
+                    <img src="include/img/chapter3/6-2.jpg" class="align-right slide-in slide-img">
+                    <p>그 외에도 CD가게에 발매일을 이미 예고 했었지만, 아무리 작업을 거듭해도 납득할 만한 음악 작품이 완성되질 않아서, 발매일을 1998년 9월 9일에서 9월 17일로 연기했던 작품이 25번째 싱글 [運命のル-レット廻して]이었다. 이 작품의 제1판의 자켓을 자세히 보면 발매일이 당초 내기로 했던 날로 되어 있다.</p>
+                    <p>또, 작품 타이틀을 미리 발표했었지만, 제작이 진행되어가면서 곡의 이미지에 따라 타이틀이 몇번이나 바뀌었던 [もっと近くで君の橫顔見ていたい]. 먼저 발표했던 타이틀은 [月を浮かべて(달을 띄우고)]였다고 한다. 이외에도 여러분들이 몰랐던, 사카이를 중심으로 한 ZARD 팀의 작품에 대한 타협하지 않는 자세로 인해 벌어진 에피소드들이 많이 있다. 결국 많은 팬들에게 도착한 CD에는, 사카이와 ZARD에 참여 하고 있는 스탭들의 보다 좋은 것을 보내드리고 싶다는 마음이 담겨 있었던 것이다.</p>
+                </div>
+            </div>
+            
+           <!-- 
+             </div> -->
+           
+            <button class="btn" onclick="plusIndex3(-1)" id="btn1">◀</button>    
+            <button class="btn" onclick="plusIndex3(1)" id="btn2">▶</button>           
+          </div>
+
+
+          <div id="slider" class="slider4">
+            <div class="slides4 four1" style="display: block;">
+                <div class="site-wrap">
+                    <h1>-4장 [촬영]-</h1><br><br>
+                    <h3 class="">1. 자연스러운 모습을 찍기 위해 사용한 여러가지 방법</h3><br><br>
+                    <p>노랫소리는 물론이고 ZARD의 자켓 사진이나 프로모션 비디오를 보고 사카이 이즈미에 매료된 사람들도 많지 않았을까? 그런데 그 사진이나 영상의 대부분은 고개를 숙인채, 미소짓고 있는 얼굴이나 시선을 어딘가 먼 곳을 향하고 있는 옆 얼굴로, 포즈를 잡고 찍은 것은 거의 없었다.</p>
+
+                    <img src="include/img/chapter4/1-1.jpg" class="align-left slide-in slide-img">
+                          <p>거기에는 역시 이유가 있었다. 사카이가 일단 카메라를 쳐다보면 긴장해서 표정이 딱딱하게 굳어 버리기 때문이다. 또 사진촬영에 익숙하지도 않았고, 좋은 표정이나 포즈를 잡는 건 더더욱 불가능 했다. 오히려 반대로 자연스럽게 활동하고 있을 때의 사소한 표정들이 사람들을 이끄는 힘이 있었다.</p>
+
+                        <p>그런 그녀 자신만의 개성을 알게 됐을 무렵부터, 그녀의 보다 좋은 모습을 끌어내기 위해, 촬영은 다양한 연구를 거듭해 이루어졌다. ZARD가 TV같은 정식 무대에 나오지 않게 된 이유가 주로 음악제작에 시간을 더 투자했기 때문도 있지만, 이렇게 카메라만 보면 긴장하는 그녀의 성격 때문에 그녀가 가진 매력을 제대로 뽐낼 수 없었던 것도 큰 이유였다고 한다.</p>
+                        <img src="include/img/chapter4/1-2.jpg" class="align-right slide-in slide-img">
+
+                          <p>「일단은 촬영이라는 상황을 만들지 않고, 그녀가 자연스러운 모습으로 있는 상황에서 촬영하도록 철저히 해왔습니다. 처음에는, 실제로 레코딩하는 모습을 촬영하기도 했었지만, 그것도 몇 번 계속해보니 다 비슷하게 나오더군요. (웃음) 그녀에게 평범하게 거리를 걸으라 하고, 카메라가 어디에 있는지 모르게 멀리서 촬영하거나, 가짜카메라를 그녀의 정면에 두고 [컷!] 하고 말해 놓고, 그때부터 다른 카메라로 찍어 보거나 하는 등, 정말 여러 가지 방법으로 촬영해왔어요. 지금 생각해 봐도, 역시 그녀가 카메라를 의식하지 않고 자연스럽게 움직이는 모습을 찍은 영상이 가장 매력적인 비주얼로 남아 있다고 생각합니다.」
+                          [타카노 아키히코 / 영상 프로덕션 매니져]</p>
+                          <img src="include/img/chapter4/1-3.jpg" class="align-left slide-in slide-img"> 
+                          <p>그 밖에도 그녀의 매력을 끌어내기 위해, 스탭들은 일반적인 촬영과는 다른 아이디어를 짜내곤 했다. 콘서트와 유사한 상황을 만들어 내거나, 프로카메라맨에게 맡기지 않고 스탭이 함께 잡담을 하면서 촬영을 하거나, 일정시간마다 자동으로 찍히는 카메라를 설치하려고 이곳저곳에 알아본 적도 있었다.</p>
+                          <p>「말을 걸어 이야기 하고 있을 때의 표정도 또 평소하고는 미묘하게 다릅니다. 대화를 하고 있으면 거기에만 의식을 하고 있잖습니까? 그것보다 뭔가에 집중하고 있을 때라든지, 갑자기 힘이 빠져버렸을 때라든지, 그런 조금 애매한 때가 좋았습니다. 그리고 얼굴이 잘 나오는 각도나 방향이 있었습니다. 오른쪽과 왼쪽 얼굴이 조금 차이가 나는 편이라, 처음에는 왼쪽 얼굴이 좋아서 그쪽 면만 찍다보니, 자켓 사진이 전부 같은 곳을 향하고 있었어요 (웃음). 그래서 실은 [搖れる想い]의 앨범 자켓은 마지막에 좌우로 반전을 시켰습니다. 잘 보면 폴로셔츠의 단추가 왼쪽 앞에 있습니다 (웃음).」[스즈키 켄이치]</p>
+                          <p>90년대, ZARD는 작품을 굉장히 하이 페이스로 발표했던 때였고, 당연히 그 때마다 새로운자켓 사진과 프로모션 비디오가 필요했다. 그러나, 음반발매가 정해지면, 음원제작을 위한 스튜디오 워크도 필요한 법. 당시 촬영 목표는 2주에 1번이었지만, 사카이가 가질 부담도 생각해서 작업 중인 스튜디오에서 서둘러 찍는 날도 가끔 있었다. ZARD 사진에 레코딩 스튜디오에서의 사진이 많은 것은, 그 때문일 것이다. 그러나 그만큼이나 촬영을 자주 했었음에도 불구하고 카메라가 그녀를 향하는 순간, 그리고 그녀가 그것을 의식하는 순간, 바로 그녀가 굳어 버리는 상황은 변화가 없었다.</p>
+                          <img src="include/img/chapter4/1-4.jpg" class="align-right slide-in slide-img"> 
+                          <p>「스틸 사진의 전환기는 앨범 [HOLD ME] 무렵부터입니다. 싱글 [眠れない夜を抱いて]에도 사용했던 그 사진을 촬영 했을 때 뭔가, 굉장히 들여다보는 듯한 느낌이 있었습니다. 사카이씨를 이런 분위기로 찍으면 굉장히 좋은 느낌이 나온 다는 것을 그 자리에서 알게 되었다고나 할까요. 그 촬영은 사가미코에 있는 멕시칸 분위기가 나는 하우스 스튜디오에서 이루어졌는데요. 그 때도 촬영목표는 카메라를 향한 시선이 아닌, 본인의 자연스러운 표정을 담아 내는 것이었습니다. 처음으로 사카이씨를 자연광으로 찍은 사진이었습니다. 실은 그 후에도 여러 가지 포즈와 시선을 어떻게 할지 정해 놓고 촬영을 몇 번 더 했었지만, 역시나 바로 사카이씨가 굳어버리더군요. 굉장히 섬세한 사람이기 때문에 카메라를 향해서 [자, 포즈를 취해 주세요.]라고 하면, 너무 지나치게 의식해서 표정도 딱딱해지고, 분위기가 완전히 바뀌어 버립니다. 그래서, 역시 카메라를 의식하면 안된다고. 그것은 처음부터 끝까지 계속 변하지 않았지요. 그녀는 그런 사람입니다.」[스즈키 켄이치]</p>
+                  </div>
+            </div>
+            <div class="slides4 four2" style="display: none;">
+            <div class="site-wrap">
+                    <h1>-4장 [촬영]-</h1><br><br>
+                    <h3 class="">2. 데뷔 초기, 3작품의 PV감독은 이와이 슌지 </h3><br><br>
+                    <p>ZARD의 뮤직 비디오는 다른 일반적인 뮤직 비디오들과는 조금 다르다. 사카이를 멀리서 찍은 것, 풍경, 사진, 레코딩 작업모습 등 곡의 이미지를 떠올릴만한 컨셉을 중심으로 만들어진 영상이라고 하기 보다는 카메라에 약한 그녀가 가진 자연스러운 모습의 매력을 얼마나 영상을 통해 전할 수 있는가 하는 부분에 포인트가 있다고 느껴지는 것들이 많았다. 곡의 프로모션을 위한 비디오라기보다, 아티스트의 이미지 영상이라는 인상이 강하다.</p>
+
+                    <img src="include/img/chapter4/2-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>그러나 데뷔 초기, 아직 ZARD에 대한 이미지도 딱히 정해져 있지 않고, 영상을 통한 어필 방법도 모색 중이었던 시절에는, 다른 아티스트 들과 같이 곡을 통한 기획의 일환으로 일반적인 모습의 뮤직 비디오가 제작되었다.</p>
+
+                    <p>「데뷔 초기의 [Good-bye My Loneliness], [不思議ね...], [もう探さない]이 3편의 디렉터는 지금은 유명하지만, 당시에는 신인 영상 감독이었던 이와이 슌지씨였습니다. [Good-bye My Loneliness]는 ZARD도 신인이었기 때문에 아침 8시에 집합했었어요. 촬영 자체가 힘든 촬영이었고 거기다 날씨도 대단히 추웠던 날로 기억하고 있습니다. 당시 사카이씨는 많이 긴장 하고 있었지만, 이와이 감독의 작품이나 영상을 좋아했어요. [不思議ね...]와 [もう探さない]는 감독 스스로가 카메라를 돌려, 마치 개인적인 영상을 찍는 듯한 방법으로 촬영해서, 그녀도 자연스러운 모습으로 촬영 할 수 있었다고 생각합니다. 그러고 보면 [Good-bye My Loneliness]의 촬영 때는 비가 내려서 사카이씨가 완전히 비에 젖어 버렸는데... 사카이씨가 입고 있던 코트가 실은 프로듀서인 나가토씨 것을 빌린 것이라 나가토씨는 그때 많이 초조해 했었습니다 (웃음).」
+                    [타카노 아키히코 / 영상 프로덕션 매니저]</p>
+
+                    <img src="include/img/chapter4/2-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>영상에는 공장터 같은 장소에서 사과를 손에 쥐고 필사적으로 노래하는 모습의 사카이가 보인다. 카메라를 조금씩 신경쓰며 연기하는 듯이 노래하고 있는 모습은 확실히 초기 이후의 ZARD의 영상에서는 볼 수 없는 귀중한 장면이 아닐까 싶다.</p>
+
+                    <p>「그녀가 가진 비주얼의 매력은 그 자체의 아름다움도 있지만, 순간 순간의 표정이나 무의식적인 행동, 눈빛에서 보이는 슬픔이나 어두움도 크다고 생각합니다. 그것이 자연스럽게 나타날수록, 여성으로서 내면적인 매력이 되고, 그것이 많은 사람들을 끌어당긴다고 생각합니다. 처음 이러한 생각을 가졌던 사람이 프로듀서 나가토씨였지만, 후에 결과적으로 이 3편 이후에는 이른바 프로모션 비디오라는 식으로 만들어진 영상은 그 이후에는 없었습니다. 물론 2000년대에는 있었지만, 컨셉에 맞추어 그녀를 촬영한다고 해도, 그녀의 매력을 완전히 표현해 낼 수 없었기 때문에.」[타카노 아키히코 / 영상 프로덕션 매니저]</p>
+                  
+              </div>
+            </div>
+            <div class="slides4 four3" style="display: none;">
+              <div class="site-wrap">
+                    <h1>-4장 [촬영]-</h1><br><br>
+                    <h3 class="">3. 원본 채로 폐기했던 최초의 사진 </h3><br><br>
+                    <p>ZARD로서 첫 사진 촬영. 그때는 데뷔가 정해진 직후로 사카이 자신도, 스탭들도 그녀의 특징을 잘 모르고 있던 시기에 이루어졌다. 즉 오로지 이름만이 정해져 있던 시기에 이루어졌던 최초의 사진 촬영이었고, 그 결과물인 사진은 현재는 없고 말로만 전해지는 에피소드만이 남아 있다.</p>
+
+                    <img src="include/img/chapter4/3-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>「처음 만났을 때, 갑자기 프로듀서 나가토씨가 [ZARD라는 밴드로 나갈 거라서, Blondie(미국의 록밴드)같은 밴드 같은 느낌으로 해서 지금 당장 촬영해 줘.]라고 했었습니다. Blondie를 생각해 보면, 캐미솔 드레스에 가터벨트, 검은 스타킹, 힐, 선글라스 같은 느낌으로, 그것들을 스튜디오에 준비해서 촬영을 했습니다. 사카이씨는 머리를 올리고 메이크 업도 꽤 진하게 하고, 나름 마음을 단단히 먹고 나선 촬영이었습니다만, 그 사진은 원본 채로 폐기되었습니다.... 어울리지도 않고, ZARD와 방향성도 다르다고 해서 말이죠.」[스즈키 켄이치]</p>
+
+                    <img src="include/img/chapter4/3-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>스탭들이 가지고 있던 락 밴드의 보컬 이미지. 사카이도 첫 촬영인지라 상당히 긴장했었던 것도 있었고, ZARD라는 팀의 비주얼 컨셉이 확실히 정해지지도 않았고, 그녀가 촬영에 굉장히 서툴렀다는 사실도 몰랐기 때문에, 모든 것이 마이너스인 결과를 낳아 버렸던 것이다.</p>
+
+                    <p>「결국, 첫 번째 싱글과 첫 번째 앨범의 자켓 사진은, 당시 레코딩 스튜디오에 있던 스탭 중에 카메라가 취미인 사람이 있어서, 그 사람이 찍어 준 사진이 되었습니다. 저도 거기에 있었는데요. 사카이가 입고 있던 사복이 왠지 모르게 스튜디오의 분위기와는 어울리지 않아서, 제가 입고 있던 가죽 셔츠를 빌려 입고, 테이블 위를 정리도 안 하고 그대로 찍었던 사진을 냈어요.」
+                    [스즈키 켄이치]</p>
+              </div>
+            </div>
+            <div class="slides4 four4" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-4장 [촬영]-</h1><br><br>
+                    <h3 class="">4. 해외촬영에서의 대담한 행동 </h3><br><br>
+                    <p>ZARD의 촬영은 얼마나 자연스러운 모습의 사카이를 찍을 수 있는지가 핵심이었다. 그러나 아무리 촬영을 많이 해봐도 사카이의 어색함은 고쳐지지 않았다. 그래서 스탭들이 다양한 촬영 아이디어를 내고 실행해봤는데, 그 중 하나가 바로 해외촬영이었다.  </p><br>
+
+                    <img src="include/img/chapter4/4-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>1995년, 첫 해외촬영으로 사카이가 가고 싶어했던 니스와 런던을 방문했다. 그 후, 뉴욕, 로스앤젤레스, 시드니, 밀라노, 그밖의 장소 등 다양한 장소에서 해외촬영을 했다.</p><br>
+
+                    <p>「당시 저는 아직 조수였어요. 운좋게 니스와 런던의 해외 촬영에 동행하게 되었지만, 제가 했던 일은, 정해진 촬영 이외의 오프 shot을 찍는 역할이었습니다. 카메라맨이 찍게 되면 사카이씨가 그걸 의식해서 바로 굳어 버리기 때문에, 조수인 저에게 카메라를 가져다주는 척 하면서 자연스럽게 걸어 다니는 모습을 많이 찍어 두라고 하셨어요. 그래서 사카이씨의 옆에 있는 일이 많았습니다. 계속된 촬영에 지칠 법도 했는데 찡그리거나 싫은 듯한 표정도 전혀 없었어요. 오히려 호기심이 많아서 촬영 장비나, 기술 용어, 우리들이 이야기하는 것에 흥미를 가지고 여러 가지 질문을 했었습니다.」[모리하라 유지 / 영상 카메라맨]</p><br>
+
+                    <p>결과적으로, 사카이 자신이 평소보다 즐겁게, 적극적으로 참여해서, 스탭들을 기쁘게 했던 것이 바로 해외에서의 촬영이었다. 신선한 장소나 새로운 사람들과의 만남 중에 평소 이상으로 내추럴한 표정을 내비치는 사카이. 그런 만큼 조금이라도 좋은 표정을 담아내기 위해 열정적으로 움직이는 스탭들에게 이끌려 다닌 사카이였지만, 또 그 기대에 응하기 위해 정말 열심히 했다고 한다.</p><br>
+                    <img src="include/img/chapter4/4-2.png" class="align-right slide-in slide-img">
+                    <p>또, 해외촬영에서는 일반적인 촬영과는 달리 스탭과 사카이가 함께 있는 시간도 자연히 길어진다. 그래서 스탭들은 그녀의 본모습은 물론이고, 뜻밖의 면을 많이 발견했다고 한다.</p><br>
+
+                    <p>「유럽 촬영때, 저녁식사 시간이라 모두들 저녁밥을 먹고 있었습니다. 그때 사카이씨가 모두에게 굉장히 신경을 써 주시면서, 여러 가지 부탁을 들어주었습니다. 또 음식을 가져와 나눠 주며 우리들에게 [잘 먹어요]라고 말해주었습니다. 그런데 왠지 모두들 그 음식을 사양했어요 (웃음). 그때 현장에서는 제가 제일 어렸기 때문에, [먹을 수 있지?] 하면서 왠지 막내가 먹어야 하는 분위기가 되었어요. 그때부터 매일 저녁식사 때마다, 사카이씨가 가지고 와서 다 나누어 주고난 뒤의 나머지를 제가 먹곤 했었지요 (웃음). 그리고 런던에서 현지 카메라맨이 자신이 눕고 그 위에서 사카이씨가 점프 해서 찍자는 이야기를 했습니다. 그 때 사카이씨가 점프를 하고나서 착지 할 때 다리를 삐끗했습니다. 바닥이 더러운 장소여서 제가 손수건을 꺼내서 [여기에 앉으세요.]하며 바닥에 깔았는데, 다음 장소에 이동하기 위해 일어선 사카이씨가 손수건을 나에게 돌려주려 하다 갑자기, [아!]하며, 자신의 코를 푸~하며 닦아내고 [자!]하며 웃는 얼굴로 건네주었습니다. 이때는 좀 많이 놀랐습니다 (웃음). 당시의 저는, 일을 함께 하기 전부터 굉장히 유명한 분이었기 때문에 많이 긴장했었는데 같이 지내다 보니, 소탈하다고 할까, 장난꾸러기랄까, 저에게 장난을 많이 쳤습니다.」
+                    [모리하라 유지 / 영상 카메라맨]</p><br>
+                    <img src="include/img/chapter4/4-3.jpg" class="align-left slide-in slide-img">
+                    <p>「첫 해외촬영지였던 니스에 도착한 이튿날 아침이었어요. 개인적으로 해안에서 풍경 사진을 찍고 있었어요. 그 때 사카이로부터 연락이 왔어요. [시차 적응이 안 되서 잠도 하나도 안오고, 창문에서 보이는 풍경이 너무 예뻐니까 같이 조깅하지 않을래?] 라는 연락이었습니다. 실은 촬영하러 출국하기 며칠 전에도, 농담 반으로 [평상시에도 건강한 편이 아니니까, 해외에 갔을 때 정도라도, 아침을 건강하게 조깅부터 시작하자고!]라는 이야기를 했었어요. 그래서 몇 분 후에 로비로 가보면, 뭐랄까 사카이는 조깅 복장에 런닝화까지 완전무장이었습니다. 거기서 쭉 멀리 보이는 언덕까지 가자고 했습니다. 당연하게도, 조깅이기 때문에 저는 헉~헉~ 사카이는 저 멀리~(웃음). 일단, 사카이는 중학생 시절에 육상 선수로 활약했었으니까요.」
+                    [와타베 료 / 레코딩 디렉터]</p><br>
+                    <p>해외촬영에서는 처음부터 어떤 곡의 뮤직비디오를 찍을 계획이 있는 것도 아니고 그저, ZARD의 이미지 촬영을 주제로 촬영을 진행한다. 즉 [Don't you see!]의 뮤직비디오 영상도 처음부터 그 곡을 위해서 촬영된 것이 아니었고, 뉴욕의 여기저기에서 촬영하던 중, 타임스퀘어에서 촬영한 것을 나중에 곡에 맞춰 편집했던 것이라고 한다.</p><br>
+                    <p>처음에는 혼잡한 거리에서 촬영을 했지만, 점차 사카이를 포함한 현장 전원의 분위기가 업되기 시작하면서 과감한 촬영이 이어졌다. 결국엔 카메라맨이 [신호등에 매달려 보자]라는 제안까지 하게 되었다. 그러나 장소는 타임스퀘어. 일본에 비유하자면, 긴자 4거리의 신호등에 매달리는 것으로, 역시나 사카이도 조금은 주저 했던 것 같다. 하지만 결국, [부끄러워]라면서도 다음 순간에 바로 신호등에 매달렸다. 조금은 수줍은 듯한 웃는 얼굴. [Don't you see!]의 자켓 사진은 정확히 그 순간을 찍은 것이다.</p><br>
+                    <p>또 한층 더 분위기를 타서, 높이 1미터 정도의 쓰레기통 위에도 올라갔었다니... 사카이는 이미지와는 다른 의외의 과감한 면이 있었다. 그리고 그런 과감성이 사람들의 마음을 사로잡는 사진이나 영상으로 남아 있다.</p><br>
+              </div>
+            </div>
+            <div class="slides4 four5" style="display: none;">
+               <div class="site-wrap">
+                    <h1>-4장 [촬영]-</h1><br>
+                    <h3 class="">5. 왕성한 호기심</h3><br>
+                    <p>해외 촬영 때면 사카이는 빡빡한 일정에도 늘 빈 시간을 활용해 자신의 호기심 충족을 위해 열심히 돌아다니곤 했다. 매사에 그런 활발한 모습은 스탭들이 놀랄 정도였다.</p><br>
+                    <p>뉴욕에서는 [브로드웨이 뮤지컬을 보고 싶다.]고 해서, 식사도 거르면서 [오페라의 유령]을 관람했다. 밀라노에서는 스칼라 극장에 가, 리카르도 무티의 [가면 무도회]를 즐겼다. 사카이의 일상은 늘상 스튜디오에서 레코딩 활동 밖에 없었기에, 비록 격식을 차려야 하는 자리였지만 상당히 즐거워했었다고 한다.</p><br>
+
+                    <img src="include/img/chapter4/5-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>낮에는 미술관을 돌아다니기를 좋아했다. 시드니의 근대미술관에서는 피카소의 그림 앞에서 30분이나 멈춰서서 보고 있던 적도 있었다. 밀라노에서는 브레라 미술관이라는 종교화가 많이 있는 미술관도 들렀다.</p><br>
+
+                    <p>촬영 중간에도 시간이 있으면 늘상 작은 미술관이나 예술적인 느낌의 책방에 뛰어 들어가곤 했다. 그림이나 음악과 같은 예술 분야에 대한 그녀의 흥미는 정말로 대단했었고, 아마도 그것은 그녀의 음악에도 크게 영향을 주었을 것이다.</p><br>
+
+                    <p>또한, 사카이는 그런 활동적인 면을 가지고 있으면서도 주위에 대해 섬세한 배려를 하는 사람이기도 했다. 특히 스케줄도 빡빡한 촬영 때, 그녀 자신이 가장 지쳤을 때에도 주위 사람들을 배려했다고 한다.</p><br>
+                   <img src="include/img/chapter4/5-2.jpg" class="align-right slide-in slide-img">                   
+                    <p>「해외 촬영 때, 여성 현장 담당 스탭은 매일 저녁 늦게까지 다음날의 준비를 해야만 했기 때문에 잠잘 시간도 거의 없어서, 촬영 일정 막바지 쯤엔 언제나 녹초가 되어있었습니다. 그것을 알고 있던 사카이씨는 쉬는 시간을 이용해 몰래 선물을 사서 촬영 마지막 날에 다른 스탭이 모르게 감사의 편지와 함께 건네주곤 했어요. 그렇게 사소한 부분까지 챙기는 사람이었습니다. 또 촬영 현장에서는, 아르바이트로 온 사람까지도 신경을 써서, [저 사람은 어떤 일을 하는 사람이야?]라고 물어보곤 했습니다. 한 번은 왜 그렇게 까지 신경을 쓰는지 이유를 물어보았는데, 우리들의 일이 그 사람들에게 즐거운지가 궁금하다고 하더군요 (웃음).」
+                    [타카노 아키히코 / 영상 프로덕션 매니저]</p><br>
+                    <img src="include/img/chapter4/5-3.jpg" class="align-left slide-in slide-img">                  
+                    <p>「이탈리아에서 돌아올 때 공항에서 모두들 각자 선물을 사고 있었어요. 당연히 점원은 이탈리아어와 영어를 사용했습니다. 거기서 점원이 무엇이 필요한지 질문을 하면 그게 무슨 말인지 몰라 어려워하고 있던 사람들이 있었습니다. 그걸 눈치 챈 사카이씨가 가까이 다가가서 영어로 이야기를 해 주었습니다. 물론 이쪽에도 제대로 통역을 해 주었습니다. 또, 동행한 카메라맨이 남은 필름으로 마지막에 다 같이 기념 촬영을 하자고 해서, 장소를 결정하고 사카이씨가 돌아오기를 기다리고 있었습니다. 잠시 후 돌아온 사카이씨는 [기념 촬영? 내가 찍어 줄게!]라며 나섰어요.... 가운데에 서야 할 주역인데도 당연한 것처럼 자신이 찍는 쪽에 선 사카이씨, 다들 그때 선뜻 나서지 않았었는데 휙~하고 앞으로 나와 주었던 사카이씨의 모습에 놀랐습니다.」
+                    [이토 아유미 / 디자이너]</p><br>
+              </div>
+            </div>
+            <div class="slides4 four6" style="display: none;">
+                  <div class="site-wrap">
+                    <h1>-4장 [촬영]-</h1><br><br>
+                    <h3 class="">6. 스타일리스트가 없는 촬영 현장 </h3><br><br>
+                    <p>보통 연예인 촬영 현장이라고 하면, 대체로 스타일리스트나 헤어 메이크가 붙고, 거기에 또 몇 명의 스탭이 연예인을 둘러싸 촬영을 준비하는 광경을 볼 수 있다. 그러나 ZARD는 인위적으로 컨셉을 만들어 내면 낼수록 사카이 이즈미의 매력이 반감되어 버리기 때문에, [負けないで] 무렵 에는 스타일리스트나 헤어 메이크를 아예 붙이지 않았다. 의상은 평상시 자신의 사복이나, 아니면 자기 나름대로 테마를 가지고 거기에 맞는 것을 스스로 2 ~ 3일에 걸쳐서 찾아 왔다.</p><br>
+                    <p>「해외 촬영이 정해지면 준비하는 과정도 엄청나게 바빴습니다. 사카이씨가 의상도 찾아와야 하고, 거기다 레코딩도 떠나기 직전까지 했기 때문에 사카이씨에게는 정말 큰일이었습니다. 하지만 또 해외 촬영을 하다보면 그쪽 현지의 스탭은 ZARD에 대한 선입관이 없어서 꽤 재미있게 했었으니, 의상 선택도 꽤 즐거운 일이 아니었을까 싶기도 하네요.」[코바야시 사유리 / A&R]</p><br>
+
+                    <img src="include/img/chapter4/6-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>「딱 한 번 뉴욕 촬영 때 모험을 한번 해 보자 해서, 현지의 헤어 메이크 아티스트를 섭외해서 컨셉을 잡고 촬영해 본 적이 있었습니다. 보통 뉴욕의 헤어 메이크 아티스트면 자신이 바로 아티스트라는 마인드를 가지고, 메이크 업을 작품이라고 생각하는 사람들이 대부분 이죠. 사카이를 담당했던 사람도 그런 분이었어요. 하지만 그렇게 해서 완성된 메이크 업은 ZARD의 사카이 이즈미라고 할 수 없는 딱 그 무렵의 뉴욕에서 유행하는 메이크 업이었습니다. 눈의 주위를 새까맣게 바르고, 입술도 새빨갛게 하고, 머리카락도 전부 올린 펑크 스타일 메이크 업이었어요 (웃음). 모델이나 다른 연예인이면 OK였겠지만, ZARD의 사카이 이즈미였기에, 이게 나가면 아마 난리가 나지 않을까 해서 도저해 내보낼 수 없었습니다. 그러나, 그녀도 여기서는 그저 도전이라는 것에 의미를 두었고, 상당히 즐겁게 촬영했어요. 당연히 그 영상은 아직도 햇빛을 못 보고 있습니다만 (웃음).」[타카노 아키히코 / 영상 프로덕션 매니저]</p><br>
+                     <img src="include/img/chapter4/6-2.jpg" class="align-right slide-in slide-img">
+                     <p>피부가 아름답기로 정평이 나 있던 사카이. 피부 관리를 위해 다양한 노력을 하고 있을 것 같다는 팬의 질문으로, 스킨케어에 관한 질문에 [굳이 말한다면, 세안에 신경쓰고 있습니다. 저는 건성피부라 수분 보급이 필수예요!]라고 대답했다. 또 그녀는 메이크 업을 그다지 좋아하지 않았고, 특히 노 메이크 업을 고집했던 것은 피부에 대한 부담을 생각해서였다고 한다. 그래서 언제나 촬영지에서 최대 난관은 햇볕에 대한 대책이었다. 노 메이크 업이 기본인데다 아무리 메이크 업을 해도 내츄럴 메이크 업이었던 사카이는 자외선 차단 크림을 바르는 것 마저도 좋아하지 않아서, 직사 광선을 그대로 받게 되면 큰일이었다. 그 때문에 스탭들은 여러가지 대책을 생각했다.</p><br>
+
+                    <p>특히 뉴욕에서 한 여름에 진행된 촬영에서는 워낙에 햇빛이 강해서 지면에서 반사되는 햇빛만으로도 피부가 탈 정도였다. 그 때문에 생각한 것이 커다란 우산이었다. 거기에다 자외선을 막는다면서 우산 주위에 큰 천을 붙이고 나니 모양새가 마치, 움직이는 커다란 텐트가 되어 버리고 말았다. 그러다보니 바로 눈에 띄어서, 아이언 빌딩이라는 오피스거리에서 촬영을 할 때, 사람들의 주목을 받게 되기도 했다. 그러나, 그 때의 영상을 보면 사카이가 노 메이크 업임에도 피부가 매우 깨끗하다는 것을 알 수 있다.</p><br>
+                </div>
+            </div>
+            <div class="slides4 four7" style="display: none;">
+                  <div class="site-wrap">
+                    <h1>-4장 [촬영]-</h1><br><br>
+                    <h3 class="">7. 본넷이 열려 있었던 [永遠]의 PV </h3><br><br>
+                    <p>2004년 3월부터 열린 ZARD의 첫 라이브 투어[What a beautiful moment Tour]. 공연 오프닝으로 사용된 영상이 바로 1997년에 발매된 [永遠]의 이미지 영상이었다. 인상적인 그 영상은 어떻게 촬영된 것일까?</p><br>
+                    <img src="include/img/chapter4/7-1.jpg" class="align-left slide-in slide-img">                    
+                    <p>사실 이 영상도 원래는 [永遠]의 뮤직비디오를 위해 찍은 것은 아니다. 해외 촬영에서는 매회, 촬영 전에 미리 촬영 기획을 만들어 놓긴 했지만, 어쩌다보니 로스엔젤레스에서 300킬로미터 정도 떨어진 교외에 드라이 레이크라는 사막에서 차를 사용한 영상, 거기다 공중촬영까지 하게 되었던 것이다.</p><br>
+
+                     <p>하지만 운전면허를 가지고 있다고는 했지만, 실제로 데뷔하고 나서 사카이가 운전하는 모습을 본 사람이 한명도 없었기에, 스탭들은 이 촬영에 다소 불안감을 가지고 있었다. 게다가 촬영에 투입된 자동차는 터무니없이 커다란 아메리칸 스타일. 그것도 50년대에 나온 다루기도 힘든 수동기어. 이걸 어떻게 해야 하나 하고 생각하던 중, 사카이가 의외로 그 차를 쉽게 운전하는 통에, 모두가 놀라는 상황이 벌어졌다. 공중촬영이 있었기 때문에 조수석에 누군가가 탈 수도 없어서, 쭉 그녀 혼자서 촬영 마지막 까지 사막을 차로 돌아다녔다고 한다.</p><br>
+                     <p>「그녀의 무슨 일이든지 흥미를 가지는 성격이라서, 촬영 중간에 운전석에 있는 레버를 당겨 본 것 같습니다. 촬영이 끝난 뒤에 [그 레버는 어디에 쓰는 건가요? 당겨 봤는데, 모르겠어.]라고 말했어요. 그때 처음으로 알게 된 것 같습니다. 실은 자동차 보닛 레버였어요. [永遠]의 뮤직 비디오를 보면 아시겠지만, 차의 앞부분부터 쭉 나오는 장면을 유심히 보시면 보닛 앞 부분이이 열려 있는 장면과 닫혀 있는 장면 2개가 뒤섞여 있습니다. 당시 상황상 다시 찍을 수도 없어서, 그대로 사용했습니다만, 그녀의 조금 장난꾸러기 같은 면이 낳은 NG컷이라고도 할 수 있겠군요.」
+                      [타카노 아키히코 / 영상 프로덕션 매니저]</p><br>
+
+                    <img src="include/img/chapter4/7-2.jpg" class="align-right slide-in slide-img2">
+                    <p>[永遠]의 뮤직 비디오는 사막이 계속 펼쳐진데다 하늘도 무척 깨끗하게 잘 보여서, 엄청나게 더운 날에 촬영하지 않았을까 하고 상상하게 된다. 그러나 실제로는 3월에 이루어진 촬영으로, 의외로 무척 춥고, 터무니없을 정도로 강한 바람 속에서 촬영을 했었기 때문에, [사막에서 입어 보고 싶었다]라며, 진한 주홍색의 수트를 입은 사카이를 포함한 모두가 모래 투성이가 되어버렸다고 한다. 머릿속은 물론, 귓속까지.... 호텔에 돌아가 샤워를 할 때까지, 사카이는 불평 한마디 않고 긴장감을 가진 채로 촬영을 이어갔다. 그런 모습이 뮤직비디오 영상에 담겨 있다.</p><br>
+                </div>
+            </div>
+           <!-- 
+             </div> -->
+           
+            <button class="btn" onclick="plusIndex4(-1)" id="btn1">◀</button>    
+            <button class="btn" onclick="plusIndex4(1)" id="btn2">▶</button>           
+          </div>
+
+
+          <div id="slider" class="slider5">
+            <div class="slides5 five1" style="display: block;">
+                <div class="site-wrap">
+                    <h1>-5장 [라이브]-</h1><br><br>
+                    <h3 class="">1. 자연스러운 모습을 찍기 위해 사용한 여러가지 방법</h3><br><br>
+                    <p>1999년 8월 31일에 열린 [ZARD 1999 Cruising & Live]. 무려 100만 명에 달하는 응모자 중에서 선택된 600명만이 즐겼던 이 ZARD의 첫 라이브는 퍼시픽 비너스 호라는 일본 최고급 대형 여객선에서 열렸다.</p>
+
+                    <img src="include/img/chapter5/1-1.jpg" class="align-left slide-in slide-img">
+                          <p>사카이와 스탭들은, 전 날 깊은 밤에 배에 승선. 무대에 설치된 장비들의 사운드 체크를 당일 아침까지 했고, 또 리허설도 꼼꼼하게 했다고 한다. 첫 라이브인데다가, 관객들과 아주 가까운 거리였기에 그 긴장감은 말로 헤아릴 수 없었겠지만, 사카이는 전 14곡을 무사히 노래하고 공연을 마쳤다.</p>
+
+                        <p>「그 때 당시 영상 촬영은 저를 중심으로 젊은 스탭들이 맡게 되었습니다. 그렇지만 여객선에서의 라이브는 처음이었기 때문에 저도 그렇고 사카이씨도 긴장하고 있었습니다. 관객은 굉장히 작은 규모였습니다만, 사람들 앞에서 노래한다는 그 긴박감 자체가 엄청 났었기 때문에, 아티스트 사카이 이즈미의 포스가 굉장했습니다. 전에 해외촬영에서 만난 사카이 이즈미와는 다른 사람이구나 (웃음). 가장 기억나는 것은 늘상 잊어버린 물건이 있으면 가지러 돌아오거나 다시 사러 가거나 하는데, 이번엔 배에 타야했잖아요. 한번 출발해 버리면 빼도 박도 못하기 때문에. 그 때만큼 잊어버린 물건이 있나 하고 체크를 많이 했던 적이 없었던 것 같네요 (웃음).」
+                        [모리하라 유지 / 영상 카메라맨]</p>
+                        <img src="include/img/chapter5/1-2.jpg" class="align-right slide-in slide-img">
+
+                          <p>「첫 라이브였기 때문에 리허설 중에 ‘가사를 잊어버리면 안 되니까 몇몇 곡은 가사를 스케치 북에 써서 보여줄까?’ 라는 이야기가 그 자리에서 나왔습니다. 그래서 공연 중에 보여 주긴 했지만 타이밍이 맞지 않거나, 보기 힘들거나 해서 잘 되진 않았어요... 그 밖에도 여러 가지 일이 있었는데, 앵콜까지 얼마 안 남은 무대 뒤에서 프로듀서가 스탭들에게 쓴 소리를 하기도 해서 현장에서 다들 허둥지둥 했었는데, 사카이씨가 밝고 큰 소리로 ‘(나는) 괜찮아!’ 라는 그 한마디로 바로 현장이 침착해졌던 것을 분명하게 기억하고 있습니다. 그녀가 다른 사람들을 신경 써서 말한 그 한마디가 그 날 라이브를 성공시키는 데 결정적이었다고 생각합니다.」
+                          [마츠다 치아키 / 레벨 매니저]</p>
+                        <img src="include/img/chapter5/1-3.jpg" class="align-left slide-in slide-img"> 
+                          <p>의상은 고민에 고민을 거듭한 끝에 결정한 검정색 정장이었다. 또 머리를 하나로 묶지 않고 위쪽만 묶어 올린 스타일로, 그 특징적인 모습은 첫 라이브에서 선명한 인상을 남겼다.사카이 자신도 첫 라이브였기에 의욕에 넘쳐 있었을 것이다. 후에 이 라이브를 되돌아보면서, 이렇게 말했다. ‘오래간만에 체력적으로 단단히 준비하고 싶은 생각으로 의욕이 불끈불끈 생겼어요. 대학생 때 빠져 있던 유로 비트계의 음악을 틀어 놓고, 집안에서 댄스를 해 보거나...(웃음).</p>
+                          <p>이 라이브 음원은 2000년 1월 라이브 앨범 [ZARD Cruising & Live ~ 한정반라이브 CD ~]로 30만장 한정으로 발매되었다.</p>
+                  </div>
+            </div>
+            <div class="slides5 five2" style="display: none;">
+            <div class="site-wrap">
+                    <h1>-5장 [라이브]-</h1><br><br>
+                    <h3 class="">2. 총 리허설을 하지 않았던 첫 라이브 투어 </h3><br><br>
+                    <p>2004년 3월, ZARD의 첫 번째 라이브 투어 [What a beautiful moment Tour]가 시작 되었다. 원래는 오사카와 도쿄에서 단 3회 공연만 하기로 계획 했었는데, 팬들의 좋은 반응으로 8회 추가 공연을 더 하기로 결정했고, 총 17명에 이르는 뮤지션들과 함께 사카이가 만들어낸 멋진 라이브는 관객들을 매료시켰고, 많은 사람의 기억 속에 남아있다.</p>
+
+                    <img src="include/img/chapter5/2-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>당연한 일이지만, 많은 이들이 특히나 감동했던 부분은 음반과 똑같은 맑고 깨끗한 사카이의 목소리가 아니었을까? 그것은 데뷔때부터 라이브를 계속 기다려온 팬들만이 아니라, 스탭들도 같은 생각이었다. 그녀의 생생한 목소리로 들려오는 ZARD의 대히트곡들을 들으면서, ZARD를 만나고 부터의 자신을 되돌아 본 사람도 많을 것이다.</p>
+
+                    <p>이 라이브를 개최하기까지의 과정. 상당한 우여곡절이 있었지만 결과적으로 이 라이브는 ZARD라는 아티스트가 오랜 세월 쌓아 온 음악에 대한 자신과 실력, 팬들의 사랑을 실감할 수 있었던 좋은 기회였다.</p>
+
+                    <img src="include/img/chapter5/2-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>라이브는 2004년 3월부터 열렸지만, 밴드의 리허설이 시작된 것은 2002년 11월부터였다. 잠정적으로 주 1회의 페이스로, 합주 연습을 했다고 한다. 2003년 4월에 잠시 연습을 중단하고 다시 리허설이 시작된 것은 2003년 9월. 그때는 아직 연주곡목도 정해져 있지 않았기 때문에, 히트곡들을 중심으로 연습하고 있었다.</p>
+
+                    <p>12월이 되면서 사카이가 확정은 아니었지만, 라이브에서 노래할 곡을 결정했다. 그리고 연초부터 본격적인 밴드 리허설이 시작되었다. 이 시점에서 확정된 멤버는 [ZARD 1999 Cruising & Live]의 멤버였던 기타 - 오가 요시노부, 오카모토 히토시, 키보드 - 후루이 히로히토, 베이스 - 아사이 히로시를 중심으로 드럼 - 데이비드C 브라운, 기타 - 와타누키 마사아키, 이와이 유이치로, 키보드 - 오오쿠스 우조, 코러스 - 오카자키 유키 이렇게 9명이 추가 된 대형 밴드가 결성되었다. ZARD의 첫 라이브 투어 밴드 멤버라는 중요한 역할을 하기 위해, 실전에 대비해서 곡의 사이즈나 템포 조정을 몇 번이나 반복하며 연주하면서, 가끔은 밤늦게까지 리허설을 했다고 한다. 시행 착오를 거듭하는 가운데 밴드 멤버는 서서히 늘어나, 2월이 되어서야 최종 멤버가 겨우 확정되었다.</p>
+                  
+                    <img src="include/img/chapter5/2-3.jpg" class="align-left slide-in slide-img">
+                    <p>2월 18일에는 오사카의 어떤 홀을 빌려서, 라이브 현장 세팅 체크를 했다. 당일에 뮤지션들은 오지 않았고, 스테이지에는 멤버들이 서 있을 자리에 마네킹 같은 것을 두었다. 물론 사카이는 참여했었고, 조명이나 전체적인 공연의 흐름을 스탭들과 확인했었다. 그러한 노력의 결과로 관객들이 디너쇼에 초대되었다고 생각할 정도로 고급스러운 느낌의 스테이지를 구성했고, 사카이가 화려하게 돌아다니는 스타일이 아니기 때문에 악기를 많이 배치해서 음악회 같은 느낌으로 가자는 의견이 나와, 빠듯하게 1주일 만에 최종 리허설에 맞추어 완성할 수 있었다. 조명은 핀 스폿이 메인이라고 하는 것 등, 이미지도 구체화되어있어, 이제 스테이지는 사카이와 밴드 멤버를 기다리는 상태가 되었다.</p>
+                    <p>그럼, 사카이 자신은 실전에 대비해서 밴드와 어떤 리허설을 해왔을까? 실제 공연에서의 당당한 모습이나 밴드와의 일체감으로 봐서는 상상도 안되겠지만, 사카이가 리허설 스튜디오에 들어 온 것은 단 2회. 그것도, 각각 5곡 정도만 노래하고 끝냈다. 밴드 멤버들이 ZARD의 라이브를 위해 시행착오를 반복해 준비 해온 결과물을 절대적으로 신뢰했고, 자신이 노래해 보고 신경 쓰이는 부분에 대한 의견은 말했지만, 어디까지나 감각을 유지하고 확인하는 느낌정도였다. 첫 번째 라이브 투어이기에 할 수 있는 허둥지둥한 실수나 분위기는 전혀 느껴지지 않았다. 곁에서 지켜보고 있던 스탭들의 의견을 적극적으로 듣고 있기 때문에 첫 라이브 투어를 개최하는 ZARD라는 아티스트의 입장보다, 처음으로 ZARD의 라이브를 보러 오는 관객들의 입장에서 여러 가지를 생각하고 있었던 것 같다.</p>
+                    <img src="include/img/chapter5/2-4.jpg" class="align-right slide-in slide-img">                    
+                    <p>그 후, 라이브 공연직전에 나라에 있는 회관을 전세 내어 이루어진 총 리허설에서도 몇 곡만 노래했고, 사카이가 공연의 전곡을 노래하는 총 리허설은 단 한 번도 열리지 않았다. 즉, 공연 전의 리허설은 다 해서 2번. 오프닝부터 전곡을 다 노래하면서 라이브의 흐름이나 구성을 확인 하는 일을, 사카이는 한 번도 하지 않았던 것이다. 리허설을 그렇게 하는 걸 보고 전혀 긴장하지 않았다고 하면 거짓말이다. 사카이는 차라리 무모하게 계속해서 노래해서 목을 혹사 하는 리허설을 하기 보다는, 오랜 세월 축적해온 자신과, ZARD의 음악을 어떻게 관객들에게 전달할까 하는 이미지 트레이닝, 그리고 오히려 많은 준비 없이 바로 실전에 돌입하는 긴장감을 가지고 임하는 것이 더 좋다고 생각했던 것 같다. 또, 그 무렵부터 다시 몸이 안 좋아진 것도 그 이유 중 하나였을테고... 하지만 사카이는 프로듀서 나가토에게 마저도 그 사실을 말하지 않았다.</p>
+                    <p>그 후, 라이브 투어가 시작되고 나서도, 리허설에 따로 시간을 할애하지 않았다. 다만 준비차원에서 사카이가 회장에 도착하고 나서 몇 곡을 노래하는 정도 였다. 대체로 사카이가 좋아했던 곡 [My Baby Grand ~ぬくもりが欲しくて~ ]를 노래했었고, 또 오가 요시노부의 기타 반주만으로 노래하는 [もっと近くで君の橫顔見ていたい]는 2명의 호흡을 맞추는 부분이 굉장히 중요했고, 음향 상태가 공연장에 따라 달랐기 때문에, 가능한 한 리허설을 해서 준비하도록 했었다고 한다.</p>
+              </div>
+            </div>
+            <div class="slides5 five3" style="display: none;">
+              <div class="site-wrap">
+                    <h1>-5장 [라이브]-</h1><br><br>
+                    <h3 class="">3. 단 2곡으로 게스트 출연</h3><br><br>
+                    <p>밴드 멤버들이 첫 번째 라이브 투어의 리허설을 시작했던 2003년 3월. 오사카에 있는 라이브 하우스 hills 빵 공장에서 열린 [THURSDAY LIVE] 의 [R&B NIGHT] 코너에 사카이가 게스트로 나온 적이 있다. Blondie의 [CALL ME]와 Boys Town Gang 등 여러 가수들의 커버로 유명한 [CAN'T TAKE MY EYES OFF OF YOU] 이 2곡을 노래했다.</p>
+
+                    <img src="include/img/chapter5/3-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>공식적으로 이 출연은 사카이가 오사카에 레코딩 때문에 와있던 중, 갑작스럽게 결정된 것이라고 했었지만, 사실은 면밀하게 계획된 출연이었다고 한다. 단순한 해프닝이라는 느낌을 주어 관객들이 기쁘도록, 공연 중에는 갑작스럽게 결정된 출연이라는 스탭의 발표에 본인도 맞추어 주었다.</p>
+
+                    <p>그런 사카이가 출연했을 때의 밴드 멤버는, 드럼 - "PON" 마사토, 베이스 - 오오하시 마사토, 기타 - 이와이 유이치로, 키보드 - 오오쿠스 우조까지 4명. 사카이 출연 전에 밴드만의 리허설 때에도 그냥 2곡이 추가 되었다는 설명만 해주었기에, [CALL ME]와 [CAN'T TAKE MY EYES OFF OF YOU]를 새롭게 연습하고 있던 그들은, ‘MC의 추가곡인가? 그런데 완전히 타입이 다른 곡이네?’라고만 생각했었다고 한다.</p>
+
+                    <p>[CALL ME]는 Blondie 버전이 아닌, 레게 풍으로 편곡한 버전.
+                    [CAN'T TAKE MY EYES OFF OF YOU]는 Boys Town Gang 버전으로 했었다.
+                     
+                    라이브 전날에 열린 리허설에 사카이가 등장했지만, 밴드 멤버들은 그다지 놀라지는 않았다고 한다.</p>
+                    <img src="include/img/chapter5/3-2.jpg" class="align-left slide-in slide-img">                    
+                    <P>「실은, 이 라이브 때 라이브 하우스에서 2곡만 부르면 된다는 간단한 내용으로, 리허설도 제대로 했었던 것으로 기억하고 있습니다. 라이브 하우스는 관객들과 아주 가까운 거리에서 하기 때문에, 무대에 서는 방향이나 MC에 대해서도 여러 가지 확인을 했습니다. 그러나, 이 때도 라이브의 순서를 정해서 철저히 한다기보다, 어디까지나 사카이씨가 스테이지에서 적응하기 위한 느낌이었습니다. 결국 이 라이브 출연은 2004년의 라이브 투어를 위한 일종의 선행라이브(precession)정도의 위치였다고 생각합니다.」
+                    [테라오 히로시 / 디렉터]</P>
+                    <p>사카이가 출연했을 당시 [THURSDAY LIVE]는 2회째를 맞이했었다. 아직 그렇게 알려져 있지 않았던 시기였기 때문에, 플로어에도 의자석이 있었다. 그 객석 한 가운데에서 당당히 등장해서 노래하고, 떠나 간 사카이. 2곡 모두 굉장히 좋은 반응이었고, 순식간에 끝이 나버렸다. 이 때의 스테이지에서 보인 존재감과 담력은 다음해 열린 라이브 투어의 넓은 스테이지로 이어져 갔던 것 같다.</p>
+                    </div>
+              </div>
+            <div class="slides5 five4" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-5장 [라이브]-</h1><br><br>
+                    <h3 class="">4. 등장 하지 않았던 오사카 라이브 </h3><br><br>
+                    <p>오사카 페스티벌 홀은 2700명 정도가 수용이 가능한 곳이다. 2004년 3월 2일, 이곳에서 ZARD의 첫 라이브 투어가 막을 올렸다. 그 후, 추가 공연으로 다시 이곳을 방문한 것은 4월 30일, 이미 5회나 공연을 한 뒤였지만 이 날, 스탭들도 전혀 예상치 못했던 해프닝이 일어났다.  </p><br>
+
+                    <p>라이브는 오케스트라 버전의 [永遠]이 흘러나오면서 스크린에 ZARD의 싱글 히스토리가 나오는 오프닝 영상으로 시작된다. 그리고 그 스크린의 맞은편에 보이는 밴드 멤버가 오프닝 곡 [搖れる想い]를 연주하며 본격적으로 시작된다. 그리고 [搖れる想い]를 노래하면서 사카이가 등장하는 것이 오프닝인데, 그 날 사카이는 나오지 않았다. 사카이가 나오지 않자 밴드 멤버들은 당황하면서도 일단 연주를 계속했다. 그리고 정확히 2절이 되어서야, 마치 연출이었던 마냥 당당히 노래하면서 등장했다.</p><br>
+                    <img src="include/img/chapter5/4-1.jpg" class="align-left slide-in slide-img">
+                    <p>그 때, 백 스테이지에 있는 스탭들은 거의 혼이 나간 상태였다. 오프닝 영상이 시작되기 전, 공연시작이 가까워져 긴장하고 있던 사카이가 갑자기 ‘화장실에 가도 괜찮을까요?’라고 해서, 아직 여유가 있다고 생각해 다녀오도록 했었기 때문이다.</p><br>
+
+                    <p>그러나 그사이 오프닝 영상이 시작되어 [搖れる想い]의 인트로가 시작되었다. 사카이가 돌아온 것은 정확히 그때였다. 노래가 시작되어 스탭들이 몹시 당황하며 ‘다시 할까?, ’어떻게 할까?‘하며 웅성거리고 있는 동안, 문득 정신을 차린 사카이가 마이크를 가지고 나가서 자연스럽게 스테이지에서 [搖れる想い]를 노래했다고 한다. 그 날 사카이의 MC는 재치 그 자체였다. ’저는 꽤나 덜렁이라서 전에 오사카에 올 때도, 잘못해서 교토에서 내린 적이 있습니다. 스탭이 마중 나오기로 되어있었는데, 아무도 없어서 ‘뭐지?’ 했었는데, 주위를 자세히 둘러보니 교토였습니다.‘. 그 말은 마치, ’2절 첫 부분 부터 나온 것도 저의 덜렁거림 탓이랍니다, 미안해요.‘ 같이 들려왔고, 사고를 눈치 챈 관객들에게도 ’저는 이런 사람이기 때문에 가끔은 사고를 치기도 해요.‘라며 가벼운 실수라고 생각하게 만들어 버린, 마법 같은 한마디였다.</p><br>
+                    <img src="include/img/chapter5/4-2.jpg" class="align-right slide-in slide-img">
+                    <p>어쨌든 스탭 전원의 심장이 오그라들뻔 했던 전대미문의 해프닝을 사카이는 스스로 전부 수습해 버렸다. 정말 대단한 담력이다. 하지만 그런 사카이도 추가 공연이었던 파시피코 요코하마에서는 스테이지에서 흥분했던지, 공연 전에 말해줬던 주의 사항을 잊어 버려 내내 멍하게 서 있었던 일이 있다.</p><br>
+
+                    <p>「파시피코 요코하마는 투어 중 유일하게 사카이씨가 스테이지에 나오는 곳과 돌아오는 곳 이 반대였습니다. 언제나, 무대의 왼쪽(객석에서 스테이지를 봤을 때 좌측)에서 나오고, 또 그쪽으로 돌아왔지만, 요코하마에서만 무대의 오른쪽(객석에서 스테이지를 보고 우측)에서 나와서 또 그쪽으로 돌아와야 했습니다. 무대에 나가기 전에 ‘오늘은 오른쪽으로 돌아 와 주세요!’라고 단단히 몇 번이고 주의를 드렸지만, 스테이지에서 흥분도가 올라가 버리면 잊어버리지 않을까 하고 걱정했었는데, 아니나 다를까 왼쪽으로 가 버렸습니다. 이쪽에서 보이는 것은 사카이씨가 얼떨떨해 하면서 내내 서 있는 뒷모습. 그 뒷모습이 마치 ‘아무도 없어, 어떡하지?’하고 있었던 것 같았어요 (웃음).」
+                    [노구치 마유]</p><br>
+                    <img src="include/img/chapter5/4-3.jpg" class="align-left slide-in slide-img">                    
+                    <p>또, 마지막 일본 무도관 공연 직전에 열린 10번째 후쿠오카 공연에서는 앵콜 때 눈물을 보이기도 했었다. 아마 첫 라이브 투어라는 것 때문에 불안감도 있었을 것이고, 여기까지 겨우 겨우 해낸 것, 라이브 자체가 즐거웠고, 거기다 관객이나 스탭들도 함께 기뻐하는 모습까지 여러 가지 감정이 겹쳐, 본인의 솔직한 감정이 나온 게 아닐까... 후에 사카이는 이때의 일을 ‘엄청나게 후회하고 있습니다... 아마 긴장의 끈을 놓아버렸던 것 같아요.’라고 말했지만, 사카이에게 있어 이 첫 라이브 투어는 오랜 세월 ZARD를 계속 기다려 준 팬들 앞에 처음으로 ZARD로서 서는 무대였기에, 그 자리에서 개인적인 감정을 보인 것을 후회했던 것 같다. 특히나 이 무렵부터 몸 상태가 한층 더 악화 되어 있었기 때문에, 여러 가지 감정이 섞여 나온 면도 있다. 하지만 무엇보다도, 오랜 시간 동안 음악에 대해 모든 것을 쏟아온 ZARD를 라이브로 많은 이들에게 앞에서 표현하려고 했던 사카이가 스테이지 위에서 빛났던 투어였다.</p><br>
+              </div>
+            </div>
+            <div class="slides5 five5" style="display: none;">
+               <div class="site-wrap">
+                    <h1>-5장 [라이브]-</h1><br>
+                    <h3 class="">5. 대기실에서 보인 본 모습</h3><br>
+                    <p>라이브 회장의 대기실. 거기는 사카이가 스테이지에서 ZARD를 완벽하게 관객들에게 보이기 위한 준비에 힘쓰고 있던 장소이기도 하지만, 또 휴식을 위한 장소이기도 했고 공연이 끝난 후에는 긴장을 풀고 잠시 쉬기 위한 장소이기도 해서, 그녀의 본래 모습을 느낄 수 있었던 일이 많이 있었다.</p><br>
+                    <p>대기실은 항상 손님이 찾아오거나, 스탭이 무언가를 확인하러 오기도 해서 분주한 모습이었다. 투어 초기에는 본 공연까지 30분 밖에 안 남은 상황에서 메이크업과 식사, 그리고 무대 의상으로 갈아입기까지 해야 했던 적도 있어서, 사카이와 스탭은 공연 시작까지의 시간을 어떻게 사용할까 하고 고민하게 되었다.</p><br>
+
+                    <img src="include/img/chapter5/5-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>「공연을 앞둔 아티스트의 입장에서, 대기실에서 손님을 맞이하기보다, 본인의 시간을 더 갖는 편이 더 좋을 거라고 생각해서, 대기실 앞에서 정중하게 ‘정말로 죄송합니다만, 앞으로 공연이 10분 후에 시작이라서 지금은 조금... (웃음).’ 이렇게 시간을 만들었어요. 그리고 사카이씨는 무슨 일이든지 상당히 느긋하게 하시는 분이지만, 그런 자신의 페이스를 유지하면서도, 해야 할 일은 철저히 다 해냈습니다.」[노구치 마유]</p><br>
+
+                    <p>스테이지에 등장할 때는 머리를 하나로 묶은 ZARD 특유의 헤어스타일이었던 사카이. 라이브가 시작되기 전에는 헤어스타일을 꼼꼼히 체크 했었다. 머리 모양이 제대로 되어 있나? 꼭 그것을 확인하고 나서야 스테이지로 향했다.
+                    그리고 무대 옆 끝부분에 앉아, 스테이지에 등장하기 직전에 크게 심호흡을 하고 나가는 사카이. 그 순간이 자신 안의 스위치가 켜지는 순간인 것 같다. 스테이지에 서기 전에, 관객 앞에 나오기 전에, 마음가짐을 단단히 하는 그런 모습을 스탭들은 뒤에서 조용히 지켜보고 있었다.</p><br>
+
+                    <img src="include/img/chapter5/5-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>사카이가 대기실에서 휴식을 취하는 방법은 후지코 헤밍의 음악을 듣는 것이었다. 그리고 대기실에 항상 준비했던 것은 바나나, 우유, 물, 초콜릿 등으로 간단하게 먹을 수 있으면서 라이브에 부담이 되지 않는 간식들이었다. 특히나 바로 힘이 될 수 있는 바나나는 꼭 필요 했던 것 같다. 항상 주위의 스탭들이 필요한 것이 있는지 물어봐도 거의 무언가를 요구하지 않았던 그녀였다. 딱 한번, 도쿄 국제 포럼 공연 2일째에 미열이 있어서, 기름기가 많은 것으로 목을 매끄럽게 하고 싶다며 햄버거를 요청했었다고 한다.</p><br>
+                    <p>「라이브가 끝난 뒤 대기실로 돌아오면 긴장이 풀리면서 바로 안심하는 듯 했었지만, 공연이 끝난 후에도 대기실에 인사하러 오시는 분이 계셨습니다. 그러다가 공연회장의 폐관 시간이 다 되곤 했었는데요. 그러다보니 사카이씨가 대기실에 있는데도, 대기실을 정리해야만 하는 상황이 되기도 했습니다. 하지만 언제나 그럴때면 함께 정리를 도와주었습니다. 텔레비전을 함께 옮기거나, 쓰레기를 모아 주거나, ‘천천히 앉아서 커피라도 마시고 하세요.’라고 저희가 말해도, ‘자, 그럼 함께 정리하고, 다함께 차 한 잔 해요.’라고 말하곤 했어요. 대기실에 놓여 있는 사카이씨를 위한 과자들도 매번 나에게 건네주시는 바람에, 내 가방 안은 사카이씨가 주신 과자로 언제나 빵빵해져 있었습니다 (웃음). 자기 자신이 가장 힘들었을텐데 그렇게 주위에 신경을 쓰고 있었어요.」
+                    [노구치 마유]</p><br>
+              </div>
+            </div>
+            <div class="slides5 five6" style="display: none;">
+                  <div class="site-wrap">
+                    <h1>-5장 [라이브]-</h1><br><br>
+                    <h3 class="">6. 피아노보다는... </h3><br><br>
+                    <p>첫 라이브 투어가 결정되었을 때, 스테이지에서 사카이가 어떤 퍼포먼스를 할지 여러 가지 의견이 나오고 있었다. 그 중에 하나가 피아노를 연주하면서 노래 부르기였다. 사카이는 유치원 때부터 피아노를 배우고 있었고, 실제로 연주 실력도 수준급이었다. 레코딩 스튜디오에서도 자주 연주했었다고 한다.</p><br>
+                    <img src="include/img/chapter5/6-1.jpg" class="align-left slide-in slide-img">
+                    <p>단지, [저 피아노 연주 잘해요]라는 어필을 전혀 하지 않았기 때문에, 잘 알려져 있지 않은 사실이었다. 그래서 스테이지에서 피아노를 연주하면서 노래하면 어떨까? 하는 분위기가 되었다. 하지만 사카이는 ‘내가 피아노를 연주하면 “이제서야 하는거야?” 하는 느낌이 들 거 같아요. 또 아주 잘하는 것도 아니고 조금 치는 정도로 일부러 귀중한 스테이지에서 그러는 것도 실례인 것 같아요.’라며 웃으면서 말했다, ‘뭔가 다른 퍼포먼스를 하고 싶네요.’라고 스탭들과 회의를 했었다고 한다. 역시나 사카이는 라이브에 관해서도 ZARD의 스테이지에 무엇이 가장 좋을까 하는 것을 스탭들보다 더 냉정한 시각으로 생각하고 있었던 것이다.</p><br>
+
+                     <p>그리하여 나온 사카이가 의견은 바로 드럼을 치는 퍼포먼스. ‘내가 드럼을 치면, 다들 놀라면서도 재미있지 않을까요?’라고 본인도 재미있어 하며 이야기를 했다. 아쉽게도 라이브 투어에서는 하지 못했지만, 사카이가 스테이지 위에서 드럼을 치는 모습. 그것을 놀라운 표정으로 바라보는 관객들. ZARD의 팬들이라면 한번쯤은 보고 싶어할만한 장면이 아니었을까.</p><br>
+
+                    
+                </div>
+            </div>
+            <div class="slides5 five7" style="display: none;">
+                  <div class="site-wrap">
+                    <h1>-5장 [라이브]-</h1><br><br>
+                    <h3 class="">7. 본넷이 열려 있었던 [永遠]의 PV </h3><br><br>
+                    <p>2004년 3월부터 열린 ZARD의 첫 라이브 투어[What a beautiful moment Tour]. 공연 오프닝으로 사용된 영상이 바로 1997년에 발매된 [永遠]의 이미지 영상이었다. 인상적인 그 영상은 어떻게 촬영된 것일까?</p><br>
+                    <p>사실 이 영상도 원래는 [永遠]의 뮤직비디오를 위해 찍은 것은 아니다. 해외 촬영에서는 매회, 촬영 전에 미리 촬영 기획을 만들어 놓긴 했지만, 어쩌다보니 로스엔젤레스에서 300킬로미터 정도 떨어진 교외에 드라이 레이크라는 사막에서 차를 사용한 영상, 거기다 공중촬영까지 하게 되었던 것이다.</p><br>
+
+                    <img src="include/img/chapter5/7-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>하지만 운전면허를 가지고 있다고는 했지만, 실제로 데뷔하고 나서 사카이가 운전하는 모습을 본 사람이 한명도 없었기에, 스탭들은 이 촬영에 다소 불안감을 가지고 있었다. 게다가 촬영에 투입된 자동차는 터무니없이 커다란 아메리칸 스타일. 그것도 50년대에 나온 다루기도 힘든 수동기어. 이걸 어떻게 해야 하나 하고 생각하던 중, 사카이가 의외로 그 차를 쉽게 운전하는 통에, 모두가 놀라는 상황이 벌어졌다. 공중촬영이 있었기 때문에 조수석에 누군가가 탈 수도 없어서, 쭉 그녀 혼자서 촬영 마지막 까지 사막을 차로 돌아다녔다고 한다.</p><br>
+                     <p>「그녀의 무슨 일이든지 흥미를 가지는 성격이라서, 촬영 중간에 운전석에 있는 레버를 당겨 본 것 같습니다. 촬영이 끝난 뒤에 [그 레버는 어디에 쓰는 건가요? 당겨 봤는데, 모르겠어.]라고 말했어요. 그때 처음으로 알게 된 것 같습니다. 실은 자동차 보닛 레버였어요. [永遠]의 뮤직 비디오를 보면 아시겠지만, 차의 앞부분부터 쭉 나오는 장면을 유심히 보시면 보닛 앞 부분이이 열려 있는 장면과 닫혀 있는 장면 2개가 뒤섞여 있습니다. 당시 상황상 다시 찍을 수도 없어서, 그대로 사용했습니다만, 그녀의 조금 장난꾸러기 같은 면이 낳은 NG컷이라고도 할 수 있겠군요.」
+                      [타카노 아키히코 / 영상 프로덕션 매니저]</p><br>
+
+                    <img src="include/img/chapter5/7-2.jpg" class="align-right slide-in slide-img2">
+                    <p>[永遠]의 뮤직 비디오는 사막이 계속 펼쳐진데다 하늘도 무척 깨끗하게 잘 보여서, 엄청나게 더운 날에 촬영하지 않았을까 하고 상상하게 된다. 그러나 실제로는 3월에 이루어진 촬영으로, 의외로 무척 춥고, 터무니없을 정도로 강한 바람 속에서 촬영을 했었기 때문에, [사막에서 입어 보고 싶었다]라며, 진한 주홍색의 수트를 입은 사카이를 포함한 모두가 모래 투성이가 되어버렸다고 한다. 머릿속은 물론, 귓속까지.... 호텔에 돌아가 샤워를 할 때까지, 사카이는 불평 한마디 않고 긴장감을 가진 채로 촬영을 이어갔다. 그런 모습이 뮤직비디오 영상에 담겨 있다.</p><br>
+                </div>
+            </div>
+
+           <!-- 
+             </div> -->
+           
+            <button class="btn" onclick="plusIndex5(-1)" id="btn1">◀</button>    
+            <button class="btn" onclick="plusIndex5(1)" id="btn2">▶</button>           
+          </div>
+
+          <div id="slider" class="slider6">
+              <div class="slides6 six1" style="display: block;">
+                <div class="site-wrap">
+                    <h1>-6장 [팬]-</h1><br><br>
+                    <h3 class="">1. 팬레터</h3><br><br>
+                    <p>ZARD는 미디어 활동보다는 제작에 전념하는 스타일이라, 팬과 직접 만나는 자리를 만들기가 좀처럼 쉽지 않았다. 라이브도 2004년의 첫 라이브 투어 전까지, CD구입자들에게 응모 특전으로 주어진, 600명 한정의 선상 라이브 밖에 없었다.</p><br>
+
+                     <img src="include/img/chapter6/1-1.jpg" class="align-right slide-in slide-img">
+                          <p>하지만, 사카이도 팬들을 위한 여러 가지 방법을 생각하고 있었다. ‘자신의 곡을 듣고 공감해 주는 사람들, 자신의 활동을 응원해 주는 사람들은 어떤 생각을 가지고 있을까?’ 사카이의 입장에서는 자신이 선택한 활동 스타일 때문에 팬들의 반응을 직접 느끼거나, 앨범 마다 라이브를 개최해서 팬들에게 받은 성원을 작품으로 보답하거나 하는 일이 쉽지 않았기 때문에, 그녀와 팬들 사이를 이어주는 유일한 존재인 팬레터를 아주 소중히 여겼다고 한다.</p><br>
+
+                    <img src="include/img/chapter6/1-2.jpg" class="align-left slide-in slide-img2">
+
+                        <p>「팬레터가 도착하면 곧바로 사카이씨가 레코딩을 하고 있는 스튜디오에 전해주었습니다. 당시에는 아직 정식 팬클럽도 창단하기 전이었기 때문에, 팬과 이어질 수 있는 수단이 팬레터밖에 없었습니다. 팬레터를 받았을 때 사카이씨는 굉장히 기뻐했고, 저도 그런 사카이씨의 기뻐하는 얼굴을 보고 싶어서 레코딩이 끝날 때까지 기다리곤 했었습니다 (웃음). 팬레터를 정말로 소중히 여겼었고, 여동생이 직접 리스트를 만들고 있다고 했습니다. 아마 몰래 답장을 쓴 적도 있었을 거예요. 후에 노래 가사가 된 편지 내용도 있었고, 아마 팬레터에서도 많은 가사가 태어났을 겁니다. 제작에만 전념하는 활동 스타일이라, 사카이씨는 자신이 굉장히 열심히 만든 작품의 반응을 즉각즉각 보기 힘들었어요. 그런 상황에서 팬들과의 유일한 연결점이 바로 팬레터였기 때문에, 굉장히 소중히 여기고 있었어요.」
+                        [코바야시 사유리 / A&R]</p><br>
+                    <img src="include/img/chapter6/1-3.jpg" class="align-right slide-in slide-img">
+
+                          <p>「앨범 [Today Is Another Day]에 들어가 있는 [見つめていたいね]라는 곡에 팬레터가 관련된 에피소드가 있습니다. 센다이에 있는 학교의 선생님이 자신이 담임을 맡고 있는 학생이 죽었는데 그가 ZARD를 굉장히 좋아했던 학생이었다며 그에 관한 이야기가 편지로 왔습니다. 그것을 읽은 사카이씨의 답이 바로, [見つめていたいね]의 가사입니다. 죽은 학생의 별명이 "3학년 G반의 키퍼"라서, "3G의 키퍼"라는 가사가 노래 안에 들어가 있습니다. 그렇게 가사를 만드는 방법도 있구나라고, 저에게 있어서 굉장히 인상적으로 남아 있습니다. 팬들을 정말 소중히 여기고 있구나 하는 생각과 함께요.」[시마다 마사히로 / 레코딩 엔지니어]</p><br>
+                    <img src="include/img/chapter6/1-4.jpg" class="align-left slide-in slide-img2">
+                          <p>‘ZARD로 활동하면서 기뻤던 일이 무엇인가요?’라는 질문에 사카이가 남긴 말이 있다. ‘정말 거짓말이 아니라, 전국의 팬 여러분에게 격려의 편지를 받는 일이에요. 만약 제가 데뷔를 하지 않았다면, 이 만큼이나 많은 사람들이 나라는 존재 자체를 모르셨을 테니까요. 또 [음악]이라는 표현 방법으로 말이나 마음을 전하는 것은 정말로 행복한 일이에요.’ 팬에게 감사하는 마음, 그것은 그녀의 제작활동에 활력이 되면서 또 아주 큰, 마음속의 버팀목이 되고 있었던 것이다.</p><br>
+                  </div>
+            </div>
+              <div class="slides6 six2">
+                  <div class="site-wrap">
+                    <h1>-6장 [팬]-</h1><br><br>
+                    <h3 class="">2. 유선 모니터들 앞에서 </h3><br><br>
+                    <p>사실, 사카이가 일반 청취자들과 만날 수 있었던 귀중한 기회가 있었다. 라이브나 이벤트 출연이라는게 전혀 없었던 탓에, 의외로 잘 알려지지 않았지만, 1995년 3월에 앨범 [forever you]의 발매 당시 전국 각지에 있던 유선 방송에서 유선 모니터 들이 모인 유선 시청회에 사카이가 서프라이즈로 출연해서 인사를 했던 적이 있었다.</p>
+
+                   <img src="include/img/chapter6/2-1.jpg" class="align-left slide-in slide-img2">
+
+                    <p>「일반 청취자에 가까운 분들과 가까이에서 만날 수 있는 기회였기 때문에 아직도 기억이 생생한데요. 유선 방송의 시청회였습니다. 앨범 [forever you] 발매 무렵이었는데요. 유선 모니터들이 50명 정도 모인 시청회에 사카이가 직접 등장한 적이 있습니다. 이것은 사전에 모니터 여러분들도 전혀 몰랐습니다. 사카이가 갑자기 등장하자, 다들 처음에는 진짜 인가 싶어 조금씩 웅성거리다가, 나중에는 모두들 엄청나게 놀랐습니다. 처음엔 ‘꺄~!’가 아니고 ‘응!?’같은 느낌? (웃음) 시청회 마지막에는 사카이 자신이 고른 꽃을 직접 한분 한분께 드리면서 악수를 하고 마무리했습니다. 그 당시에 사카이씨가 조금 떨면서 긴장하고 있었고, 저의 팔을 잡고 놓지 않았어요. 그렇게 많은 분들과 직접 만나는 일이 처음이라, 엄청 긴장하고 있었던 것 같아요. 그렇지만 유선 모니터 분들이 매우 따뜻하게 맞이해주셨고, 같은 세대의 여성으로서 ZARD를 좋게 평가 해 주시는 게 직접 느껴져서, 굉장히 기뻐했었습니다. 그 후 ‘오사카에서도 이런 자리가 가능하면 좋겠네요.’라고 말했지만, 아쉽게도 다시 그런 자리를 만들지는 못했습니다.」
+                    [코바야시 사유리 / A&R]</p>
+                    <img src="include/img/chapter6/2-2.jpg" class="align-right slide-in slide-img2">
+                    <p>앨범 [forever you]는 ZARD의 6번째 앨범. 이미 많은 히트곡을 세상에 발표해 온 ZARD라는 아티스트의 존재감은 엄청났지만, 미디어에 출연하거나 콘서트를 하거나 하는 활동을 거의 하지 않았기 때문에, ‘ZARD는 사카이 이즈미가 얼굴만 내고, 노래는 다른 사람이 하는 거 아냐?’ 하는 소문도 슬슬 돌기 시작하고 있었다. 그런 상황에서 눈앞에서 직접 사카이를 보고, 그녀의 목소리를 들었던 사람들은 정말로 놀랐을 것이다.</p>
+
+                    <img src="include/img/chapter6/2-3.jpg" class="align-left slide-in slide-img2">
+
+                    <p>또 사카이 자신도 음악 제작에만 푹 빠져, 매일 같이 레코딩 스튜디오와 자택만을 왕복하는 생활을 해왔기에. 누군가에게 손가락 질을 받거나, 거리에서 큰 소란을 일으키거나, 쫓겨 다니는 톱스타들이 누구나 겪는 사건을 겪은 적도 없었고, 그저 평범하게 전철로 스튜디오를 왔다 갔다 하는 바쁘면서도 평범한 나날을 보내고 있었다. 그런 만큼 ZARD로서의 자신의 존재를 확실히 자각할 기회가 거의 없었다.</p>
+                    <!-- <img src="include/img/chapter6/2-4.jpg" class="align-right slide-in slide-img2"> -->
+                    <p>하지만 이런 만남을 통해 많은 사람들이 자신의 노래를 듣고 있고, 공감 해 주고 있다는 것, 그리고 자신을 만나 이렇게나 기뻐하는 모습을 보고, 그녀는 그 감동을 마음속에 깊이 담아, 다시 작품에 그것들을 담아내는 일에 혼신을 다 했다.</p>
+                  </div>
+              </div>
+              <div class="slides6 six3" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-6장 [팬]-</h1><br><br>
+                    <h3 class="">3. ZARD Family</h3><br><br>
+                    <p>팬과의 귀중한 만남으로, 2000년에 팬클럽 이벤트 [ZARD Com 2000]이 오사카 IMP 홀에서 열렸다. 이때 사카이는 전화로만 출연했었지만, 그런 상황에서도 센스 있는 메시지를 보냈다. ‘전화로 듣고만 있어서 그곳의 상황을 잘 모르겠습니다만, ZARD의, 나의 팬이 많이 와주신 것 같네요. 앞으로도 바람피우지 말고 (웃음) 응원해 주세요.’그녀의 진지함과 사랑스러움이 묻어나는 한마디였다.</p>
+
+                    <img src="include/img/chapter6/3-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>ZARD의 팬클럽은 레코드 회사가 팬들에게 보냈던 왕복 엽서를 통한 음악정보 제공이 시초였다. 그 후 왕복엽서가 98년에 [ZARD INFORMATION] 이라는 정보지가 되었고, 그 2호에서 정보지의 타이틀을 모집했다. 사람들이 보내 온 타이틀 후보들 중, 투표를 통해 4호에서 [WEZARD]라는 타이틀로 정해졌다. 또, 타이틀 로고등도 팬들로부터의 응모를 통해 결정했기에 [WEZARD]는 팬들의 열정만으로 만들어진 팬클럽이라 할 수 있다. 덧붙이자면 [WEZARD]는 WE+ZARD라는 의미로, [ZARD를 응원하는 모든 사람들 또한 ZARD]라는 의미라고 한다. [ZARD INFORMATION]은 1999년 23호까지 계속해오다가, 그 해 8월에 ZARD 팬클럽 [WEZARD]가 정식으로 발족되었다.</p>
+
+                    <img src="include/img/chapter6/3-2.jpeg" class="align-right slide-in slide-img">
+
+                    <p>「ZARD의 정보지를 만들기로 했습니다. 당시 이미 ZARD는 밀리언 아티스트였지만, ZARD 사카이 이즈미라는 아티스트의 이름이나 회사의 힘을 빌리지 않고, 순수하게 1명의 발언이 많은 사람들에게 전달되고 서로 의견을 주고받으며, 그것이 따뜻한 커뮤니케이션의 장소가 되는 것을 목표로 하고 하나하나 모든 것을 수작업해 나갔습니다. 우선 책방에 가서, 펜팔친구 모집 코너에 ZARD를 좋아하는 사람을 찾고, 그 사람에게 편지를 보내 친구가 되고, 또 사설 팬클럽의 존재를 알려나가는 식으로, 지금 생각해보면 갑자기 전혀 모르는 사람에게서 ‘우리 친구해요~!’라는 편지가 오는 거라 받는 사람 입장에서는 별로 기분이 안 좋았을 지도 모르겠네요. 그렇지만, 편지의 내용이 좋아서, 마음에 들어 하는 1명이 생기고, 그 사람이 누군가에게 이야기해주고, 1명이 2명으로 또 그 2명이 4명이 되고... 지금 생각하면 낡고 말도 안 되기 힘든 방식이지만, 당시는 그런 아날로그 방식으로 손수 만들어 가면 그 감성이 마음으로 전해진다고 믿고, 진행 해갔습니다. 정식으로 대대적으로 한 게 아니라 아주 기본적인 활동이었어요(웃음). 그렇게 모인 사람들에게 처음에는 왕복 엽서로 정보를 교환을 했습니다. 답신 엽서를 손으로 다시 베끼고, 약간의 정보를 더 추가해서 보냅니다. 횟수를 거듭하다보니, 자필로 작성한 것을 복사해서 보내야할 만큼의 규모가 되었고, 후에 더 커져서 인쇄를 해서 보낼 만큼이 되었습니다. 그 후에는, 하나의 소책자를 보내는 형식이 되었고, 점점 그 페이지수가 늘어나고, 나중엔 올 컬러가 되었습니다. 그리고 마침내 사카이씨의 코멘트를 직접 받을 수 있게 되었고, 더 내용이 풍부해지고... 아주 조금씩 조금씩 발전해나갔어요. 이런 발전은 모두 ZARD를 생각하는 팬들의 따뜻한 마음이 퍼져나가 서로 연결되어 만들어낸 것이라고 생각합니다.」
+                    [마츠다 치아키 / 레벨 매니저]</p>
+
+                   <img src="include/img/chapter6/3-3.jpg" class="align-left slide-in slide-img">
+                    <p>ZARD 오피셜 팬클럽 [WEZARD]의 회보는 오사카에서 만들어지기 때문에 사카이와의 연락이나 코멘트 송신은 FAX를 중심으로 이루어졌다. 직접 쓰는 코멘트인 만큼 사카이가 '나의 생각을 쓴다'라는 것에, 그녀가 가지고 있는 고민을 느낄 수 있는 일도 많았다고 한다. 또, 팬과의 연결을 오래도록 바라왔던 그녀는, 회보의 여러 가지 질문에도 속마음을 내비치기도 하면서 솔직하게 대답했다</p>
+
+                    <P>「인터뷰는 거의 친필로 답을 써서 보내주셨습니다. 신곡 인터뷰, 휴일 인터뷰를 가리지 않고, 단 1개의 질문에도 몇 번씩이나 고쳐 썼다는 것을 알 수 있을 정도로 답변지를 보면 쓰고 지운 흔적이 엄청 났습니다. 한 번 회답을 쓰고, 거기에 말을 더 보충하거나 이중선으로 지우고 표현을 바꾸거나 한 흔적이 많았습니다. 그것을 볼 때마다 '한마디 한마디 말을 정말로 신중하고, 소중히 여기고 있구나, 단 한마디에도 몇 번이나 생각하고 고쳐서 대답하는 사람이구나.'라고 생각했습니다. FAX를 보낼 때는, 언제나 위쪽에 '빨리!'라는 문자가 쓰여 있었습니다. 이 문자를 보면 앨범 작업에 본격적으로 들어가 있구나 하고 알 수 있어서, 데스크에 돌아올 때에도 왠지 긴장됐어요. 그리고 원고의 일부를 다음 날에 따로 보내는 경우도 있었습니다. 그럴 때면 자세하게 ‘이번은 ○매 보내 드립니다. 나머지 XX에 대해서는 □□이기 때문에, △△에 보내 드립니다’하고 자세히 상황을 써 주셨기 때문에, 제작 일정을 조정 하기가 굉장히 편했습니다. 그리고 친필 메시지로 ‘모두 ZARD Family~♡’라고 써 주셨던 게 굉장히 인상적으로 기억에 남아 있습니다. 그러고 보면, 그 메세지가 나오고 나서 WEZARD 회원여러분들이 WEZARD 앞에 보내는 편지 앞에 자신들을 ‘ZARD Family’라고 표현하는 것을 자주 볼 수 있었습니다. 일종의 상징적 표현이 되었네요.」
+                    [사와시타 유카 / 팬클럽 담당]</P>
+
+                    <p>사카이가 ‘모두 ZARD Family~♡’라고 쓴 것은 2005년 12월에 오피셜 팬클럽 사이트(회원 한정)에 보낸 친필 메시지에서였다. 첫 번째 라이브 투어가 끝난 후, 그녀는 팬들에게 감사의 표현을 보다 직접적으로 하는 경향이 보였다. [ZARD Family]라는 말도, 그녀의 그런 마음이 직접적으로 나타난 표현 중의 하나였던 것 같다.</p>
+                    </div>
+                </div>
+              <div class="slides6 six4" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-6장 [팬]-</h1><br><br>
+                    <h3 class="">4. 사인을 요청받다! </h3><br><br>
+                    <p>1993년 [뮤직 스테이션]을 마지막으로 TV에는 거의 출연하지 않았던 ZARD. 그렇기 때문에 외부에서 촬영을 해도 ZARD의 사카이 이즈미를 사람들이 알아보는 일은 거의 없었다. 특히나 해외에 나가면 더욱 더 그런 면이 있어서, 오히려 사람들의 시선을 신경 쓰지 않고 촬영할 수 있기 때문에 더 자연스러운 모습을 촬영할 수 있다는 이유로 해외 촬영에 나간적도 있다.  </p><br>
+
+                    <img src="include/img/chapter6/4-1.jpeg" class="align-left slide-in slide-img">
+                    <p>그러나 아무리 미디어에 노출이 적다해도, 사진으로 이미 많은 사람들이 알고 있었기 때문에, 팬들의 눈을 간단히 속일 수는 없었다.</p><br>
+                    <p>「하야마는 사카이씨도 좋아하는 곳이라서, 몇 번 촬영하러 갔었습니다. 어느 날 촬영이 끝나고 난 후에 차라도 한잔 하면서 쉬려고 카페에 들어갔습니다. 사카이씨는 카페오레를 좋아해서 그것을 주문했는데, 카페오레를 가져오던 웨이트리스가 사카이씨를 알아보고 ‘하~’하는 소리를 내며, 갑자기 손을 부들부들 떨기 시작했습니다. 그대로 카페오레를 와장창~ 엎어버렸고, 사카이씨의 옷이 카페오레에 흠뻑 젖어버렸지요 (웃음). 일부러 그런 것도 아니고 그 아이가 굉장히 놀라서 그랬기 때문에, 사카이씨도 웃으면서 그녀를 위로했었어요.」
+                    [스즈키 켄이치]</p><br>
+                    <img src="include/img/chapter6/4-2.jpg" class="align-right slide-in slide-img">
+                    <p>또, 시드니 촬영에서는 여느 때의 해외 촬영과 같이 거리에서 거리낌 없이 촬영하고 있었는데, 일본인 커플이 사카이를 알아보고, ‘ZARD의 사카이씨군요. 혹시 사인을 받을 수 있을까요?’라며 그녀에게 다가왔다. 그러나 사카이는 이런 경험을 거의 해본 적이 없어서, 굉장히 당황했다고 한다.</p><br>
+                    <img src="include/img/chapter6/4-3.jpg" class="align-left slide-in slide-img2">
+                    <p>「그때 당황했던지 저에게 와서, '사인을 해달라고 하는데, 어떡해?'라고 물어봤어요. 당연히 '해드리면 좋잖아요?'라고 대답하니, 그 커플에게 다가가서, 무언가에 열심히 사인을 해주었습니다. 보통 유명인이라면 당연한 일인데, 그녀에게는 굉장히 귀한 경험이었고, 또 정말로 기뻐하는게 눈에 보일 정도로 미소를 짓고 있었던 기억이 나네요.」
+                    [타카노 아키히코 / 영상 프로덕션 매니저]</p><br>
+                    <p>평소에도 주변에 신경을 쓰면 바로 긴장해, 좀처럼 자연스러운 모습이 될 수 없는 반면, 자신을 알아 본 팬이 사인을 요청한 것에 놀라면서도 순수하게 기뻐했던 그녀. 그런 평범한 여성으로서의 감각이 가사에도 활용되고 있었음은 당연한 사실이었을 것이다. 팬의 작은 행동이나 말도, 그녀에게 있어서는 매우 큰 기쁨이었다.</p><br>          
+              </div>
+            </div>
+            <div class="slides6 six5" style="display: none;">
+               <div class="site-wrap">
+                    <h1>-6장 [팬]-</h1><br>
+                    <h3 class="">5. 처음으로 보인 눈물</h3><br>
+                    <p>ZARD가 여러 가지 곡을 발표하고, 그것이 많은 팬들의 마음에 영향을 주면서, 양쪽 서로에게 강한 유대감이 생겨났고, 그것을 자신의 기쁨이자 정신적인 지주로 삼아 온 사카이는 ZARD라는 존재로서의 마음을 소중히 하면서, 사카이 이즈미 개인적인 감정을 겉으로 드러낸 적이 거의 없었다. 자신의 일희일비로 팬들을 걱정시키거나 상처 입힐지도 모르기 때문에... 그녀 주위의 많은 사람들이 말하는 '그녀가 가지고 있는 상대에 대한 걱정'은 팬에게 있어서도 똑같았다. 그런 사람이기 때문에, 자신의 병에 관한 사실도 끝까지 알리지 않았을 것이다.</p><br>
+                    <p>그러나, 그녀가 ZARD로서 음악을 만들어 내기 위해 보였던 노력과 눈물을 기록해두고 싶다.지금은 꽤나 알려진 이야기지만, 사카이는 ZARD로 데뷔하기 전에 본명인 카마치 사치코로 레이스 퀸과 가라오케 퀸으로 일을 했었다. 실은 ZARD 데뷔 초기에는 아직 그 일의 계약이 남아 있어, 레코딩과 함께 일을 병행하는 혹독한 일정을 보냈다고 한다.</p><br>
+
+                    <img src="include/img/chapter6/5-1.jpg" class="align-left slide-in slide-img">
+
+                     <p>「두 번째 싱글 레코딩은 아마 사카이에게 굉장히 힘들었을 겁니다. 왜냐하면, 레코딩 스케줄이 잡혀서 거의 매일 들어가는 상황인데도, 계약이 남아 있던 가라오케 퀸 스케줄 때문에 지방에도 가야만 했었으니까요. 아침까지 레코딩을 하고 나서 바로 아침 첫 열차를 타고 지방으로 향하는... 그런 상황에서도 사카이는 힘든 내색 하나 없이 '일이니까.'라며 웃었습니다. 한 사람의 가수로서 라기보다는, 한 사람의 여성으로서 아주 열심히 살아가고 있었습니다. 그런 모습을 스탭들 모두가 응원하고 있었어요.」[와타베 료 / 레코딩 디렉터]</p><br>
+
+                    <p>「스튜디오에 아주 큰 짐을 가져와서는 '내일 아침에는 이시카와 현에 갑니다.'하고 말했습니다. 잘도 그 어려운 상황을 견뎌 내는구나라고 생각했지만, 사카이씨는 몸이 가늘고 늘씬한데도 엄청나게 먹는 사람입니다. 아가씨인데도 '힘을 길러야 해!'라면서, 불고기 도시락을 마구 먹거나(웃음). 바쁜 만큼 건강에도 많이 신경을 썼어요. 그렇게 열심히 하다 보니 곡에도 점점 본인 의견을 낼 수 있게 되었고, 또 노력하는 스탭들에게도 많이 배려를 해주었습니다. 저는 커피와 담배뿐이었기에, 자주 혼났지만요 (웃음).」[이치카와 타카유키 / 레코딩 엔지니어]</p><br>
+
+                    <img src="include/img/chapter6/5-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>그 후, 가수 활동에 전념 할 수 있게 되었지만, 히트곡이 나오면서 많은 사람들이 주목하게 되자, 그녀의 과거에 대한 것을 찾아내 악의를 가지고 기사로 써내는 사람들도 생기게 되었다.</p><br>
+                    <p>「사카이씨 자신은 (자신이 지금까지 온 레이스 퀸이나 가라오케 퀸의 활동) 사실을 제대로 인정하고 있었습니다. 그렇지만 사실이 아닌 것을 사람들이 이야기 하는 것을 정말로 괴로워했습니다. 어느 날인가 여느 때처럼 스튜디오에 왔는데, 사카이씨가 울고 있었습니다. 스포츠 신문을 들고 있었는데 표제에는 전혀 말도 안 되는 악의적인 기사가 실려 있었어요... 그것을 보고, ‘내가 정말로 했던 일이라면 무슨 말을 들어도 상관없는데, 이런 말까지 하는 건 너무해...’라고 했어요. 아마 울고 있는 모습을 저에게 보여 주고 싶지 않았을 거예요. 그러다 곧바로 화장실에 가버렸습니다. 그것이 내가 본 처음이자 마지막으로 그녀가 우는 모습이었습니다. 그 때 저희들은 어떻게든 해서 그녀를 지켜야 한다는 생각뿐이었습니다. 당시에는 대중 앞에 나와서 활동하지 않는 것 때문에 여러 가지 말들이 많았습니다. 하지만 끝까지 그런 스타일을 관철해나가면서, 제작 활동에 전념하기 위해서 저희들도 참거나, 울거나 한 적도 많았습니다.」
+                    [코바야시 사유리 / A&R]</p><br>
+                    <img src="include/img/chapter6/5-3.jpg" class="align-left slide-in slide-img2">
+                    <p>사카이 이즈미는 항상 ZARD로서 표현 하나하나를 고민해왔다. 그렇게 고민해온 것을 하나의 형태로 만들기 위해서, 또 그녀만의 개성을 살리기 위해서, 대중들 앞에 나서서 활동을 하지 않았다. 그 점이 ZARD의 세계를 자유롭게 넓혀, 듣는 사람 각자의 생각과 함께 마음에 오래도록 남아있게 되었음은 많은 사람들이 알고 있는 사실이다. 그러나 반대로 자신의 음악을 들어 주는 사람들과 직접 만날 수 없었기 때문에, 사카이는 많은 사람들 앞에 자신의 마음을 전할 수 있는 라이브를 정말 오랫동안 꿈꿔왔다.</p>
+              </div>
+            </div>
+                <button class="btn" onclick="plusIndex6(-1)" id="btn1">◀</button>    
+                <button class="btn" onclick="plusIndex6(1)" id="btn2">▶</button>  
+          </div>
+       </div>
+       <div id="slider" class="slider7">
+          <div class="slides7 seven1" style="display: block;">
+                <div class="site-wrap">
+                    <h1>-제 7장 [프라이벳]-</h1><br><br>
+                    <h3 class="">1. 건강한 아기</h3><br><br>
+                    <p>1967년 2월 6일. 카나가와현의 한 병원에서 여자 아이가 태어났다. 그 아이의 이름은 사치코. ZARD 사카이 이즈미 그녀의 본명이다. 그녀가 태어난 날은 전날에 폭설이 내려 매우 추웠던 날이었다. 점심 무렵에 병원에 간 사카이의 어머니는 의사의 진찰을 받았는데 ‘아직, 태어나려면 1시간 넘게 남았어요.’라는 말을 들었다. 만약을 위해 분만대 위에는 올라갔지만, 의사와 간호사들이 점심시간이라며 다들 나가는 바람에 병실에는 아무도 없는 상황이 되어버렸다. </p><br>
+
+                    <img src="include/img/chapter6/6-1.jpg" class="align-left slide-in slide-img2">
+                          <p>그러나 그렇게 10분도 지나기 전에 진통이 오기 시작해, 어느 누구의 도움도 받지 않은 채 어머니는 혼자서 출산을 했다. 아기가 큰 소리로 울고 있긴 했지만 혹시나 잘못 되어 숨이 막히지는 않을까, 어디 몸에 이상은 없는가 걱정이 된 어머니는 복도에서 기다리는 가족을 향해 ‘누가, 빨리 들어와 봐!’라며 크게 외쳤다고 한다. </p><br>
+                    <img src="include/img/chapter6/6-3.jpg" class="align-right slide-in slide-img2">
+                        <p>겨우 의사가 돌아온 것은, 아이가 태어나고 나서 30분 후. 아기는 매우 건강했지만, 산후 처치가 늦었기 때문에 어머니쪽의 상태가 매우 걱정되었다. 특히 퇴원 후에, 얼마동안 귀에서 물이 계속 나와서 가족들이 걱정했었다고 한다.</p><br>
+                    <!-- <img src="include/img/chapter6/6-3.jpg" class="align-right slide-in slide-img2"> -->
+
+                          <p>하지만 걱정과는 달리 생후 1개월 때 받은 검진에서는, ‘심장 소리도 이상 없고, 몸도 튼튼해서 건강하게 잘 자랄겁니다.’라고 해서 가족들 모두 안심할 수 있었다. 그리고 그 말대로 모친과 자신의 힘만으로 이 세상에 태어난 그 아이는 병 하나 없이 튼튼하게 무럭무럭 자랐다. 가족들의 걱정과는 달리 사카이는 건강하게 잘 자랐다.</p><br>
+                </div>
+          </div>
+            <div class="slides7 seven2" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-제 7장 [프라이벳]-</h1><br><br>
+                    <h3 class="">2. 다리는 빠르지만 마이 페이스</h3><br><br>
+                    <p>4살 때 세발자전거를 타며 놀다가 굴러서 다리가 골절된 적이 있었다. 하지만, 장녀라는 것도 있고 해서 그런지 평소에는 느긋하고 조용한 성격으로, 남자 아이들과 함께 격하게 놀거나 하는 타입은 아니었다. 그리고 어렸을 때부터 키가 커서 항상 줄을 설 때 뒤쪽에 서 있었다고 한다. </p><br>
+
+                    <img src="include/img/chapter7/1-1.jpg" class="align-right slide-in slide-img">
+
+                    <p>그녀는 어렸을 때부터 호기심이 굉장히 왕성했다. ‘왜 올챙이는 다리가 나오는 거야?’, ‘왜 물은 흘러가는 거야?’같이, ‘왜?’, ‘어째서?’라는 질문을 부모님이 머리 아플 정도로 반복했다. 아이였는데도 보통과는 다른 관점을 가지고, 강안에서 헤엄치고 있는 생물에 신경 쓰기 시작하면, 하루 종일 그것만 관찰하고 있는 등, 자신이 흥미를 가진 일에는 굉장한 집중력을 보여서, 주위를 놀래 켰다고 한다. 그러한 특성은 그 후에도 계속되어 그녀가 ZARD로 활동하면서 여러 번 많은 사람들을 놀래 키기도 했다. </p><br>
+                    <img src="include/img/chapter7/1-2.jpg" class="align-left slide-in slide-img">
+                    <p>초등학교 3학년 때에는 이어달리기 대표로 선발되었다. 그때 사카이는 특별히 운동을 좋아하는 것 같지는 않았지만, 대회가 얼마 남지 않았을 때면 동생들과 함께 조깅을 하는 정도로 준비하곤 했고, 무엇보다 다리가 빨라서 뽑히곤 했다. 그 이후에도 졸업할 때 까지 매년 선수로 뽑혔다. 그리고 중학생이 되어 육상부에 들어가게 되었다. 처음에는 중거리를 주 종목으로 했지만, 후에 단거리로 주 종목을 변경하면서 재능을 보이기 시작해, 시 대회나 현 대회에서 계속해서 상을 받을 만큼 성장해 갔다. 학교 아침 조례에서 전교생 앞에서 몇 번이나 표창을 받았고, 그 상장들을 액자에 넣어 집에 자랑스럽게 장식했다고 한다.</p><br>
+
+                    <img src="include/img/chapter7/1-3.jpg" class="align-right slide-in slide-img">
+
+                    <p>﻿「흥미가 있는 것에는 굉장한 집중력을 발휘하는 아이였어요. 육상부 때도 연습을 너무 해서 피로 골절이 올 정도였습니다. 중학생인데도 학교가 끝나고 돌아오면 지쳐서 잠들어 버리기 일쑤였어요. 하지만 특별히 지는 걸 싫어하거나, 승부욕에 불타는 타입은 아니었어요. 그저 자신이 하고 싶은 일을 항상 즐기면서 하고 있는 느낌이었어요. 그때는 자주 가족이 다 같이 경기장에 응원하러 갔습니다. 다들 그녀의 그런 모습을 많이 기뻐했어요. 달리고 있는 사진은 액자에 넣어서, 지금도 잘 보관하고 있어요.」 
+                    [가족들의 이야기]</p>
+                    <!-- <img src="include/img/chapter7/1-4.jpg" class="align-left slide-in slide-img"> -->
+                    <p>그녀는 다리가 빠르기는 했지만, 뭐든지 요령 있게 잘 해내는 타입은 아니었다. 달리기는 빨랐지만, 성격은 언제나 느긋하고 한가로운 마이 페이스. 여동생은 학교 갈 준비를 잘 하지 않는 털털한 성격이었지만, 그녀는 전날부터 다음날 아침에 나갈 때까지 준비를 하고 있고, 그러면서도 도시락을 잊고 가거나 한 적이 꽤 많았다. 하지만 좋아하는 일에 앞에서는 그런 성격이 순식간에 변해버렸다. 특히나 육상을 했던 시기에는 매일매일 연습에 몰두해, 좋은 성적을 남겼다. 그러다보니, 점차 다른 학교에까지 그녀의 이름을 아는 사람이 나오는 등 주목을 받았고, 특히 남학생들에게 인기가 많았던 것 같지만, 본인은 그런 쪽에는 별로 흥미를 보이지 않았고 오로지 육상에만 빠져 있었다고 한다. 평상시는 얌전해서 눈에 띄지 않았지만, 어떤 일을 제대로 하기 시작하면 크게 주목받는 것은 그녀가 태어날 때부터 가지고 있는 운명일지도 모르겠다.</p>
+                    <img src="include/img/chapter7/1-4.jpg" class="align-left slide-in slide-img">
+                    <p>﻿「아까 부모님들도 그러셨지만, 언니는 그다지 노력파도 아니고 뭐든지 하는 둥 마는 둥 하면서 어찌어찌 해내는 사람인가보다 하고 생각했었어요. 하지만 요즘 들어서 드는 생각은 언니는 사실 노력하는 모습을 다른 사람들에게 보이는 걸 싫어하는 사람이었던 것 같아요. 언니가 떠난 후에 방을 정리했는데, 가사를 갈겨쓴 종이가 엄청나게 나왔습니다. 항상 ‘언제 저런 가사를 쓰고 있었을까?’하고 궁금했는데, ‘이렇게 쓰고 있었구나.’하고 처음으로 알았습니다. 똑같은 가사도, 몇 가지 패턴으로 여러 가지로 쓰고 있었습니다. 육상을 했을 때도 보이지 않게 노력하고 있었던 것 같아요. 하지만, 그것을 저희들에게는 전혀 말하지 않았고, 티를 낸 적도 한 번도 없었습니다.」[가족들의 이야기]</p>
+                    <p>노력하는 모습을 사람들에게는 보이지 않는다. 그녀가 우리 앞에서 보였던 그 모습은 그녀가 살아가면서 가져온 자세였던 것 같다.</p>
+              </div>
+            </div>
+            <div class="slides7 seven3" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-제 7장 [프라이벳]-</h1><br><br>
+                    <h3 class="">3. 음을 알다</h3><br><br>
+                    <p>어린 시절 그녀는 음악을 좋아하는 그녀의 어머니가 오르간을 치면서 노래해 주는 동요를 듣고, 함께 노래하면서 자랐다. 근처의 친구가 자택에 모이면 [靴が鳴る], [夕燒け小燒け]등 (동요)을 함께 노래하며 즐겁게 놀곤 했다. 그런 생활 덕에 그녀는 노래를 참 좋아했다. 어릴 때는 여동생과 함께 가수의 흉내를 내며, 가족들을 기쁘게 했다고 한다.</p>
+
+                    <img src="include/img/chapter7/2-1.jpg" class="align-left slide-in slide-img">
+
+                    <p>2~3세 무렵에는 TV에 사람이 나오는 게 신기했던지, 자신도 TV에 무척이나 나오고 싶어 했던 것 같다. 텔레비전 뒷편에 비집고 들어가 ‘나, 나와?’ 라고 하루에도 몇 번이나 물어보는 바람에 가족들이 완전히 지치기도 했다. 어떻게든 자신도 텔레비전에 나오고 싶어 해서, 자기 나름대로 이리저리 해보다가 지쳐 텔레비전 옆에서 잠을 자곤 했다고 한다.</p>
+
+                    <img src="include/img/chapter7/2-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>그러던 중 근처에 생긴 음악학원에 다니게 되었다. 처음에는 간단한 놀이를 배우며 노는 유치원 수준의 수업이었지만, 얼마 후에 피아노에 흥미를 가지기 시작해, 개인 레슨을 받게 되었다. 악보를 읽을 수 있게 되고, 어느 정도의 곡은 칠 수 있게 되었을 무렵, 육상부 활동이 바빠져서 그만 두게 되었지만, 워낙에 좋아했던 피아노였던지라 최근에도 자택에 있는 피아노를 자주 치곤 했다.</p>
+                    <p>대학 시절엔 친구들과 함께 이곳 저곳 여행하기를 좋아했다고 한다.</p>
+                    <img src="include/img/chapter7/2-3.jpg" class="align-left slide-in slide-img2">
+                    <p>「음악학원에서 선생님이 친 피아노 소리를 듣고 음표로 나타내보는 수업이 있었습니다. 거기서 훌륭한 재능이 있다고 선생님에게 몇 번이나 칭찬을 받은 적이 있었습니다. 음에 민감하다고 해야 할까, 귀가 좋았다고 해야 할까... 딱히 가르치지도 않았는데, ‘이 소리는 ~음이야’ 라고 알고 있는 게 신기하기도 했어요. 아마 그런 소질이 어렸을 때부터 있었던 것 같습니다.」 [가족들의 이야기]</p>
+
+                    <P>피아노를 그만 둔 뒤에도 음악 성적은 항상 좋았다. 또 육상으로 바쁜 와중에도, 중학생 때에는 기타 동아리에도 가입해서 배웠다고 한다. 지금도 자택에는 그 때 그녀가 사용했던 기타가 소중히 남아 있다.</P>
+                </div>
+            </div>
+            <div class="slides7 seven4" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-제 7장 [프라이벳]-</h1><br><br>
+                    <h3 class="">4. 가족과 함께 </h3><br><br>
+                    <p>1991년에 ZARD로 데뷔하게 되었을 때, 가족들은 그다지 찬성 하는 분위기가 아니었다. 사카이가 음악을 좋아하는 건 알고 있었지만, 누구나가 그렇듯이, 부모의 입장에서는 연예계라는 세계에 관해 들리는 이야기나, 불안감 같은 것이 굉장히 컷을 것이다. 그러나 사카이가 하고 싶은 일을 할 수 있는 기회를 얻었고, 다른 일을 하는 것 보다 적어도 후회는 없을 거라 생각해서, 결국 응원하기로 했다. </p><br>
+
+                    <img src="include/img/chapter7/3-1.jpg" class="align-left slide-in slide-img">
+                    <p>데뷔하고 나서 얼마간은 매일 같이 저녁에 스튜디오에 일하러 나가 새벽에 돌아오는 생활을 반복했다. 하지만, 가족들을 생각해서, 스튜디오 작업이 일찍 끝나도 그곳에서 쉬면서 시간을 보내고, 가족들의 얼굴을 보기 위해 다들 일어날 무렵에 돌아가곤 했던 것 같다. </p><br>
+                    <p>사카이는 일과 가족은 따로 생각하고 싶어 했다. 종종 신곡을 들려주고 감상을 묻어보긴 했었지만, 몸 상태가 나빠졌을 때, 스튜디오에 바래다준다는 가족의 말을 거절했다는 사실만 봐도, 어디까지나 ZARD로서의 자신과 가족의 앞에 있는 자신을 나누어 생각하고 싶어 했던 것 같다. 앨범 발매가 빠르게 이어져, 마감에 쫓겼던 90년대에는 특히나 긴장감으로 자신을 매일매일 지탱해 온 부분도 있었을 것이다. 항상 강한 자신을 무너뜨리지 않고 있었던 ZARD로서의 프로의식은 가족들 역시도 느낄 수 있을 정도였다. </p><br>
+
+                    <p>그렇지만 최근에 몸 상태가 안 좋아지고 나서는 일이 아무리 늦어도 밤에는 돌아왔고, 여지껏 갖지 못했던 개인적인 시간을 많이 가지게 되었다. 가족들에게 응석부리지 말자며 필사적으로 노력했던 자기 자신도 조금은 부드러워지자고 생각했을지도 모르겠다. 그리고 가족들은 함께 할 수 있는 시간이 늘어 난 것을 굉장히 기뻐하고 있었다. </p><br>
+
+                    <img src="include/img/chapter7/3-2.jpg" class="align-right slide-in slide-img">
+
+                    <p>수술 후 순조롭게 회복되어 약 1개월 만에 퇴원한 사카이는 병원에서 규칙적인 생활을 한 덕분에 아침에 일어나 낮에 활동을 하고, 밤에 잠자리에 드는 건강한 생활을 되찾게 되었다. ‘이게 건강한 생활이고, 많은 사람들이 사는 방식이야.’라며, 지금까지의 밤낮이 바뀐 힘든 생활과는 다른 평온한 나날을 보내고 있었다. 하지만 여전히 건강에 대한 불안도 많았던 것 같았다. 무엇인가를 할 때는 ‘엄마도 같이 와~’]라며 평소에는 하지 않던 어리광을 부리기도 했다. </p><br>
+                    <!-- <img src="include/img/chapter7/3-3.jpg" class="align-left slide-in slide-img"> -->
+                    <p>그 외에도 어머니와 단 둘이서 쇼핑이나 식사를 하러 나가기도 하며, 그전에는 거의 없었던 가족과 함께 하는 시간이 점점 많아졌다. 여동생의 집에도 자주 놀러 갔고, 조카가 수영 교실에서 올 때 마중 나가거나, 숙제를 함께 하는 등 조카를 돌보는 데도 여러 가지로 열심히였다. </p><br>   
+                    <p>하지만 빨리 건강해져서 가수 활동을 재기하고 싶다는 의욕도 대단했다. ‘복근을 단련하고 싶다’며 모친과 노래방에 가서, ZARD의 노래나 최신 유행가를 부르기도 했다. 큰 병을 앓은 후라고 느껴지지 않을 정도로 평온하고 깨끗한 목소리. 그 목소리를 어머니가 칭찬하면 ‘나는 프로잖아~’라고 말하면서도 매우 기뻐했다고 한다. 어머니도 엔카를 골라 노래하면, ‘음정은 맞았어. 좋네’라며 마치 디렉터 같이 감상을 말하는, ZARD다운 면을 보이기도 했다. </p><br> 
+                    <img src="include/img/chapter7/3-3.jpg" class="align-left slide-in slide-img">  
+                    <p>어렸을 때부터 변함없이 호기심이 왕성했던 사카이는 최근까지도 드라이플라워나, 기모노를 제대로 입는 법, 일본 무용 등을 배우고 있었다. 가부키에도 흥미를 가져 몇 번이나 감상하러 가곤했다. 또, 미술 회화전도 자주 보러 나갔다. 특히 입원 중에도 외출해서, 메이지 신궁 외원에 있는 성덕기념 회화관에 산책 겸 해서 몇 번이나 다니곤 했다고 한다. 그 중에서도 특히나 가장 좋아했던 취미는 몇 년 전에 배웠던 유화였다. 하나하나 사서 방안에 쌓여 있는 그림 도구들을 ‘절대로 버리지 말아줘’라며 몇 번이나 가족들에게 부탁했었다. 자택에는 그녀가 그린 유화가 몇 점 남아 있다. </p>
+                    <p>사카이의 취미생활들. 왼쪽부터 유화, 그녀가 애용했던 카메라, 그녀가 만든 플라워리스 작품. 그리고 그녀가 2007년에 시작하려고 했던 것이 훌라 댄스였다. 어머니의 추천도 있었고, 조금이라도 몸을 더 움직이기 위해서였다. 본격적인 레슨 전에 일단 초보들을 위한 견학회에 나갔는데, 처음임에도 금방 기본적인 동작을 터득해버려서, 경험자로 오해를 받아 주위의 차가운 시선을 받기도 했던 것 같다. 가족들 앞에서도 조금 보여 주기도 했었지만, 의외로 잘해서 다들 놀랐다고 한다. 역시 그녀는 어릴 적부터, 자신이 흥미 있어 하는 일이나 자신 있어 하는 일은, 눈 깜빡할 사이에 해내는 재능이 있었던 것은 아닐까.</p>
+                    <p>「스스로도 여러 가지를 배우고 있었지만, 뭔가 사람을 가르치는 걸 매우 잘 했습니다. 바이올린을 배우고 있는 조카의 발표회 전에는 언제나 레슨을 해 줍니다. 그러면 조카는 금새 더 능숙해져서, 선생님이 무리라고 했던 곡을 연주하기도 했습니다. 선생님에게 ‘집에서 어떤 레슨을 받고 있니?’라는 질문을 받기도 했답니다. 숙제도 다른 사람이 가르쳐 주는 것 보다, 그 아이가 가르치면 더 잘하더라구요. 그래서 조카들도 이쪽에 올 때는 일부러 숙제 거리를 가져 오곤 했습니다. 그 아이들에게는 아주 좋은 이모이자, 선생님인지라 굉장히 잘 따랐어요.」
+                    [가족들의 이야기]</p>
+              </div>
+            </div>
+            <button class="btn" onclick="plusIndex7(-1)" id="btn1">◀</button>    
+            <button class="btn" onclick="plusIndex7(1)" id="btn2">▶</button>  
+        </div>
+
+        <div id="slider" class="slider8">
+            <div class="slides8 eight1" style="display: block;">
+                <div class="site-wrap">
+                    <h1>-제 8장 [투병생활]-</h1><br><br>
+                    <h3 class="">1. 몸 상태의 변화</h3><br><br>
+                    <p>90년대 ZARD는 1년에 5장의 싱글을 발표할 때도 있을 만큼 활발한 활동을 했다. 그러나 2000년 11월 33번째 싱글 [promised you] 발표 후, 2002년 5월까지 약 1년 반 정도 활동을 중단 했던 적이 있었다. </p><br>
+
+                    <img src="include/img/chapter8/1-1.jpg" class="align-left slide-in slide-img">  
+                          <p>사실 그때부터 사카이의 몸 상태는 좋지 않았다. 그러나 쉬면서도 그녀의 창작의욕은 오히려 더 활발해져갔다. 요양을 하면서 다음 작품을 향한 아이디어를 내고 다듬어가며, 자신을 기다리고 있는 팬들을 버팀목삼아, 지금까지와는 다른 새로운 정신 자세로 제작에 임했다. 하지만 몸 상태에 관해서는 공개적으로 일절 언급하지 않았고, 달라진 활동 스타일을 다음과 같이 이야기했다. ‘90년대에는 단기간에 좋은 곡을 계속해서 발표하는 하이 페이스로 활동을 해 왔습니다만, 이제는 좀 더 느긋하게 시간을 들여서, 보다 더 좋은 작품을 발표해 나가려고 합니다. 시대의 흐름에 같이 흘러나가는 것이 아닌, ZARD 스타일을 유지하면서 하나하나 고집을 가지고 정성스럽게 만들어 가자고 스탭들과 이야기 하고 있습니다. 그렇게 해서 요즘은 그렇게 제작 기간을 오래 가져가면서 차분히 하나하나 작품을 만들어 나가고 있습니다.’</p><br>
+                          <p>2000년대 들어서부터 몸상태가 좋지 않았다.</p><br>
+                    <img src="include/img/chapter8/1-2.jpg" class="align-right slide-in slide-img">  
+                    <p>그 말대로 이후, 많은 사람들이 좋아하면서도 ZARD의 도전 정신이 들어간 작품을 발표해 나간다. 2004년에는 3년 만에 10번째 앨범 [止まっていた時計が今動き出した]를 발표했고, 같은 해 데뷔 이래 최초의 라이브 투어[What a beautiful moment Tour]를 개최하게 되었다.</p><br>
+                        <p>라이브 공연마다 모두가 놀랄 정도로 큰 성량과 깨끗하고 편안한 목소리로 수많은 히트곡을 노래했던 사카이. 그러나 그 넓은 스테이지 위에서 정 가운데가 그녀의 정해진 위치였고, 무대를 돌아다니거나, 퍼포먼스는 전혀 하지 않았다. 성량이 크고, 존재감이 대단한 그녀였기에 노래만으로 관객들을 압도하고 있었지만, 2000년 이후에 자궁근종, 난소낭종, 자궁내막증 이라는 병을 차례차례 앓아 왔었기 때문에 사실 라이브가 가능한 몸 상태가 아니었다. </p><br>
+                    <img src="include/img/chapter8/1-3.jpg" class="align-left slide-in slide-img">  
+
+                          <p>2004년 5월 10일에 열린 센다이 공연 전날 밤, 아오야마에서 센다이까지의 이동에 지쳤는지 사카이의 몸 상태가 굉장히 안 좋아져, 한숨도 못 자고 아침을 맞이했고, 사고라도 날까 불안해하며 스탭들에게 도움을 요청했다. ‘내일은 라이브가 불가능 할지도...’ 불안해하는 사카이를 스탭들이 간호하면서 계속 격려했다. </p><br>
+                 <p>공연 당일 센다이 선 플라자 홀에 사카이가 도착한 것은 오후 5시로 공연 시작 1시간 반 전이었다. 리허설도 하지 않았고, 라이브도 늦게 시작되었지만, 그 전 공연과 같이 감동적인 라이브를 했고, 활기찬 모습으로 스테이지에서 내려 온 사카이는 ZARD로서의 노래와 그녀의 모습을 관객들에게 확실히 보여 주었다.</p><br>
+                 <img src="include/img/chapter8/1-4.jpg" class="align-right slide-in slide-img"> 
+                 <p>이 후에도 스테이지에서 그녀는 그런 불안한 모습이 전혀 느껴지지 않았다. 오랫동안 기다린 관객들과의 시간을 진심으로 즐기고 있는 것처럼 보였고, 그것을 가지고 더욱 힘을 냈던 것 같다. 후에 ‘내가 살아오면서 평생 기억할만한 혹은 기억해 두고 싶은 하루는?’ 이라는 질문에 사카이는, ‘모든 날을 기억해 두고 싶어요. 여러분과 함께한 공간도...’라며 라이브를 했던 나날에 대한 대답을 남겼다. </p><br>
+                <p>당연한 일이지만, 병원 치료는 계속해오고 있었다. 하지만 여성 특유의 질병인 만큼 병원을 가기에도 조심스러울 수밖에 없었다. 심한 상태가 아닌 한 어지간해서는 병원에 가는 게 부담스운... 여성이라면 누구나가 공감할 것이다. 그러나 그녀의 가장 소중한 음악 활동을 하기 위해서는 몸 상태가 무엇보다도 중요했다. 무리해서라도 그녀가 병원에 향하도록 한 것은, 역시 음악이라는 존재였다. 그녀는 ‘괴롭다고 생각한 적도 많이 있지만, 감히 이 자리에서 말하지는 않겠습니다. 언젠가, 언제가 될지 모르겠지만, 책이라도 쓸게요 (웃음).’라고 말 할 정도로 몸 상태 뿐만이 아니라, 항상 괴로운 일을 스스로 극복해 왔던 강한 사람이었으니까.</p>
+                  </div>
+            </div>
+            <div class="slides8 eight2" style="display: none;">
+            <div class="site-wrap">
+                    <h1>-제 8장 [투병생활]-</h1><br><br>
+                    <h3 class="">2. [ハ-トに火をつけて]의 촬영 다음날</h3><br><br>
+                    <p>병원에 꾸준히 다니고 있었지만, 결국 2006년 4월 [ハ-トに火をつけて]의 뮤직 비디오를 촬영했던 날 밤에 일어난 갑작스런 몸의 이상으로 자세한 검사를 받을 때까지 그녀의 몸을 갉아먹고 있던 자궁경부암을 발견하지 못했다. </p><br>
+
+                    <img src="include/img/chapter8/2-1.jpg" class="align-left slide-in slide-img"> 
+
+                    <p>그 후, 게이오 병원에 후송되어 수술을 받게 된 그녀는 약 3개월 정도의 입원을 권유 받았다. 그리고 6월 1일에 받은 수술은 9시간에 이르는 대수술이었지만, 경과는 양호했고, 나날이 건강해져 가는 그녀를 본 모두가 회복을 확신했다. 그 때문에 입원은 가까운 몇 명의 스탭에게만 알려졌고, 또한 걱정을 끼치고 싶지 않다고 하는 본인의 희망도 있어서, 팬들에게도 일절 알려지지 않았다.</p><br>
+                    <img src="include/img/chapter8/2-2.jpg" class="align-right slide-in slide-img"> 
+                    <p>「몇 번 정도, 병문안을 갔었는데, 쉬기는커녕 일에만 신경을 쓰고 있었습니다. 그래서 ‘이참에 한번 모든 걸 잊고, 제대로 몸을 쉬는 게 좋을 거예요.’라는 이야기도 했어요. ‘어쨌든 지금은 건강을 해쳐서 입원해 있으니, 푹 쉬는 게 좋다 구요.’라고 다들 하나 같이 이야기 했지만, 본인은 그러던 말던 다음 앨범 발매나 촬영에 대한 의욕이 넘쳐있더군요. 병으로 누워있는 사람이라는 느낌이 전혀 안 들었어요. ‘다음은 이렇게 하고 싶어, 저렇게 하고 싶어’ 라며, 여러 가지 이야기를 했던 게, 기억에 남아 있네요. 그렇게까지 하지 않아도 될 텐데 라고 생각될 정도로요. 끝까지 그랬어요.」[스즈키 켄이치]</p><br>
+
+                    <img src="include/img/chapter8/2-3.jpg" class="align-left slide-in slide-img"> 
+
+                    <p>﻿「입원을 하고 있다고 들었는데, 2007년 정월에 사카이씨에게서 메일이 왔습니다. 거기에는 레코딩을 위해 가볍게 체력을 기르기 시작하면서 준비 하고 있다고 써져 있어서 정말 기뻤습니다. 저희 회사는 정월 첫날 출근에 올해의 포부를 말하는 시간을 갖습니다. 나는 그 때 빨리 ZARD가 레코딩에 들어가면 좋겠다는 이야기를 했습니다. 머지않아 레코딩에 들어간다고, 저는 확신하고 있었으니까요.」[시마다 마사히로 / 레코딩 엔지니어]</p>
+              </div>
+            </div>
+            <div class="slides8 eight3" style="display: none;">
+              <div class="site-wrap">
+                    <h1>-제 8장 [투병생활]-</h1><br><br>
+                    <h3 class="">3. 예정되어 있었던 촬영</h3><br><br>
+                    <p>수술 후 7월, 사카이는 퇴원해서 집에서 요양을 하고 있었지만, 그동안 생각해왔던 음악 작업들을 구체화해서 의욕적으로 다시 움직이기 시작했다. 스탭들은 그런 그녀를 지켜보면서, 바로 작업에 들어갈 수 있도록 준비를 시작했고, 스탭들 모두 다시 그녀의 노래를 들을 수 있다고, 함께 작품을 만들 수 있다고 믿고 있었다. 2007년 3월이 되어, 사카이는 스탭들에게 하루 정도 촬영을 하고 싶다고 연락을 했다. 레코딩은 아직이었지만, 다음을 향한 1보를 빨리 내딛고 싶었을 것이다. 장소도 [수족관]이라는 신선한 아이디어를 제안해 왔다. 그녀의 부활을 손꼽아 기다리고 있던 스탭들은 기뻐하며, 바로 촬영 장소 섭외를 시작해, 촬영 날도 4월 6일로 정해졌다. 본인도 적극적으로 준비했었기 때문에, 분명히 여러 가지 의상이나 아이템 등을 준비했던 것 같다. </p>
+
+                    <img src="include/img/chapter8/3-1.jpeg" class="align-left slide-in slide-img"> 
+                    <p>그러나 촬영이 1주일 남은 3월 29일. ‘폐로 암의 전이가 발견되었다.’라는 연락이 사카이 본인으로부터 오는 바람에, 촬영은 중지 될 수밖에 없었다. </p>
+                    <p>그렇지만, 발견된 폐암은 정말로 작아서 그녀가 사랑하는 음악을 빼앗을만한 녀석은 아니었다. 하지만 항암제 치료 때문에 2주 입원하고 퇴원, 또 2주 입원... 하는 생활을 반복해온 나날. 사카이가 앓고 있던 자궁경부암은 수술에 의해 85퍼센트가 완치, 15퍼센트가 재발이라고 했었는데, 설마 그 15퍼센트에 들어갈 줄은 아무도 생각 못했었기에 모두에게 큰 쇼크였다. 그렇지만, 사카이를 포함해서 이 사실을 알고 있던 모든 사람들이 들었던 말은 지금의 의학이라면 충분히 치료해 볼 수 있기 때문에 안심해도 된다는 것. 그 말에 그녀도 그렇게 괴로운 치료를 견딜 수 있었던 것이다. </p>
+
+                    <img src="include/img/chapter8/3-2.jpg" class="align-right slide-in slide-img"> 
+
+                    <p>항암제 치료를 위한 단기 입원 때에도 문병 온 스탭과의 대화 주제는 음악에 관한 것뿐이었다. 그녀의 머릿속에는 병마와 싸우는 무서움보다도, 다시 음악을 하고 싶다는 소망 쪽이 훨씬 더 크다고 확신할 수 있을 만큼, 그녀는 '다음'을 계속 말해왔다. ‘가을에는 반드시 건강해져서, 라이브를 하고 싶어.’라고 이야기했던 것도 이 무렵이었다. </p>
+                   </div>
+            </div>
+            <div class="slides8 eight4" style="display: none;">
+              <div class="site-wrap">
+                    <h1>-제 8장 [투병생활]-</h1><br><br>
+                    <h3 class="">4. 마지막 전화로 이야기했던 사람 </h3><br><br>
+                    <p>사카이는 죽기 전 날, 자신의 음악인생의 문을 열어 주고 16년간에 걸쳐 ZARD의 활동을 계속 뒷받침해 주고 있는 프로듀서 나가토 다이코우와 전화로 이야기를 했었다. 건강해 지고 있다는 것을 이야기하면서도 항암제 치료를 위한 단기 입원으로 느끼는 피로나 괴로움을 슬쩍 이야기 했었다는 사카이. 나가토는 그녀를 격려했고, 이번에 퇴원하면 바로 자택에 있는 기재들을 가져와서 레코딩을 다시 준비하자는 약속을 했다고 한다. 실은 그때 한국의 남자배우 박신양이 그가 1998년에 출연한 영화 [약속]의 일본 개봉을 위해, 주제곡을 사카이와 듀엣으로 부르자는 제의를 해왔다고 한다. 그 제의를 그녀는 흔쾌히 받아들였고, 즐겁게 기다리고 있었다. </p><br>
+
+                    <img src="include/img/chapter8/4-1.jpg" class="align-left slide-in slide-img"> 
+                    <p>이 전화를 하고 난 뒤, 아마도 그녀는 자신이 노래하고 있는 모습을 상상했던 것은 아닐까. 분명히 병실에서도 어떤 식으로 노래할까 하고 실제로 노래를 했을지도 모르겠다. 다시 음악과 만날 수 있다는 기대로 기뻐했다는 것만큼은 확실하다. </p><br>
+                    <p>그러나 그 다음날 2007년 5월 27일의 이른 아침. 그녀는 병원을 산책 하던 중, 계단의 슬로프에서 떨어져, 아무도 상상도 못했던 사고로 세상을 떠났다. </p><br>
+                    <p>그것은 너무나 갑작스럽게 일어난 일이었고, 입원 환자에게 있어서는 드문 이른 아침의 산책이라는 점, 또 3미터 정도의 난간에서 떨어진 불의의 사고였기에, 이런 저런 억측이 난무했지만, 사고 당시의 그녀를 직접 본 사람이 아무도 없었기 때문에 진실은 아무도 모른다. </p><br>
+                    <p>﻿「자신이 해왔던 일들을 제대로 알리고 싶어 하는 사람이었고, 모든 것들을 확실히 책임을 지면서 하는 사람이기 때문에, 절대로 자살은 아니라고 생각합니다. 혹여 만에 하나 그렇다면, 분명히 깨끗이 방을 정리하고, 유서를 남겼을 겁니다. 몸 상태는 이전부터 안 좋았지만, 녹음 현장에서는 전혀 그런 것들을 내색하지 않는 사람이었습니다. 자신의 음악을 만드는 일에는 자신의 모든 것을 쏟아 붓는 사람이었으니까요.」[테라오 히로시 / 디렉터]</p><br>
+
+                    <p>「이른 아침에 산책이라는 걸 이상하다고 생각하시는 분들도 많다고 들었습니다. 하지만, 원래는 그 시간이 그 사람에게는 한참 활동할 시간입니다. 그 시간에 음악이나, 가사와 같은 음악 활동을 쭉 해왔던 사람입니다. 그러니 그 시간에 산책하는 건 사카이씨를 알고 있던 저희에게는 전혀 이상한 일이 아니에요. 인간에게는 습관이라는 게 있으니까요. 입원 생활 중에도 사카이씨 에게는 자연스러운 일이었을 겁니다. 게다가, 차분하고 조용할 것 같은 대중적인 이미지가 있어, 계단의 난간에 올라가거나 하는 건 상상이 잘 안 되는 분들도 많을 겁니다. 하지만 실제로는 조금 개구쟁이 같은 면도 많은 사람이었기 때문에... 팬들도, 스탭들도, 가족들도, 많은 사람들이 지켜보고 있는 정말로 소중한 사람인데, 아주 사소한 일로 이런 사고가 일어나 버려 너무나 허무하고 슬픕니다.」[코바야시 사유리 / A&R] </p><br>
+
+                    <img src="include/img/chapter8/4-2.jpg" class="align-right slide-in slide-img"> 
+
+                    <p> 그녀가 난간에 올라가서 걸터 앉는 모습은 주변 사람들에게는 자연스러운 모습이었던 것 같다.「조금만 더, 조금만 더... ZARD로서 보여 주고 싶었던 것이 많았을 거라고 생각합니다. 라이브 MC에서도 말한 적이 있어요. 자기는 굉장히 지기 싫어하는 성격이라고. 그런 성격은 병에 대해서도 마찬가지였을 겁니다. 오히려 ‘내가 질 리가 없다.’며 자신 있어 했을 겁니다. 아직도 노래를 하고 싶은 마음으로 가득했던 사람이었다고 확신해요. 2년 전 처음으로 라이브 투어를 하면서, 팬들이 기뻐하고 있는 모습을 눈앞에서 보고, 그것을 보고 힘을 내어, 다시 ZARD를 이어나가려는 마음으로 신곡을 만들기도 했었어요. 분명히 라이브에서의 그 시간을 다시 느끼고 싶었을 거예요.」 [노구치 마유]</p>
+                    <p>어쩌면 제작 현장에서 누구에게도 창작의 괴로움을 보이지 않고 어디까지나 ZARD로서, 계속 달려온 사카이다운 최후였을지도 모르겠다. 사카이 이즈미, 그녀는 최후까지 ZARD였다.</p>
+                   </div>
+            </div>
+            <div class="slides8 eight5" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-제 8장 [투병생활]-</h1><br><br>
+                    <h3 class="">5. 마지막 전화로 이야기했던 사람 </h3><br><br>
+                    <p>그녀가 죽은 후, 정확히 1개월 후인 2007년 6월 27일. 도쿄 아오야마 장의소에서, 음악장 [ZARD / 사카이 이즈미를 그리워하는 모임]이 열렸다. </p><br>
+                    <p>식장의 야외는 파랑색, 흰색 델피니움과 수국으로 하늘과 바다, 모래사장을 표현했다. 회장의 중심부에 있는 제단에는 빨간색, 흰색 카네이션과 거베라로 [ZARD]라는 문자가 쓰여 있었고, 그녀가 사용했던 레코딩 스튜디오를 재현하여 애용했던 마이크, 헤드폰, 토이피아노, 가사 노트, 머그컵을 놓아두었다. </p><br>
+
+                    <img src="include/img/chapter8/5-1.jpg" class="align-left slide-in slide-img"> 
+                    <p>또, 5월 28일부터 1주일간 도쿄와 오사카에 설치된 헌화대에서 팬들이 그녀에게 보내는 메시지를 기록한 150권의 노트도 함께 놓여 있었다. 그 날은 햇빛이 너무 강해서 엄청나게 더운 하루였음에도, 전국에서 약 4만명 이상의 팬들이 찾아와 20만개의 꽃으로 장식된 그녀의 영정 앞에서, 그녀가 생전에 좋아했다는 칼라(품종 : 크리스멀 브러쉬) 꽃을 1개씩 헌화하며 그녀와의 이별을 안타까워했다. </p><br>
+                    <p>「더 많은 사람들과 만나고, 가까이 다가가고 싶어 했어요. 그래서, 헌화장이나 음악장에 그렇게나 많은 사람들이 온 걸 보고 분명히 ‘나는 이렇게나 사랑받고 있었구나’ 라며 정말 정말 기뻐했을 거라고 생각해요. 제 마음대로 생각하는 거지만요. 사카이씨가 하고 싶었던 일들을 살아 있을 때 다하지 못한 것도 많았을 거예요. 하지만, 나 자신을 위해서 이렇게나 많은 사람들이 모여 주었다며 굉장히 기뻐했을 거예요.」[노구치 마유]</p><br>
+                    <p>﻿마지막으로, ZARD와 함께 해 온 스탭들이 말하는 사카이 이즈미에 관한 한마디를 여러분께 전해드리고 싶다. ZARD 사카이 이즈미를 현장에서 보아왔고, 서로 지탱해왔고, 함께 고민하고, 괴로워할 때도 있었지만 항상 작품을 함께해 온 ZARD팀의 스탭들이 있었다. 이들은 음악을 향한 사카이의 순수한 정신을 계승해 온 사람들이고, ZARD의 음악을 영원히 남기기 위해, 그 정신을 마음속에 새겨두고 있는 사람들이다.</p><br>
+
+                    <p>「사카이씨가 개인적으로 하고 싶어 했던 것들은 ZARD외에도 많이 있었을 거예요. 하지만 ZARD의 사카이 이즈미는 어딘가 멀리서 음악적 능력을 받아서 음악을 해오고 있지 않았나 하는 생각마저 들 정도예요. 사카이 이즈미 밖에 쓸 수 없는 가사나, 그녀가 아니면 할 수 없는 노래가 있습니다. 이런 건 누구에게나 가능한 일이 아니에요. 사카이씨가 아니면 불가능 한 것들이었습니다. 그럴 때 마다, 역시 선택된 사람이구나 하고 생각했습니다. 이렇게나 훌륭한 작품들을 계속 만들어 왔으니까요.」[테라오 히로시 / 레코딩 디렉터]</p><br>
+
+                    <img src="include/img/chapter8/5-2.jpg" class="align-right slide-in slide-img"> 
+
+                    <p>「제 마음속에서는 지금까지 그녀와 함께 한 시간이 제 인생에 있어, 굉장히 소중하고 귀한 선물 같은 느낌입니다. 지금 생각해보면 여기까지 함께 작품을 만들어 온 것들이 제 자신에게 있어서 살아가는 보람이었다고 생각이 들어요. 제가 지금껏 유일하게 100퍼센트, 끝까지 하나하나 직접 작품을 함께 만들어 온 아티스트입니다. 나이도 동갑이라, 이런 저런 이야기도 같이 많이 했었고, 직업상 다른 아티스트의 앨범 자켓 디자인을 계속해 왔지만, 역시 ZARD가 없었다면 제가 이렇게까지 해낼 수 있었을지 모르겠습니다... 그만큼 ZARD는 제 자신에게 있어서 큰 존재였다고 생각합니다. 그것은 지금도 굉장한 자랑거리예요.」[스즈키 켄이치]</p><br>
+                    <p>「저는 지금 마스터링을 담당하고 있고, 레코딩에 직접 참가 했던 아티스트는 ZARD밖에 없었습니다. ZARD의 노래 녹음 작업이 제 역할이었죠. 비록 지금은 그 ZARD가 없어져 버렸지만, 앞으로 아무리 많은 세월이 흘러도 ZARD의 사운드를 없애거나 하지 않고, 어떻게 후세에 남겨 갈지를 생각하면서, 많은 세월이 지나도 잃어버리지 않도록 노력하겠습니다.」[시마다 마사히로 / 레코딩 엔지니어]</p><br>
+                    <p>「본인에게 물어본 게 아니기 때문에, 단순히 제 생각입니다만, 일을 할 때 마다 ZARD로서의 자신을 객관적이면서도 냉정한 시점으로 보면서 일을 진행해갔던 점이 정말 대단하다고 생각했습니다. ‘나는 ZARD지만, ZARD가 아닙니다. ZARD는 나 자신도 있지만, 프로듀서, 디렉터, 스탭이 있어야만 가능한 프로젝트니까요. 저 혼자가 절대 아니에요. ZARD라는 프로젝트 안에서, 저는 노래를 하고, 사카이 이즈미로서 가사를 쓰고 있는 거예요.’라고 말 한 적 있었습니다. 항상 그런 마음가짐으로 임해 온 사카이씨에게 감동했고, 앞으로도 결코 잊지 않겠습니다.」
+                    [노구치 마유]</p><br>
+                    <img src="include/img/chapter8/5-3.jpg" class="align-left slide-in slide-img"> 
+                    <p>「ZARD의 제작 현장은 늘 여러 가지 시행착오가 있어서 정말 힘들었습니다. 그렇지만 다 같이 하나가 되어, 점점 성장해가는 나 자신을 느낄 수 있었고, 여러 가지를 시험하면서 실패해보거나, 혹은 잘 되어서 그 노하우를 손에 넣거나 하며, 여러 가지로 제가 성장 할 수 있었습니다. 그래서 ZARD의 작업에 참여하고 그들과 함께 할 수 있어서 정말 행복했다고 자랑스럽게 생각하고 있습니다.」[노무라 마사유키 / 레코딩 엔지니어] </p><br>
+                    <p>「솔직히 말해서, 그녀의 사진을 더 찍고 싶었어요. 하지만 라이브 투어의 마지막이었던 무도관 라이브에서 공연을 지켜보면서 당연히 라이브를 또 할 거라고 생각해서... 그때 라이브는 굉장히 좋았고, 분위기도 좋았어요. 또 파인더 너머의 사카이씨도 ‘나 사진에 찍힌다’며 재미있어 했습니다. 그 투어는 첫 라이브였기 때문에, 아직 사카이씨나 스탭들도 이래저래 헤맸던 부분이 많이 있기도 했지만요. 하지만, 그래도 훌륭한 라이브를 해냈기 때문에 ‘다음엔 이렇게 해보자.’하면서 다 같이 여러 가지를 고민했어요. 우리들도 마찬가지로 ‘다음엔 이렇게 찍어보자.’ 하며 여러 가지 구상을 많이 했었습니다. 다음에는, 라이브 투어가 되었든, 이벤트가 되었든 그런 것에 상관없이, 단순히 그냥 ZARD의 공연이 열려서 그것을 촬영 할 거라고 생각했습니다. 그래서 첫 투어에서의 ‘다시 만납시다’라는 말이, 정말로 아쉽습니다.」
+                    [모리하라 유지 / 영상 카메라맨]</p><br>
+                    <p>「ZARD의 매력은 [Evergreen]이라는 이미지로 떠오릅니다. 사카이씨의 노래, 그리고 멜로디, 가사, 외적인 분위기. 모든 매칭이 절묘했습니다. 그리고 정말로 Evergreen이 되어 버렸습니다. 저는 편곡 일을 하는데, 작업의 중간 단계에서 이런저런 소리를 듣는 게 싫어서, 어느 아티스트가 되었든 ‘확인은 우리 쪽에서 다 알아서 할게요.’라며 참견하는 걸 아예 막아버리곤 했지만(웃음), 최근에는 소리의 확인이나 의견교환도 어느 샌가 당연하게 되어버렸어요. 특히나 사카이씨와 작업한 앨범 [君とのDistance]에서는 제가 참여한 작품 중에서 가장 아티스트와 깊은 의견교환을 했었다고 생각합니다. 이제 와서 생각해보면, 그때 직접 만나 이야기 한번 못 해봤던 게 아쉽네요.」
+                    [하야마 타케시 / 편곡가]</p><br>
+                    <img src="include/img/chapter8/5-4.jpg" class="align-right slide-in slide-img"> 
+                    <p>「사카이씨는 쭉 [ZARD]라는 스타일을 만들어왔고, 또 그것을 오랫동안 지키면서 여러분들에게 작품을 발표해왔다고 생각합니다. 저희들도 상상 하기 힘든 아주 많은 시간을 투자해서 말이지요. 그렇지만, 그것이 그녀만의 기쁨이고, 즐거움이며, 또 쾌감이었던 것은 아닐까요.」 [이케다 다이스케 / 편곡가] 「회사가 급성장하는 가운데 아무것도 확실치 않았던 시절에, 사카이씨는 ZARD로서 노력해주셨고, 저희들을 키워 주셨습니다. 게다가 그 때가 20대에서 30대라는 젊은 나이였다는 것은 정말 같은 여성으로서도 존경하고 있습니다. 아직도 여성에게 더 많은 노력이 필요한 시대입니다만, 그런 가운데서도 자기만의 기준을 끝까지 관철해 온 사카이씨에게 배운 그 마인드는 절대 잊지 않습니다.」
+                    [코바야시 사유리 A&R]</p><br>
+                    <p>「실제모습의 사카이 이즈미를 아는 사람은 많지 않을 거예요. 하지만 그녀는 음악이라는 무형의 예술을 일편단심으로 계속해서 만들어 온 한 명의 여성으로서, 우리들의 마음속에 영원히 새겨져 있을 것이라고 생각합니다. 그것은 작품 안에 살아있는 혼이 바로 진짜 사카이 이즈미와 다를 바 없으니까... 그녀의 작품 그 자체가 그녀의 인생이었다고 생각합니다.」
+                    [와타베 료 / 레코딩 디렉터] </p><br>
+                    <p>「데뷔해서 16년, 사망 한 것이 40세. 생각해보면 그녀는 철이 들고 나서, 절반 이상의 인생을 [ZARD의 사카이 이즈미]로서 보내온 셈입니다. 그 시간동안, 유명한 아티스트라는 것과는 상관없이, 정식으로 무대에 서는 일은 거의 없었습니다. 레코딩 스튜디오라는 닫혀있는 공간에서, 작품을 만드는 일에 대부분의 시간을 소비했습니다. 마음이 약해지거나, 발돋움 해야만 할 때, 평범한 것을 부러워하거나... 그녀의 마음속에 이런 여러 가지 고민이 있었을지도 모르겠습니다. 하지만, 그런 와중에도 작품을 계속 만들어 왔습니다. 그렇기 때문에, 작품에는 그녀의 혼이 담겨 있습니다. 평범한 단어로 쓰여 있는 가사인데도 많은 이들이 감동하는 것은 그녀의 혼을 느낄 수 있었기 때문이라고 생각합니다. 이제 그녀는 없습니다. 앞으로 새로운 작품도 나오지 않습니다. 그렇지만 그녀가 남긴 많은 작품 속에서, 우리들은 앞으로도 쭉 그녀를 접할 수 있고, 그녀의 혼을 느낄 수 있습니다... 정말로 고마워요!」[타카노 아키히코 / 영상 프로덕션 매니저]</p><br>
+              </div>
+            </div>
+            <div class="slides8 eight6" style="display: none;">
+                <div class="site-wrap">
+                    <h1>-제 8장 [투병생활]-</h1><br><br>
+                    <h3 class="">6. Glorious Mind (글로리어스 마인드) </h3><br><br>
+                    <p>그녀가 끝까지 음악 제작을 포기하지 않았다는 사실을 말해주는 에피소드가 하나 남아 있다. 마지막 싱글 [ハ-トに火をつけて]의 발매가 얼마 남지 않았던 2006년 4월. 사카이는 그 다음 발매가 결정 된 신곡의 레코딩을 하고 있었다. 그 곡은 아직 1절 후렴부분 밖에 없었지만, 그 부분에 가사를 완성한 사카이는 그녀를 걱정하는 어머니와 함께 스튜디오를 방문했다고 한다.</p><br>
+
+                    <img src="include/img/chapter8/6-1.jpg" class="align-left slide-in slide-img"> 
+                    <p>「저녁의 5시나 6시 정도였습니다. 그 때도 이미 몸 상태가 많이 안 좋아서, 처음으로 어머님과 함께 스튜디오에 왔습니다. 사카이는 어떻게 해서든지 노래하고 싶어 했어요. 하지만, 너무 체력이 없어서, 노래는 딱 2번 했습니다. 그렇지만, 노래하고 있을 때의 위기감이랄까, 절박한 느낌은, 소름이 돋을 정도였습니다... 얼마 전에 [ハ-トに火をつけて]는 사카이 자신을 위한 노래가 아닌가라고 말을 하신 분이 계셨습니다만, 나는 [グロリアス マインド]야말로, 자신을 위해서 노래한 곡이 아닐까 하고 생각합니다. [負けないで]는 주위의 사람들을 위한 메시지가 되었지만, 이 [グロリアス マインド]야말로 자신을 위한 노래가 아니었을까. 실제로는 어땠을지 모르겠고, 그때 상황으로 도저히 어떻게도 할 수 없었다고 제 스스로 생각하곤 하지만, 다음을 위해서 노력하려고 하는 마음. 그것이 그 때 사카이씨의 심정을 나타내고 있지 않았나 하고 생각합니다.」[시마다 마사히로 / 레코딩 엔지니어]</p><br>
+                    <img src="include/img/chapter8/6-2.jpg" class="align-right slide-in slide-img"> 
+                    <p>돌아가는 길, 차 안에서, ‘엄마 어땠어요?’라고 물어본 사카이. 어머님은 ‘몸이 안 좋은 티가 하나도 안 나네. 정말 괜찮았어’ 라고 솔직한 감상을 말해주었다. 그것을 들은 사카이는 ‘나도 할 때는 한다구요. 하면 되니까요.’라며 웃으며 대답했다고 한다. 웃으며 말했지만 그것은 분명, 그녀의 마음속에 있던 솔직한 말이었을 것이다.
+                    그녀가 마지막으로 노래한 곡은, [グロリアス マインド]. 그녀가 남긴 가사를 그대로 공개하려 한다.
+                    사카이 이즈미가 인생을 바친 음악. 그렇게 남아있는 그녀의 음악은 언제까지나 사람들의 마음속에 계속 남아있을 것이다. 그렇게 되기를 바란다. 그것이 그녀가 무엇보다도 바라고 있던 일이기도 하니까...</p><br>
+
+                    <p> グロリアス マインド (Glorious Mind)
+                       
+                      Glorious Mind Glorious Sky
+                       
+                      마음껏 울고 나서
+                       
+                      어제까지의 일은 모두 잊어버리자
+                       
+                      Seaside moon Seaside sky
+                       
+                      언제까지나 변하지 않는 마음을 다시 한 번 그대에게 전하고 싶어
+                       
+                      Glorious Mind</p><br>
+              </div>
+            </div>
+            <button class="btn" onclick="plusIndex8(-1)" id="btn1">◀</button>    
+            <button class="btn" onclick="plusIndex8(1)" id="btn2">▶</button>  
+  </div>
+
+  <script>
+            // (function() {
+                
+            //     var aboutEl = $('.slide-img'),
+            //         aboutElOffset = aboutEl.offset().top/2,
+            //         documentEl = $(document);
+                
+            //     documentEl.on('scroll', function() {
+            //         if ( documentEl.scrollTop() > aboutElOffset && aboutEl.hasClass('effect1') ) aboutEl.removeClass('effect1'); 
+            //     });
+            // })();
+      // var choice1 = document.getElementById('choice1');
+      // var p = document.createElement('p');
+      // p.value = '엄청난 양의 가사 노트';
+      // choice1.appendChild(p);
+    function debounce(func, wait = 2, immediate = true) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    };
+
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide() {
+      sliderImages.forEach(sliderImage => {
+        // half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height * 1.5;
+        // bottom of the image
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        // if (isHalfShown && isNotScrolledPast) {
+        //   sliderImage.classList.add('active');
+        // } 
+        if (isHalfShown) {
+          sliderImage.classList.add('active');
+        } 
+        else {
+          sliderImage.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide));
+
+      //nav선택 태그
+      $(function(){
+
+         $(".navigation__icon").click(function() {
+          if ($("#right_grid").hasClass('margin_left_350')) {
+            $("#right_grid").removeClass('margin_left_350');
+            $("#right_grid").addClass('margin_left_100');
+            $(".navigation").toggleClass('navigation-open');
+
+          } else {
+            $(".navigation").toggleClass('navigation-open');
+            // $("#right_grid").toggleClass('right_grid_toggle');
+            $('#right_grid').addClass('margin_left_350');
+            $('#right_grid').removeClass('margin_left_100');
+            // $("#right_grid").css("margin-left","350px");
+         //  }
+          }
+         });
+      });
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+            $('.slider' + j).css('display','none');
+            $('.slider1').css('display','block');
+        })(i);
+      }
+      //메뉴 선택 태그
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice' + j).on('click', function(e) {
+
+            e.stopPropagation();
+            $('.slider1').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');
+              bewhite();   
+              // $('.choice' + z).css('color','white');
+              // $('.choice2' + z).css('color','white');
+
+              $('.first' + z).css('display','none');
+
+              $('.choice' + j).css('color','#0091d0');
+              $('.first' + j).css('display','block');
+
+              $('.slider1').css('display','block');
+            }
+          });
+        })(i);
+      }
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice2' + j).on('click', function(e) {
+            e.stopPropagation();
+
+            $('.slider2').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none'); 
+              bewhite();                              
+              // $('.choice' + z).css('color','white');
+              // $('.choice2' + z).css('color','white');
+
+              $('.second' + z).css('display','none');
+
+              $('.choice2' + j).css('color','#0091d0');
+              $('.second' + j).css('display','block');
+              $('.slider2').css('display','block');
+            }
+          });
+        })(i);
+      }
+
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice3' + j).on('click', function(e) {
+            e.stopPropagation();
+
+            $('.slider3').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');  
+              bewhite();            
+              // $('.choice' + z).css('color','white');
+              // $('.choice2' + z).css('color','white');
+              // $('.choice3' + z).css('color','white');
+              $('.third' + z).css('display','none');
+
+              $('.choice3' + j).css('color','#0091d0');
+              $('.third' + j).css('display','block');
+              $('.slider3').css('display','block');
+            }
+          });
+        })(i);
+      }
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice4' + j).on('click', function(e) {
+            e.stopPropagation();
+
+            $('.slider4').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');  
+              bewhite();            
+              $('.four' + z).css('display','none');
+
+              $('.choice4' + j).css('color','#0091d0');
+              $('.four' + j).css('display','block');
+              $('.slider4').css('display','block');
+            }
+          });
+        })(i);
+      }
+
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice5' + j).on('click', function(e) {
+            e.stopPropagation();
+
+            $('.slider5').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');  
+              bewhite();            
+              $('.five' + z).css('display','none');
+
+              $('.choice5' + j).css('color','#0091d0');
+              $('.five' + j).css('display','block');
+              $('.slider5').css('display','block');
+            }
+          });
+        })(i);
+      }
+
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice6' + j).on('click', function(e) {
+            e.stopPropagation();
+
+            $('.slider6').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');  
+              bewhite();            
+              $('.six' + z).css('display','none');
+
+              $('.choice6' + j).css('color','#0091d0');
+              $('.six' + j).css('display','block');
+              $('.slider6').css('display','block');
+            }
+          });
+        })(i);
+      }
+
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice7' + j).on('click', function(e) {
+            e.stopPropagation();
+
+            $('.slider7').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');  
+              bewhite();            
+              $('.seven' + z).css('display','none');
+
+              $('.choice7' + j).css('color','#0091d0');
+              $('.seven' + j).css('display','block');
+              $('.slider7').css('display','block');
+            }
+          });
+        })(i);
+      }
+
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.choice8' + j).on('click', function(e) {
+            e.stopPropagation();
+
+            $('.slider8').css('display','block');
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');  
+              bewhite();            
+              $('.eight' + z).css('display','none');
+
+              $('.choice8' + j).css('color','#0091d0');
+              $('.eight' + j).css('display','block');
+              $('.slider8').css('display','block');
+            }
+          });
+        })(i);
+      }
+      for (var i = 1; i < 9; i++) {
+        (function(j) {
+          $('.menu' + j).on('click', function(e) {
+            for (var z = 1; z < 9; z++) {
+              $('.slider' + z).css('display','none');  
+              $('.slider' + j).css('display','block');  
+            }
+          });
+        })(i);
+      }
+      function bewhite(){
+        for (var z = 1; z < 9; z++) {
+              $('.choice' + z).css('color','white');
+              $('.choice2' + z).css('color','white');
+              $('.choice3' + z).css('color','white');
+              $('.choice4' + z).css('color','white');
+              $('.choice5' + z).css('color','white');
+              $('.choice6' + z).css('color','white');
+              $('.choice7' + z).css('color','white');
+              $('.choice8' + z).css('color','white');
+        }
+      }
+      // $('.choice1').on('click', function() {
+      //  $('#first3').show();
+      // });
+
+      // for (var i = 1; i < 9; i++) {
+      //   (function(j) {
+      //     $('.choice'+j).on('click', function() {
+      //         $('.slides').css('display','none');
+      //         $('.first' + j).css('display','block');
+      //     });
+      //   })(i);
+      // }
+      // var choice1 = document.getElementById('choice1');
+      // var p = document.createElement('p');
+      // p.value = '엄청난 양의 가사 노트';
+      // choice1.appendChild(p);
+  var index = 1;
+
+  function plusIndex(n) {
+    index = index + n;
+    showImage(index);
+  }
+  
+  function showImage(n) {
+    var i;
+    var x = document.getElementsByClassName("slides");
+    if(n > x.length) { index = 1};
+    if(n < 1) { index = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index-1].style.display = "block";
+  }
+  var index2 = 1;
+
+  function plusIndex2(n) {
+    index2 = index2 + n;
+    showImage2(index2);
+  }
+  
+  function showImage2(n) {
+    var i;
+    var x = document.getElementsByClassName("slides2");
+    if(n > x.length) { index2 = 1};
+    if(n < 1) { index2 = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index2-1].style.display = "block";
+  }
+
+  var index3 = 1;
+
+  function plusIndex3(n) {
+    index3 = index3 + n;
+    showImage3(index3);
+  }
+  
+  function showImage3(n) {
+    var i;
+    var x = document.getElementsByClassName("slides3");
+    if(n > x.length) { index3 = 1};
+    if(n < 1) { index3 = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index3-1].style.display = "block";
+  }
+
+  var index4 = 1;
+
+  function plusIndex4(n) {
+    index4 = index4 + n;
+    showImage4(index4);
+  }
+  
+  function showImage4(n) {
+    var i;
+    var x = document.getElementsByClassName("slides4");
+    if(n > x.length) { index4 = 1};
+    if(n < 1) { index4 = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index4-1].style.display = "block";
+  }
+
+  var index5 = 1;
+
+  function plusIndex5(n) {
+    index5 = index5 + n;
+    showImage5(index5);
+  }
+  
+  function showImage5(n) {
+    var i;
+    var x = document.getElementsByClassName("slides5");
+    if(n > x.length) { index5 = 1};
+    if(n < 1) { index5 = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index5-1].style.display = "block";
+  }
+
+  var index6 = 1;
+  function plusIndex6(n) {
+    index6 = index6 + n;
+    showImage6(index6);
+  }
+  
+  function showImage6(n) {
+    var i;
+    var x = document.getElementsByClassName("slides6");
+    if(n > x.length) { index6 = 1};
+    if(n < 1) { index6 = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index6-1].style.display = "block";
+  }
+
+  var index7 = 1;
+  function plusIndex7(n) {
+    index7 = index7 + n;
+    showImage7(index7);
+  }
+  
+  function showImage7(n) {
+    var i;
+    var x = document.getElementsByClassName("slides7");
+    if(n > x.length) { index7 = 1};
+    if(n < 1) { index7 = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index7-1].style.display = "block";
+  }
+
+  var index8 = 1;
+  function plusIndex8(n) {
+    index8 = index8 + n;
+    showImage8(index8);
+  }
+  
+  function showImage8(n) {
+    var i;
+    var x = document.getElementsByClassName("slides8");
+    if(n > x.length) { index8 = 1};
+    if(n < 1) { index8 = x.length};
+    for(i=0; i <x.length; i++) 
+      {
+        x[i].style.display = "none";
+      }
+    x[index8-1].style.display = "block";
+  }
+  </script>
+  <!-- <script src="js/slide.js"></script> -->
+
+</body>
+</html>
